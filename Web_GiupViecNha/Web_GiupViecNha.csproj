@@ -171,6 +171,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\HinhAnh\giupviectheogio.jpg" />
+    <Content Include="Content\HinhAnh\logo_btaskee_ver_3.png" />
+    <Content Include="Content\HinhAnh\slide1.jpg" />
+    <Content Include="Content\HinhAnh\slide2.png" />
+    <Content Include="Content\HinhAnh\slide3.jpg" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
