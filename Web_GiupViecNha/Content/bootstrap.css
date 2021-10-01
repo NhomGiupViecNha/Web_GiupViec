@@ -2094,6 +2094,11 @@ fieldset[disabled] .btn-default.active {
   background-color: #428bca;
   border-color: #357ebd;
 }
+.btn-cam{
+    color:#ffffff;
+    background-color:#ff8228;
+    border-color: #357ebd;
+}
 
 .btn-primary:hover,
 .btn-primary:focus,
