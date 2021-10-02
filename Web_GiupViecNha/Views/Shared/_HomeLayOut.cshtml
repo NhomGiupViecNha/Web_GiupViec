@@ -6,27 +6,27 @@
     <title>@ViewBag.Title</title>
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" type="text/css" rel="stylesheet" />
-    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    @*<link href="~/Content/Site.css" type="text/css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 </head>
 <body>
     <div class="container-fluid">
-       <div class="row">
+       <header>
            <div class="container">
                <div class="col">
-
+                   
                    <ul class="nav">
-                       <a href="/Home/Index"><img src="~/Content/HinhAnh/logo_btaskee_ver_3.png" /></a>
+                       
+                           <a href="/Home/Index"><img src="~/Content/HinhAnh/logo_btaskee_ver_3.png" /></a>
+                       
                        <li class="nav-item dropdown" style="margin: 7px;font:bold;  font-size: 15px;">
-
                            <a class="nav-link dropdown-toggle"  href="#" id="navDropdown">Về bTaskee</a>
-                       <div class="dropdown-content" aria-labelledby="navDropdown">
-                           <a class="dropdown-item" href="#">Giới thiệu</a>
-                           <a class="dropdown-item" href="#">Liên hệ</a>
-                       </div>
+                           <div class="dropdown-content" aria-labelledby="navDropdown">
+                               <a class="dropdown-item" href="#">Giới thiệu</a>
+                               <a class="dropdown-item" href="#">Liên hệ</a>
+                           </div>
                        </li>
                        <li class="nav-item dropdown" style="margin: 7px;font:bold;  font-size: 15px;">
-
                            <a class="nav-link dropdown-toggle" href="#" id="navDropdown">Dịch Vụ</a>
                            <div class="dropdown-content" aria-labelledby="navDropdown">
                                <a class="dropdown-item" href="#">Đi chợ</a>
@@ -53,102 +53,63 @@
                                <a class="dropdown-item" href="#">Đối tác Giặt ủi</a>
                            </div>
                        </li>
-                   
+                       <li class="nav-item" style="left:100px">
+                           @if (Session["Taikhoan"] != null)
+                            {
+                                <div class="action">
+                                    <div class="profile" onclick="menuToggle();">
+                                        <a href="#"><img src="ico_logged_in.png" alt=""></a>
+                                    </div>
+                                    <div class="menu">
+                                        <ul>
+                                            <li><a href="">Thông tin cá nhân</a></li>
+                                            <li><a href="">Ví</a></li>
+                                            <li><a href="">Đổi thưởng</a></li>
+                                            <li><a href="@Url.Action("DangXuat","User")">Đăng xuất</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("DangNhap", "User")"><img src="~/Content/HinhAnh/ico_not_login.png" /></a>
+                            }
+                       </li>
                     </ul>
+                   
+
                </div>
               
            </div>
 
-       </div>
-        <row>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100"
-                        src="~/Content/HinhAnh/slide1.jpg"   alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="~/Content/HinhAnh/slide2.png"   alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="~/Content/HinhAnh/slide3.jpg"  alt="Third slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-
-        </row>
-
-        <div class="row">
+       </header>
         
+        <div class="row" style="padding-top:50px;">
             @RenderBody()
         </div>
-        <div class="row">
-            <div class="container">
-                <h1>Các câu hỏi thường gặp</h1>
 
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn w-100 collapsed"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    1. Ứng dụng bTaskee đang được triển khai ở đâu?
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                Ứng dụng hiện đang được triển khai tại TP Hồ Chí Minh, Hà Nội, Hải Phòng, Đà Nẵng, Nha Trang, Đà Lạt, Bình Dương, Biên Hòa và Cần Thơ. Trong tương lai, bTaskee sẽ mở rộng và phát triển đến những thành phố khác trong thời gian sớm nhất.                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn collapsed w-100" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    2. Mình muốn sử dụng thử dịch vụ của bTaskee nhưng phân vân về chất lượng dịch vụ có tốt hay không?
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">
-                                CTV giúp việc nhà thuộc bTaskee có kinh nghiệm dọn dẹp nhà ít nhất 01 năm và có đầy đủ giấy tờ, hồ sơ. Lao động sẽ được phỏng vấn, kiểm tra kiến thức và thử việc trước khi trở thành cộng tác viên chính thức. Bạn hãy yên tâm về chất lượng dịch vụ.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <button class="btn collapsed w-100" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    3. Khi đăng công việc lên ứng dụng thì phải mất bao lâu mới có người nhận việc?
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">
-                                Các chị CTV giúp việc của bTaskee sẽ chủ động nhận việc trong vòng một tiếng kể từ khi bạn đăng việc hoàn tất. Đối với các ngày Lễ hoặc Giờ cao điểm, vì nhu cầu dọn dẹp sẽ tăng, bạn nên đăng việc trước một ngày để đảm bảo luôn có người dọn dẹp.                            </div>
-                        </div>
+        <footer id="footer" style="background-color:black; color:white; margin-top:30px; position:relative; width:100%; height:150px">
+            <div class="footer-widget">
+                <div class="container" style="margin-top:15px">
+                    <div class="container-fluid">
+                        <h4 style="text-align:center">114 Lê Trọng Tấn - P.Tây Thạnh - Tân Phú - TP.HCM</h4>
+                        <h4 style="text-align:center">Email: webgiupviecnha@gmail.com</h4>
+                        <h4 style="text-align:center">SĐT: 123456789</h4>
                     </div>
                 </div>
             </div>
-        </div>
-     </div>
+        </footer>
+    </div>
      
  
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
+<script>
+    function menuToggle() {
+        const toggleMenu = document.querySelector('.menu');
+        toggleMenu.classList.toggle('active')
+    }
+</script>

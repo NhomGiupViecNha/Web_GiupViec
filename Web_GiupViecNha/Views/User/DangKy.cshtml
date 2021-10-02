@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_HomeLayOut.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+            <div class="regester-form">
+                <form action="@Url.Action("DangKi", "User")" id="regester" method="post">
+                    <h1 class="form-heading">Đăng Kí Tài Khoản</h1>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Tên đăng nhập">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Họ tên">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Số điện thoại">
+                    </div>
+                    <div class="form-group" style="border-bottom:none">
+                        <p>Ngày sinh</p>
+                        <input type="date" />
+                    </div>
+                    
+                    <div class="form-group" style="border-bottom:none;">
+                        <p>Giới tính</p>
+                        <input type="radio" name="color" />
+                        &emsp;
+                        <label>Nam</label>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        <input type="radio" name="color" />
+                        &emsp;
+                        <label>Nữ</label>
+                           
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" placeholder="Mật khẩu">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" placeholder="Xác Nhận Mật khẩu">
+                    </div>
+                    @if (@ViewData["Loi"] != null)
+                    {
+                        <h5 style="color:red; font-size:18px; text-align:center"> @ViewData["Loi"] </h5>
+                    }
+
+                    <input type="submit" value="Đăng Kí" class="form-submit">
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>
+
