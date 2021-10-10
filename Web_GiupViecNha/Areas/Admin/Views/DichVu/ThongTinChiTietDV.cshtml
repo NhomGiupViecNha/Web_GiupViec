@@ -1,0 +1,129 @@
+﻿@using Web_GiupViecNha.Areas.Admin.Models;
+
+@{
+    ViewBag.Title = "ThongTinChiTietDV";
+
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
+}
+@{DichVu dv = ViewData["dichvu"] as DichVu;}
+@{
+
+    List<LoaiDV> dsldv = ViewBag.DSLoaiDV as List<LoaiDV>;
+}
+<h2>Thông tin chi tiết dịch vụ</h2>
+<div class="card-body card-block">
+    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label class=" form-control-label">Static</label>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtMaDV" class=" form-control-label">Mã Dịch Vụ</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtMaDV" value="@dv.MaDichVu" placeholder="Mã dịch vụ" disabled="" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtTenDV" class=" form-control-label">Tên Dịch Vụ</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtTenDV" value="@dv.TenDichVu" placeholder="Tên dịch vụ" class="form-control">
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtMoTa" class=" form-control-label">Mô Tả</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <textarea name="txtMoTa" rows="9" placeholder="Mô tả" class="form-control">@dv.MoTa</textarea>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtDVT" class=" form-control-label">Đơn vị tính</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" value="@dv.DonViTinh" name="txtDVT" placeholder="Đơn vị tính" class="form-control">
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtGia" class=" form-control-label">Giá thành</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtGia" value="@dv.GiaThanh" placeholder="Giá thành" class="form-control">
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtKNYC" class=" form-control-label">Kinh nghiệm yêu cầu</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtKNYC" value="@dv.KinhNghiemYeuCau" placeholder="Kinh nghiệm yêu cầu" class="form-control">
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtHinhAnh" class=" form-control-label">Link Hình Ảnh</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtHinhAnh" value="@dv.HinhAnh" placeholder="Hình ảnh" class="form-control">
+
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="cbLoaiDV" class=" form-control-label">Loại dịch vụ</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <select name="cbLoaiDV" id="select" class="form-control">
+
+                    @for (int i = 0; i < dsldv.Count; i++)
+                    {
+                        if (dsldv[i].MaLoaiDV == dv.LoaiDV)
+                        {
+                            <option value="@dv.LoaiDV" selected>@dsldv[i].TenLoaiDV</option>
+                            continue;
+
+                        }
+
+                        <option value="@dsldv[i].MaLoaiDV">@dsldv[i].TenLoaiDV</option>
+
+                    }
+
+
+
+                </select>
+            </div>
+        </div>
+
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("ThongTinChiTietDV", "DichVu", new { madv = dv.MaDichVu.Trim() })'">
+                <i class="fa fa-dot-circle-o"></i> Submit
+            </button>
+            <button type="reset" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Reset
+            </button>
+        </div>
+
+
+
+    </form>
+
+</div>

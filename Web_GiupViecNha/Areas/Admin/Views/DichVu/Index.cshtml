@@ -1,0 +1,111 @@
+﻿@using Web_GiupViecNha.Areas.Admin.Models;
+@{
+    ViewBag.Title = "Quản lý dịch vụ";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
+}
+
+
+
+
+<h3 class="title-5 m-b-35">Danh sách dịch vụ</h3>
+<div class="table-data__tool">
+    <div class="table-data__tool-left">
+        <div class="rs-select2--light rs-select2--md">
+            <select class="js-select2" name="property">
+                <option selected="selected">All Properties</option>
+                <option value="">Option 1</option>
+                <option value="">Option 2</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+        <div class="rs-select2--light rs-select2--sm">
+            <select class="js-select2" name="time">
+                <option selected="selected">Today</option>
+                <option value="">3 Days</option>
+                <option value="">1 Week</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+        <button class="au-btn-filter">
+            <i class="zmdi zmdi-filter-list"></i>filters
+        </button>
+    </div>
+    <div class="table-data__tool-right">
+        <button onclick="location.href='@Url.Action("ThemDichVu","DichVu")'" class="au-btn au-btn-icon  au-btn--green au-btn--small">
+            <i class="zmdi zmdi-plus"></i>Thêm Dịch Vụ
+        </button>
+        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+            <select class="js-select2" name="type">
+                <option selected="selected">Export</option>
+                <option value="">Option 1</option>
+                <option value="">Option 2</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+    </div>
+</div>
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>
+                    <label class="au-checkbox">
+                        <input type="checkbox">
+                        <span class="au-checkmark"></span>
+                    </label>
+                </th>
+                <th>Mã Dịch Vụ</th>
+                <th>Tên Dịch Vụ</th>
+                <th>Mô Tả</th>
+                <th>Đơn Vị Tính</th>
+                <th>Giá Thành</th>
+                <th>Kinh nghiệm yêu cầu</th>
+                <th>Hình Ảnh</th>
+                <th>Loại Dịch Vụ</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DichVu dv in ViewData["dsdv"] as List<DichVu>)
+            {
+                <tr class="tr-shadow">
+                    <td>
+                        <label class="au-checkbox">
+                            <input type="checkbox">
+                            <span class="au-checkmark"></span>
+                        </label>
+                    </td>
+                    <td>@dv.MaDichVu</td>
+                    <td class="desc">
+                        <span>@dv.TenDichVu</span>
+                    </td>
+                    <td>@dv.MoTa</td>
+                    <td>@dv.DonViTinh</td>
+                    <td>
+                        <span>@dv.GiaThanh</span>
+                    </td>
+                    <td>@dv.KinhNghiemYeuCau</td>
+                    <td>@dv.HinhAnh</td>
+                    <td>@dv.LoaiDV</td>
+                    <td>
+                        <div class="table-data-feature">
+
+
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <i class="zmdi zmdi-delete"></i>
+                            </button>
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                <a href="@Url.Action("ThongTinChiTietDV", "DichVu", new { madv = dv.MaDichVu.Trim()})"> <i class="zmdi zmdi-edit"></i></a>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="spacer"></tr>
+
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
