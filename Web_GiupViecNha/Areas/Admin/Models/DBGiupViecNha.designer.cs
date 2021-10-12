@@ -84,7 +84,7 @@ namespace Web_GiupViecNha.Areas.Admin.Models
     #endregion
 		
 		public DBGiupViecNhaDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["GiupViecNhaDBConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["GiupViecNhaDBConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
