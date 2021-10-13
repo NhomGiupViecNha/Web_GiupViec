@@ -7,7 +7,7 @@ using Web_GiupViecNha.Areas.Admin.Models;
 
 namespace Web_GiupViecNha.Areas.Admin.Controllers
 {
-    public class KhachHangController : Controller
+    public class KhachHangController : BaseController
     {
         DBGiupViecNhaDataContext db = new DBGiupViecNhaDataContext();
         //
@@ -15,18 +15,17 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            if (Session["nv"] == null)
+            if (Session["UserAdmin"] == null)
             {
                 return RedirectToAction("DangNhap", "TaiKhoan");
 
             }
             else
             {
-                NhanVien nv = db.NhanViens.FirstOrDefault(a => a.MaNV == Session["nv"].ToString());
-
+                ViewBag.NhanVien = Session["UserAdmin"];
                 List<KhachHang> dskh = db.KhachHangs.ToList();
                 ViewData["dskh"] = dskh;
-                return View(nv);
+                return View();
             }
 
 
@@ -35,7 +34,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult ThongTinKH(string makh)
         {
-            if (Session["nv"] == null)
+            if (Session["UserAdmin"] == null)
             {
                 return RedirectToAction("DangNhap", "TaiKhoan");
 
@@ -45,9 +44,9 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
                 List<KhachHang> lstkh = db.KhachHangs.ToList();
                 DSCTVYeuThich dsctv = db.DSCTVYeuThiches.FirstOrDefault(a => a.MaCTV == makh);
                 ViewData["ctvyeuthich"] = dsctv;
-                NhanVien nv = db.NhanViens.FirstOrDefault(a => a.MaNV == Session["nv"].ToString());
+                ViewBag.NhanVien = Session["UserAdmin"];
 
-                return View(nv);
+                return View();
             }
 
 
@@ -74,7 +73,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
         public ActionResult XoaKH(string makh)
         {
-            if (Session["nv"] == null)
+            if (Session["UserAdmin"] == null)
             {
                 return RedirectToAction("DangNhap", "TaiKhoan");
 

@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GiupViecNhaDB" Class="DBGiupViecNhaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-LD1SBV8\SQLEXPRESS;Initial Catalog=GiupViecNhaDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="GiupViecNhaDBConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=HungTran;Initial Catalog=GiupViecNhaDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="GiupViecNhaDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ThongKe" Member="ThongKes">
+    <Type Name="ThongKe">
+      <Column Name="MaThongKe" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NgayThongKe" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LoaiThongKe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ThongKe_ChiTietThongKe" Member="ChiTietThongKes" ThisKey="MaThongKe" OtherKey="MaThongKe" Type="ChiTietThongKe" />
+    </Type>
+  </Table>
   <Table Name="dbo.BangLuong" Member="BangLuongs">
     <Type Name="BangLuong">
       <Column Name="MaBangLuong" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -8,15 +17,6 @@
       <Column Name="NamTinhLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongTienLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="BangLuong_CT_LuongCTV" Member="CT_LuongCTVs" ThisKey="MaBangLuong" OtherKey="MaBangLuong" Type="CT_LuongCTV" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ThongKe" Member="ThongKes">
-    <Type Name="ThongKe">
-      <Column Name="MaThongKe" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="NgayThongKe" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="LoaiThongKe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TongTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="ThongKe_ChiTietThongKe" Member="ChiTietThongKes" ThisKey="MaThongKe" OtherKey="MaThongKe" Type="ChiTietThongKe" />
     </Type>
   </Table>
   <Table Name="dbo.CapBacKH" Member="CapBacKHs">

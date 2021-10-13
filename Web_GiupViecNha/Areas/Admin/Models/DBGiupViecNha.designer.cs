@@ -30,12 +30,12 @@ namespace Web_GiupViecNha.Areas.Admin.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertBangLuong(BangLuong instance);
-    partial void UpdateBangLuong(BangLuong instance);
-    partial void DeleteBangLuong(BangLuong instance);
     partial void InsertThongKe(ThongKe instance);
     partial void UpdateThongKe(ThongKe instance);
     partial void DeleteThongKe(ThongKe instance);
+    partial void InsertBangLuong(BangLuong instance);
+    partial void UpdateBangLuong(BangLuong instance);
+    partial void DeleteBangLuong(BangLuong instance);
     partial void InsertCapBacKH(CapBacKH instance);
     partial void UpdateCapBacKH(CapBacKH instance);
     partial void DeleteCapBacKH(CapBacKH instance);
@@ -84,7 +84,7 @@ namespace Web_GiupViecNha.Areas.Admin.Models
     #endregion
 		
 		public DBGiupViecNhaDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["GiupViecNhaDBConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["GiupViecNhaDBConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -113,19 +113,19 @@ namespace Web_GiupViecNha.Areas.Admin.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<BangLuong> BangLuongs
-		{
-			get
-			{
-				return this.GetTable<BangLuong>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ThongKe> ThongKes
 		{
 			get
 			{
 				return this.GetTable<ThongKe>();
+			}
+		}
+		
+		public System.Data.Linq.Table<BangLuong> BangLuongs
+		{
+			get
+			{
+				return this.GetTable<BangLuong>();
 			}
 		}
 		
@@ -247,6 +247,168 @@ namespace Web_GiupViecNha.Areas.Admin.Models
 			{
 				return this.GetTable<PhieuUuDai>();
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ThongKe")]
+	public partial class ThongKe : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MaThongKe;
+		
+		private System.Nullable<System.DateTime> _NgayThongKe;
+		
+		private string _LoaiThongKe;
+		
+		private System.Nullable<int> _TongTien;
+		
+		private EntitySet<ChiTietThongKe> _ChiTietThongKes;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaThongKeChanging(string value);
+    partial void OnMaThongKeChanged();
+    partial void OnNgayThongKeChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayThongKeChanged();
+    partial void OnLoaiThongKeChanging(string value);
+    partial void OnLoaiThongKeChanged();
+    partial void OnTongTienChanging(System.Nullable<int> value);
+    partial void OnTongTienChanged();
+    #endregion
+		
+		public ThongKe()
+		{
+			this._ChiTietThongKes = new EntitySet<ChiTietThongKe>(new Action<ChiTietThongKe>(this.attach_ChiTietThongKes), new Action<ChiTietThongKe>(this.detach_ChiTietThongKes));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaThongKe", DbType="NChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MaThongKe
+		{
+			get
+			{
+				return this._MaThongKe;
+			}
+			set
+			{
+				if ((this._MaThongKe != value))
+				{
+					this.OnMaThongKeChanging(value);
+					this.SendPropertyChanging();
+					this._MaThongKe = value;
+					this.SendPropertyChanged("MaThongKe");
+					this.OnMaThongKeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThongKe", DbType="Date")]
+		public System.Nullable<System.DateTime> NgayThongKe
+		{
+			get
+			{
+				return this._NgayThongKe;
+			}
+			set
+			{
+				if ((this._NgayThongKe != value))
+				{
+					this.OnNgayThongKeChanging(value);
+					this.SendPropertyChanging();
+					this._NgayThongKe = value;
+					this.SendPropertyChanged("NgayThongKe");
+					this.OnNgayThongKeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoaiThongKe", DbType="NVarChar(50)")]
+		public string LoaiThongKe
+		{
+			get
+			{
+				return this._LoaiThongKe;
+			}
+			set
+			{
+				if ((this._LoaiThongKe != value))
+				{
+					this.OnLoaiThongKeChanging(value);
+					this.SendPropertyChanging();
+					this._LoaiThongKe = value;
+					this.SendPropertyChanged("LoaiThongKe");
+					this.OnLoaiThongKeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Int")]
+		public System.Nullable<int> TongTien
+		{
+			get
+			{
+				return this._TongTien;
+			}
+			set
+			{
+				if ((this._TongTien != value))
+				{
+					this.OnTongTienChanging(value);
+					this.SendPropertyChanging();
+					this._TongTien = value;
+					this.SendPropertyChanged("TongTien");
+					this.OnTongTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ThongKe_ChiTietThongKe", Storage="_ChiTietThongKes", ThisKey="MaThongKe", OtherKey="MaThongKe")]
+		public EntitySet<ChiTietThongKe> ChiTietThongKes
+		{
+			get
+			{
+				return this._ChiTietThongKes;
+			}
+			set
+			{
+				this._ChiTietThongKes.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ChiTietThongKes(ChiTietThongKe entity)
+		{
+			this.SendPropertyChanging();
+			entity.ThongKe = this;
+		}
+		
+		private void detach_ChiTietThongKes(ChiTietThongKe entity)
+		{
+			this.SendPropertyChanging();
+			entity.ThongKe = null;
 		}
 	}
 	
@@ -433,168 +595,6 @@ namespace Web_GiupViecNha.Areas.Admin.Models
 		{
 			this.SendPropertyChanging();
 			entity.BangLuong = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ThongKe")]
-	public partial class ThongKe : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _MaThongKe;
-		
-		private System.Nullable<System.DateTime> _NgayThongKe;
-		
-		private string _LoaiThongKe;
-		
-		private System.Nullable<int> _TongTien;
-		
-		private EntitySet<ChiTietThongKe> _ChiTietThongKes;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaThongKeChanging(string value);
-    partial void OnMaThongKeChanged();
-    partial void OnNgayThongKeChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayThongKeChanged();
-    partial void OnLoaiThongKeChanging(string value);
-    partial void OnLoaiThongKeChanged();
-    partial void OnTongTienChanging(System.Nullable<int> value);
-    partial void OnTongTienChanged();
-    #endregion
-		
-		public ThongKe()
-		{
-			this._ChiTietThongKes = new EntitySet<ChiTietThongKe>(new Action<ChiTietThongKe>(this.attach_ChiTietThongKes), new Action<ChiTietThongKe>(this.detach_ChiTietThongKes));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaThongKe", DbType="NChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaThongKe
-		{
-			get
-			{
-				return this._MaThongKe;
-			}
-			set
-			{
-				if ((this._MaThongKe != value))
-				{
-					this.OnMaThongKeChanging(value);
-					this.SendPropertyChanging();
-					this._MaThongKe = value;
-					this.SendPropertyChanged("MaThongKe");
-					this.OnMaThongKeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThongKe", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayThongKe
-		{
-			get
-			{
-				return this._NgayThongKe;
-			}
-			set
-			{
-				if ((this._NgayThongKe != value))
-				{
-					this.OnNgayThongKeChanging(value);
-					this.SendPropertyChanging();
-					this._NgayThongKe = value;
-					this.SendPropertyChanged("NgayThongKe");
-					this.OnNgayThongKeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoaiThongKe", DbType="NVarChar(50)")]
-		public string LoaiThongKe
-		{
-			get
-			{
-				return this._LoaiThongKe;
-			}
-			set
-			{
-				if ((this._LoaiThongKe != value))
-				{
-					this.OnLoaiThongKeChanging(value);
-					this.SendPropertyChanging();
-					this._LoaiThongKe = value;
-					this.SendPropertyChanged("LoaiThongKe");
-					this.OnLoaiThongKeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Int")]
-		public System.Nullable<int> TongTien
-		{
-			get
-			{
-				return this._TongTien;
-			}
-			set
-			{
-				if ((this._TongTien != value))
-				{
-					this.OnTongTienChanging(value);
-					this.SendPropertyChanging();
-					this._TongTien = value;
-					this.SendPropertyChanged("TongTien");
-					this.OnTongTienChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ThongKe_ChiTietThongKe", Storage="_ChiTietThongKes", ThisKey="MaThongKe", OtherKey="MaThongKe")]
-		public EntitySet<ChiTietThongKe> ChiTietThongKes
-		{
-			get
-			{
-				return this._ChiTietThongKes;
-			}
-			set
-			{
-				this._ChiTietThongKes.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ChiTietThongKes(ChiTietThongKe entity)
-		{
-			this.SendPropertyChanging();
-			entity.ThongKe = this;
-		}
-		
-		private void detach_ChiTietThongKes(ChiTietThongKe entity)
-		{
-			this.SendPropertyChanging();
-			entity.ThongKe = null;
 		}
 	}
 	

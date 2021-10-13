@@ -521,21 +521,18 @@
     <Content Include="Areas\Admin\Views\DichVu\ThongTinChiTietDV.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\ThemDichVu.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\DangNhap.cshtml" />
-    <Content Include="Areas\Admin\Models\DBGiupViecNha.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DBGiupViecNha.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-<<<<<<< HEAD
     <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\ThongTinChiTietDV.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\ThemDichVu.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\CongTacVien\Index.cshtml" />
-=======
     <Content Include="Areas\Admin\Views\KhachHang\Index.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHang\ThongTinKH.cshtml" />
->>>>>>> 1ee3f5d975a78ea065233c5f86929ff992a41c76
+    <Content Include="Areas\Admin\Models\DBGiupViecNha.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DBGiupViecNha.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
