@@ -1,0 +1,68 @@
+﻿@using Web_GiupViecNha.Areas.Admin.Models;
+@{
+    ViewBag.Title = "Quản lý khách hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
+}
+
+
+
+
+<h3 class="title-5 m-b-35">Danh sách khách hàng</h3>
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>
+                    <label class="au-checkbox">
+                        <input type="checkbox">
+                        <span class="au-checkmark"></span>
+                    </label>
+                </th>
+                <th>Mã Khách Hàng</th>
+                <th>Tên Khách Hàng</th>
+                <th>Email</th>
+                <th>Địa Chỉ</th>
+                <th>Số điện thoại</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (KhachHang kh in ViewData["dskh"] as List<KhachHang>)
+            {
+                <tr class="tr-shadow">
+                    <td>
+                        <label class="au-checkbox">
+                            <input type="checkbox">
+                            <span class="au-checkmark"></span>
+                        </label>
+                    </td>
+                    <td>@kh.MaKH</td>
+                    <td class="desc">
+                        <span>@kh.TenKH</span>
+                    </td>
+                    <td>@kh.Email</td>
+                    <td>@kh.DiaChi</td>
+                    <td>@kh.SDT</td>
+                    <td>
+                        <div class="table-data-feature">
+
+
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <a href="@Url.Action("XoaKH", "KhachHang", new { makh = kh.MaKH.Trim()})"> <i class="zmdi zmdi-delete"></i>
+</button>
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                <a href="@Url.Action("ThongTinKH", "KhachHang", new { makh = kh.MaKH.Trim()})"> <i class="zmdi zmdi-edit"></i></a>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="spacer"></tr>
+
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+

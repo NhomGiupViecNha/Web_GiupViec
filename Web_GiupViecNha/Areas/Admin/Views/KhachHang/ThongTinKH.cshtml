@@ -1,0 +1,74 @@
+﻿@model Web_GiupViecNha.Areas.Admin.Models.KhachHang
+
+@{
+    ViewBag.Title = "ThongTinKH";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
+}
+
+<h2>ThongTinKH</h2>
+
+<div>
+    <h4>KhachHang</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDiemThuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDiemThuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaCapBacKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaCapBacKH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

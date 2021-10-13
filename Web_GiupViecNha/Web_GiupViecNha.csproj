@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -163,6 +165,7 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CongTacVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\DichVuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Models\DBGiupViecNha.designer.cs">
@@ -514,16 +517,25 @@
     <Content Include="Areas\Admin\AssetAdmin\vendor\slick\slick.scss" />
     <Content Include="Areas\Admin\Views\MainAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_MainLayOut.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\ThongTinChiTietDV.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\ThemDichVu.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Models\DBGiupViecNha.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DBGiupViecNha.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+<<<<<<< HEAD
     <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\ThongTinChiTietDV.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\ThemDichVu.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\CongTacVien\Index.cshtml" />
+=======
+    <Content Include="Areas\Admin\Views\KhachHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\ThongTinKH.cshtml" />
+>>>>>>> 1ee3f5d975a78ea065233c5f86929ff992a41c76
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -578,6 +590,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Areas\Admin\Models\DBGiupViecNha.dbml.layout">
