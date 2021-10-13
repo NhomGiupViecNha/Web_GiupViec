@@ -6,11 +6,12 @@ using System.Web.Mvc;
 using Web_GiupViecNha.Areas.Admin.Models;
 namespace Web_GiupViecNha.Areas.Admin.Controllers
 {
-    public class MainAdminController : BaseController
+    public class CongTacVienController : Controller
     {
+
         DBGiupViecNhaDataContext db = new DBGiupViecNhaDataContext();
         //
-        // GET: /Admin/MainAdmin/
+        // GET: /Admin/CongTacVien/
         public ActionResult Index()
         {
             if (Session["UserAdmin"] == null)
@@ -22,30 +23,34 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             {
 
                 ViewBag.NhanVien = Session["UserAdmin"];
+                List<CongTacVien> dsctv =db.CongTacViens.ToList();
+          
+       
+                ViewData["dsdv"] = dsctv;
+     
 
-                return View();
-            }
          
-            
+                return View();
 
+            }
         }
 
         //
-        // GET: /Admin/MainAdmin/Details/5
+        // GET: /Admin/CongTacVien/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
         //
-        // GET: /Admin/MainAdmin/Create
+        // GET: /Admin/CongTacVien/Create
         public ActionResult Create()
         {
             return View();
         }
 
         //
-        // POST: /Admin/MainAdmin/Create
+        // POST: /Admin/CongTacVien/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -62,14 +67,14 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/MainAdmin/Edit/5
+        // GET: /Admin/CongTacVien/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
         //
-        // POST: /Admin/MainAdmin/Edit/5
+        // POST: /Admin/CongTacVien/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -86,14 +91,14 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/MainAdmin/Delete/5
+        // GET: /Admin/CongTacVien/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
         //
-        // POST: /Admin/MainAdmin/Delete/5
+        // POST: /Admin/CongTacVien/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -108,5 +113,5 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
                 return View();
             }
         }
-	}
+    }
 }

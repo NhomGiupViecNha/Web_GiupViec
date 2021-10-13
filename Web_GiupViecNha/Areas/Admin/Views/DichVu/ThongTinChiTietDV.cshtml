@@ -1,39 +1,49 @@
 ﻿@using Web_GiupViecNha.Areas.Admin.Models;
-
+@model DichVuModels
 @{
     ViewBag.Title = "ThongTinChiTietDV";
 
     Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
 }
-@{DichVu dv = ViewData["dichvu"] as DichVu;}
+
 @{
 
     List<LoaiDV> dsldv = ViewBag.DSLoaiDV as List<LoaiDV>;
+    DichVu dv = ViewData["dichvu"] as DichVu;
 }
-<h2>Thông tin chi tiết dịch vụ</h2>
-<div class="card-body card-block">
-    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-        <div class="row form-group">
-            <div class="col col-md-3">
-                <label class=" form-control-label">Static</label>
-            </div>
 
-        </div>
+<h2>Thông tin chi tiết dịch vụ</h2>
+
+    <div class="card-body card-block">
+        @using (Html.BeginForm())
+        {
+             @Html.AntiForgeryToken()
+             @Html.ValidationSummary(true);
+            
+         
         <div class="row form-group">
             <div class="col col-md-3">
                 <label for="txtMaDV" class=" form-control-label">Mã Dịch Vụ</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtMaDV" value="@dv.MaDichVu" placeholder="Mã dịch vụ" disabled="" class="form-control">
+              
+             
+                @Html.TextBoxFor(m => m.Madv, new { @Value = dv.MaDichVu, @class = "au-input w-100", @type = "text", @placeholder = "Mã dịch vụ" })
+                @Html.ValidationMessageFor(m => m.Madv, "", new { @class = "text-danger" })
+
+
+
+
             </div>
         </div>
         <div class="row form-group">
             <div class="col col-md-3">
-                <label for="txtTenDV" class=" form-control-label">Tên Dịch Vụ</label>
+                <label for="txtTenDV" id="tendv" class=" form-control-label">Tên Dịch Vụ</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtTenDV" value="@dv.TenDichVu" placeholder="Tên dịch vụ" class="form-control">
-
+               
+                @Html.TextBoxFor(m => m.Tendv, new { @Value = dv.TenDichVu, @class = "au-input w-100", @type = "text", @placeholder = "Tên dịch vụ" })
+                @Html.ValidationMessageFor(m => m.Tendv, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -46,7 +56,7 @@
                 <label for="txtMoTa" class=" form-control-label">Mô Tả</label>
             </div>
             <div class="col-12 col-md-9">
-                <textarea name="txtMoTa" rows="9" placeholder="Mô tả" class="form-control">@dv.MoTa</textarea>
+               <textarea name="txtMoTa" rows="9" placeholder="Mô tả" class="form-control">@dv.MoTa</textarea>
             </div>
         </div>
         <div class="row form-group">
@@ -54,8 +64,9 @@
                 <label for="txtDVT" class=" form-control-label">Đơn vị tính</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" value="@dv.DonViTinh" name="txtDVT" placeholder="Đơn vị tính" class="form-control">
 
+                @Html.TextBoxFor(m => m.Donvitinh, new { @Value = dv.DonViTinh, @class = "au-input w-100", @type = "text", @placeholder = "Đơn vị tính" })
+                @Html.ValidationMessageFor(m => m.Madv, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row form-group">
@@ -63,7 +74,9 @@
                 <label for="txtGia" class=" form-control-label">Giá thành</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtGia" value="@dv.GiaThanh" placeholder="Giá thành" class="form-control">
+
+                @Html.TextBoxFor(m => m.Giathanh, new { @Value = dv.GiaThanh, @class = "au-input w-100", @type = "number", @placeholder = "Giá thành" })
+                @Html.ValidationMessageFor(m => m.Giathanh, "", new { @class = "text-danger" })
 
             </div>
         </div>
@@ -114,7 +127,7 @@
 
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("ThongTinChiTietDV", "DichVu", new { madv = dv.MaDichVu.Trim() })'">
+            <button type="submit" class="btn btn-primary btn-sm" >
                 <i class="fa fa-dot-circle-o"></i> Submit
             </button>
             <button type="reset" class="btn btn-danger btn-sm">
@@ -122,8 +135,10 @@
             </button>
         </div>
 
-
-
-    </form>
+            
+        }
+ 
 
 </div>
+    
+

@@ -1,7 +1,7 @@
 ﻿@using Web_GiupViecNha.Areas.Admin.Models;
 
 @{
-    ViewBag.Title = "ThemDichVu";
+    ViewBag.Title = "Thêm dịch vụ";
 
     Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
 }
@@ -9,6 +9,19 @@
 @{
 
     List<LoaiDV> dsldv = ViewBag.DSLoaiDV as List<LoaiDV>;
+}
+
+@{
+    string madv;
+    int flag = dsdv.Count + 1;
+    if (flag < 10)
+    {
+        madv = "DV0" + flag;
+
+
+    }
+    else  {madv = "DV" + flag;}
+    
 }
 <h2>Thêm Dịch Vụ</h2>
 <div class="card-body card-block">
@@ -24,7 +37,7 @@
                 <label for="txtMaDV" class=" form-control-label">Mã Dịch Vụ</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtMaDV" placeholder="Mã dịch vụ" disabled="" class="form-control">
+                <input type="text" value="@madv" name="txtMaDV" placeholder="Mã dịch vụ" disabled="" class="form-control">
             </div>
         </div>
         <div class="row form-group">
@@ -109,7 +122,7 @@
 
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("ThongTinChiTietDV", "DichVu")'">
+            <button type="submit" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("ThemDichVu", "DichVu")'">
                 <i class="fa fa-dot-circle-o"></i> Submit
             </button>
             <button type="reset" class="btn btn-danger btn-sm">

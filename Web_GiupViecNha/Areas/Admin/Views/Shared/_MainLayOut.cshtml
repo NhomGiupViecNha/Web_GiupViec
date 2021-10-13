@@ -1,6 +1,9 @@
 ﻿@using Web_GiupViecNha.Areas.Admin.Models;
 @Layout = null;
-@model NhanVien
+@{
+    NhanVien nv = ViewBag.NhanVien;
+    
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +14,7 @@
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>Admin</title>
     <!-- Fontfaces CSS-->
     <link href="~/Areas/Admin/AssetAdmin/css/font-face.css" rel="stylesheet" media="all">
     <link href="~/Areas/Admin/AssetAdmin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -53,7 +56,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="/Admin/MainAdmin">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
 
@@ -64,7 +67,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="table.html">
+                            <a href="@Url.Action("Index","CongTacVien")">
                                 <i class="fas fa-table"></i>Cộng Tác Viên
                             </a>
                         </li>
@@ -117,7 +120,7 @@
                     <ul class="list-unstyled navbar__list">
                         <li>
 
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="/Admin/MainAdmin">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
                         </li>
@@ -299,23 +302,23 @@
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
 
-                                            <img src="~/Areas/Admin/AssetAdmin/images/icon/avatar-01.jpg" alt="@Model.TenNV" />
+                                            <img src="~/Areas/Admin/AssetAdmin/images/icon/avatar-01.jpg" alt="@nv.TenNV" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">@Model.TenNV</a>
+                                            <a class="js-acc-btn" href="#">@nv.TenNV</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="~/Areas/Admin/AssetAdmin/images/icon/avatar-01.jpg" alt="@Model.TenNV" />
+                                                        <img src="~/Areas/Admin/AssetAdmin/images/icon/avatar-01.jpg" alt="@nv.TenNV" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">@Model.TenNV</a>
+                                                        <a href="#">@nv.TenNV</a>
                                                     </h5>
-                                                    <span class="email">@Model.Email</span>
+                                                    <span class="email">@nv.Email</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -352,6 +355,18 @@
             <!-- HEADER DESKTOP-->
             <!-- MAIN CONTENT-->
             <div class="main-content">
+                @if (TempData["AlertMessage"] != null)
+            {
+                <div id="Alertbox" class=" hide sufee-alert alert with-close @TempData["AlertType"] alert-dismissible fade show">
+                    <span class="badge badge-pill badge-@TempData["Type"]">@TempData["Type"]</span>
+                    @TempData["AlertMessage"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                 
+                    
+                 }
                 @RenderBody()
             </div>
             <!-- END MAIN CONTENT-->

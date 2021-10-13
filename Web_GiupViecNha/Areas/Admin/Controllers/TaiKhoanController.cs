@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Web_GiupViecNha.Areas.Admin.Models;
@@ -15,23 +17,38 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult DangNhap()
         {
+         
+         
             return View();
         }
         [HttpPost]
-        public ActionResult DangNhap(FormCollection c)
+        public ActionResult DangNhap(FormCollection c, TaiKhoanModel tk)
         {
-
-            NhanVien nv = db.NhanViens.FirstOrDefault(a => a.Email.Trim() == c["email"]);
+            if(!ModelState.IsValid)
             {
-                if (nv.MatKhau.Trim() == c["password"])
-                {
-                    Session["nv"] = nv.MaNV;
-                    Response.Write(@"<script language='javascript'>alert('Message: \n" + "Đăng nhập thành công !!" + " .');</script>");
-                    return RedirectToAction("Index", "MainAdmin");
-                }
+                return View(tk);
 
             }
-            return View();
+           
+            NhanVien nv = db.NhanViens.FirstOrDefault(a => a.Email.Trim() == c["email"]);
+            if(nv!=null)
+            {
+                if (nv.MatKhau.Trim() == maHoaMK(c["matkhau"]))
+                {
+                    Session["UserAdmin"] = nv;
+                    return RedirectToAction("Index","MainAdmin");
+                  
+                }
+              
+
+
+            }
+            
+                SetAlert("Tài khoản hoặc mật khẩu không hợp lệ", "danger");
+                return View();
+
+            
+          
         }
 
         public ActionResult DangXuat()
@@ -40,5 +57,37 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
             return RedirectToAction("DangNhap", "TaiKhoan");
         }
+
+        public void SetAlert(string message, string type)
+        {
+
+            TempData["AlertMessage"] = message;
+            if (type == "success")
+            {
+                TempData["AlertType"] = "alert-success";
+
+            }
+
+            else if (type == "warning")
+            {
+                TempData["AlertType"] = "alert-warning";
+
+            }
+            else if (type == "error")
+            {
+                TempData["AlertType"] = "alert-danger";
+
+            }
+        }
+        public static string maHoaMK(string matkhau)
+        {
+            var bytes = Encoding.UTF8.GetBytes(matkhau);
+            var hash = MD5.Create().ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
+
+        }
+
+       
+
 	}
 }

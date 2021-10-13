@@ -1,6 +1,6 @@
 ﻿@using Web_GiupViecNha.Areas.Admin.Models;
 @{
-    ViewBag.Title = "Quản lý dịch vụ";
+    ViewBag.Title = "Quản lý cộng tác viên";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
 }
 @helper Truncate(string input, int length)
@@ -18,7 +18,7 @@
 
 
 
-<h3 class="title-5 m-b-35">Danh sách dịch vụ</h3>
+<h3 class="title-5 m-b-35">Danh sách Cộng tác viên</h3>
 <div class="table-data__tool">
     <div class="table-data__tool-left">
         <div class="rs-select2--light rs-select2--md">
@@ -42,7 +42,7 @@
         </button>
     </div>
     <div class="table-data__tool-right">
-        <button onclick="location.href='@Url.Action("ThemDichVu","DichVu")'" class="au-btn au-btn-icon  au-btn--green au-btn--small">
+        <button onclick="location.href='@Url.Action("Thêm cộng tác viên","CongTacVien")'" class="au-btn au-btn-icon  au-btn--green au-btn--small">
             <i class="zmdi zmdi-plus"></i>Thêm Dịch Vụ
         </button>
         <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
@@ -65,10 +65,10 @@
                         <span class="au-checkmark"></span>
                     </label>
                 </th>
-                <th>Mã Dịch Vụ</th>
-                <th>Tên Dịch Vụ</th>
-                <th>Mô Tả</th>
-                <th>Đơn Vị Tính</th>
+                <th>Mã CTV</th>
+                <th>Tên CTV</th>
+                <th>Địa chỉ</th>
+                <th></th>
                 <th>Giá Thành</th>
                 <th>Kinh nghiệm yêu cầu</th>
                 <th>Hình Ảnh</th>
@@ -79,7 +79,6 @@
         <tbody>
             @foreach (DichVu dv in ViewData["dsdv"] as List<DichVu>)
             {
-                DichVuModels dvm = new DichVuModels(dv);
                 <tr class="tr-shadow">
                     <td>
                         <label class="au-checkbox">
@@ -91,13 +90,13 @@
                     <td class="desc">
                         <span>@dv.TenDichVu</span>
                     </td>
-                    <td>@Truncate(dv.MoTa,10)</td>
+                    <td>@Truncate(dv.MoTa, 10)</td>
                     <td>@dv.DonViTinh</td>
                     <td>
                         <span>@dv.GiaThanh</span>
                     </td>
                     <td>@dv.KinhNghiemYeuCau</td>
-                    <td>@Truncate(dv.HinhAnh,10)</td>
+                    <td>@Truncate(dv.HinhAnh, 10)</td>
                     <td>@dv.LoaiDV</td>
                     <td>
                         <div class="table-data-feature">
@@ -107,7 +106,7 @@
                                 <i class="zmdi zmdi-delete"></i>
                             </button>
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                <a href="@Url.Action("ThongTinChiTietDV", "DichVu", new { dichvu = dvm.Madv})"> <i class="zmdi zmdi-edit"></i></a>
+                                <a href="@Url.Action("ThongTinChiTietDV", "DichVu", new { madv = dv.MaDichVu.Trim()})"> <i class="zmdi zmdi-edit"></i></a>
                             </button>
                         </div>
                     </td>
@@ -120,4 +119,3 @@
         </tbody>
     </table>
 </div>
-

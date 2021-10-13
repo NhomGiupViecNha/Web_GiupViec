@@ -17,5 +17,11 @@ namespace Web_GiupViecNha
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Session_Start()
+        {
+
+            Session["UserAdmin"] =null;
+        }
     }
 }

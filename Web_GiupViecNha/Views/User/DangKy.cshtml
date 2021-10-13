@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "DangKy";
+    ViewBag.Title = "Đăng ký";
     Layout = "~/Views/Shared/_HomeLayOut.cshtml";
 }
 <div class="container">
@@ -13,7 +13,7 @@
                 <form action="@Url.Action("DangKi", "User")" id="regester" method="post">
                     <h1 class="form-heading">Đăng Kí Tài Khoản</h1>
                     <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Tên đăng nhập">
+                        <input type="text" class="form-input" placeholder="Email đăng nhập">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-input" placeholder="Họ tên">
@@ -21,22 +21,13 @@
                     <div class="form-group">
                         <input type="text" class="form-input" placeholder="Số điện thoại">
                     </div>
-                    <div class="form-group" style="border-bottom:none">
-                        <p>Ngày sinh</p>
-                        <input type="date" />
+                    <div class="form-group">
+                    
+                        <input type="text" class="form-input" placeholder="Địa chỉ">
+
                     </div>
                     
-                    <div class="form-group" style="border-bottom:none;">
-                        <p>Giới tính</p>
-                        <input type="radio" name="color" />
-                        &emsp;
-                        <label>Nam</label>
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                        <input type="radio" name="color" />
-                        &emsp;
-                        <label>Nữ</label>
-                           
-                    </div>
+                 
                     <div class="form-group">
                         <input type="password" class="form-input" placeholder="Mật khẩu">
                     </div>
