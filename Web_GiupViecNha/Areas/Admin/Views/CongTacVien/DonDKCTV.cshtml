@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Quản lý cộng tác viên";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
+    List<DonDangKyCTV> dsdk = ViewBag.DSDonDK;
 }
 @helper Truncate(string input, int length)
 {
@@ -18,7 +19,7 @@
 
 
 
-<h3 class="title-5 m-b-35">Danh sách Cộng tác viên</h3>
+<h3 class="title-5 m-b-35">Danh sách Đơn đăng ký Cộng tác viên</h3>
 <div class="table-data__tool">
     <div class="table-data__tool-left">
         <div class="rs-select2--light rs-select2--md">
@@ -42,9 +43,7 @@
         </button>
     </div>
     <div class="table-data__tool-right">
-        <button onclick="location.href='@Url.Action("DonDangKyCTV","CongTacVien")'" class="au-btn au-btn-icon  au-btn--green au-btn--small">
-            <i class="zmdi zmdi-plus"></i>Đơn đăng ký CTV
-        </button>
+      
         <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
             <select class="js-select2" name="type">
                 <option selected="selected">Export</option>
@@ -59,18 +58,18 @@
     <table class="table table-data2">
         <thead>
             <tr>
-              
-                <th>Mã CTV</th>
-                <th>Tên CTV</th>
+
+                <th>Mã đơn</th>
+                <th>Tên người đăng ký</th>
                 <th>Địa chỉ</th>
                 <th>Ngày Sinh</th>
                 <th>SĐT</th>
                 <th>Email</th>
-               
+
                 <th>Trình độ</th>
                 <th>Kinh nghiệm</th>
-                <th>Điểm đánh giá</th>
-                <th>Đơn đăng ký</th>
+                <th>Điểm kiểm tra</th>
+                <th>Trạng thái duyệt</th>
                 <th></th>
             </tr>
         </thead>
@@ -78,7 +77,7 @@
             @foreach (CongTacVien ctv in ViewData["dsctv"] as List<CongTacVien>)
             {
                 <tr class="tr-shadow">
-                
+
                     <td>@ctv.MaCTV</td>
                     <td class="desc">
                         <span>@ctv.TenCTV</span>
@@ -89,7 +88,7 @@
                         <span>@ctv.SDT</span>
                     </td>
                     <td>@ctv.Email</td>
-                
+
                     <td>@ctv.TrinhDo</td>
                     <td>@ctv.KinhNghiem</td>
                     <td>@ctv.DiemDanhGia</td>

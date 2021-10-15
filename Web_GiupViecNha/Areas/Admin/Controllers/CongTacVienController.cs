@@ -23,13 +23,13 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             {
 
                 ViewBag.NhanVien = Session["UserAdmin"];
-                List<CongTacVien> dsctv =db.CongTacViens.ToList();
-          
-       
-                ViewData["dsdv"] = dsctv;
-     
+                List<CongTacVien> dsctv = db.CongTacViens.ToList();
 
-         
+
+                ViewData["dsctv"] = dsctv;
+
+
+
                 return View();
 
             }
@@ -44,9 +44,22 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
         //
         // GET: /Admin/CongTacVien/Create
-        public ActionResult Create()
+        public ActionResult DonDKCTV()
         {
+            if (Session["UserAdmin"] == null)
+            {
+                return Redirect("~/Admin/DangNhap");
+
+            }
+            else
+            {
+
+              List<DonDangKyCTV> dsdk = db.DonDangKyCTVs.ToList();
+            ViewBag.DSDonDK = dsdk;
             return View();
+
+            }
+          
         }
 
         //

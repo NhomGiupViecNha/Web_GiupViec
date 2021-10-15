@@ -28,9 +28,7 @@
             <div class="col-12 col-md-9">
               
              
-                @Html.TextBoxFor(m => m.Madv, new { @Value = dv.MaDichVu, @class = "au-input w-100", @type = "text", @placeholder = "Mã dịch vụ" })
-                @Html.ValidationMessageFor(m => m.Madv, "", new { @class = "text-danger" })
-
+                <input type="text" name="txtMadv" placeholder="Mã dịch vụ" value="@dv.MaDichVu" readonly="" class="form-control">
 
 
 
@@ -56,7 +54,8 @@
                 <label for="txtMoTa" class=" form-control-label">Mô Tả</label>
             </div>
             <div class="col-12 col-md-9">
-               <textarea name="txtMoTa" rows="9" placeholder="Mô tả" class="form-control">@dv.MoTa</textarea>
+                @Html.TextAreaFor(m => m.Mota, new { @placeholder = "Mô tả", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Mota, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row form-group">

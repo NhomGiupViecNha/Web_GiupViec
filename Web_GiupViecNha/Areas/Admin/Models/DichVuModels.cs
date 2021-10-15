@@ -46,13 +46,13 @@ namespace Web_GiupViecNha.Areas.Admin.Models
             get { return hinhanh; }
             set { hinhanh = value; }
         }
-        [Required]
+        [Required(ErrorMessage = "Bạn chưa nhập đơn vị tính")]
         public string Donvitinh
         {
             get { return donvitinh; }
             set { donvitinh = value; }
         }
-
+          [Required(ErrorMessage = "Bạn chưa nhập mô tả dịch vụ")]
         public string Mota
         {
             get { return mota; }
@@ -65,14 +65,14 @@ namespace Web_GiupViecNha.Areas.Admin.Models
             get { return tendv; }
             set { tendv = value; }
         }
-        [Required]
+        
         public string Madv
         {
             get { return madv; }
             set { madv = value; }
         }
         int giathanh;
-        [Required]
+        [Required(ErrorMessage = "Bạn chưa nhập giá dịch vụ")]
         public int Giathanh
         {
             get { return giathanh; }

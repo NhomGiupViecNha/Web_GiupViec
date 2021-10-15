@@ -5,7 +5,8 @@
 }
 @helper Truncate(string input, int length)
 {
-    if (input.Length < length)
+
+     if (input.Length < length|| input==null)
     {
         @input
 

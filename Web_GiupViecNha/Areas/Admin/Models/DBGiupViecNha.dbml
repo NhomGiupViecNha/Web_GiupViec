@@ -84,20 +84,6 @@
       <Association Name="LoaiDV_DichVu" Member="LoaiDV1" ThisKey="LoaiDV" OtherKey="MaLoaiDV" Type="LoaiDV" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.DonDangKyCTV" Member="DonDangKyCTVs">
-    <Type Name="DonDangKyCTV">
-      <Column Name="MaDon" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NgaySInh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="SDT" Type="System.String" DbType="Char(10)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TrinhDoHocVan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="KinhNghiem" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TrangThaiDuyet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="DonDangKyCTV_CongTacVien" Member="CongTacViens" ThisKey="MaDon" OtherKey="MaDonDKCTV" Type="CongTacVien" />
-    </Type>
-  </Table>
   <Table Name="dbo.DonDatDV" Member="DonDatDVs">
     <Type Name="DonDatDV">
       <Column Name="MaDonDat" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -203,6 +189,21 @@
       <Association Name="PhieuUuDai_KhachHang_UuDai" Member="KhachHang_UuDais" ThisKey="MaUuDai" OtherKey="MaUuDai" Type="KhachHang_UuDai" />
       <Association Name="CapBacKH_PhieuUuDai" Member="CapBacKH" ThisKey="MaCapBac" OtherKey="MaCapBac" Type="CapBacKH" IsForeignKey="true" />
       <Association Name="DichVu_PhieuUuDai" Member="DichVu" ThisKey="MaDichVu" OtherKey="MaDichVu" Type="DichVu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonDangKyCTV" Member="DonDangKyCTVs">
+    <Type Name="DonDangKyCTV">
+      <Column Name="MaDon" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgaySInh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TrinhDoHocVan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KinhNghiem" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiemKiemTra" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TrangThaiDuyet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DonDangKyCTV_CongTacVien" Member="CongTacViens" ThisKey="MaDon" OtherKey="MaDonDKCTV" Type="CongTacVien" />
     </Type>
   </Table>
 </Database>

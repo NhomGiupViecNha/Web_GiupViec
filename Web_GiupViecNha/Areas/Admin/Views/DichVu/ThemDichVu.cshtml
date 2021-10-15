@@ -1,5 +1,5 @@
 ﻿@using Web_GiupViecNha.Areas.Admin.Models;
-
+@model DichVuModels
 @{
     ViewBag.Title = "Thêm dịch vụ";
 
@@ -13,19 +13,20 @@
 
 @{
     string madv;
-    int flag = dsdv.Count + 1;
-    if (flag < 10)
+    if(ViewBag.Madv!=null)
+    {  madv = ViewBag.Madv; }
+    else
     {
-        madv = "DV0" + flag;
-
-
+        madv = Model.Madv;
+        
     }
-    else  {madv = "DV" + flag;}
     
 }
 <h2>Thêm Dịch Vụ</h2>
 <div class="card-body card-block">
-    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+    @using(Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
         <div class="row form-group">
             <div class="col col-md-3">
                 <label class=" form-control-label">Static</label>
@@ -34,10 +35,14 @@
         </div>
         <div class="row form-group">
             <div class="col col-md-3">
-                <label for="txtMaDV" class=" form-control-label">Mã Dịch Vụ</label>
+                <label  class=" form-control-label">Mã Dịch Vụ</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" value="@madv" name="txtMaDV" placeholder="Mã dịch vụ" disabled="" class="form-control">
+                <input type="text" name="txtMadv" placeholder="Mã dịch vụ"value="@madv"  readonly="" class="form-control">
+
+         
+                @*@Html.TextBoxFor(m => m.Madv, new {@Value=madv, @placeholder="Mã dịch vụ",@disabled="", @class="form-control" })
+                @Html.ValidationMessageFor(m => m.Madv, "", new { @class = "text-danger" })*@
             </div>
         </div>
         <div class="row form-group">
@@ -45,7 +50,9 @@
                 <label for="txtTenDV" class=" form-control-label">Tên Dịch Vụ</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtTenDV" placeholder="Tên dịch vụ" class="form-control">
+               
+                @Html.TextBoxFor(m => m.Tendv, new { @placeholder = "Tên dịch vụ", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Tendv,"", new {@class="text-danger" })
 
             </div>
         </div>
@@ -59,7 +66,14 @@
                 <label for="txtMoTa" class=" form-control-label">Mô Tả</label>
             </div>
             <div class="col-12 col-md-9">
-                <textarea name="txtMoTa" rows="9" placeholder="Mô tả" class="form-control"></textarea>
+                @Html.TextAreaFor(m => m.Mota, new { @placeholder = "Mô tả", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Mota, "", new { @class = "text-danger" })
+
+
+
+
+
+
             </div>
         </div>
         <div class="row form-group">
@@ -67,7 +81,9 @@
                 <label for="txtDVT" class=" form-control-label">Đơn vị tính</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtDVT" placeholder="Đơn vị tính" class="form-control">
+                @Html.TextBoxFor(m => m.Donvitinh, new { @placeholder = "Đơn vị  tính", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Donvitinh, "", new { @class = "text-danger" })
+
 
             </div>
         </div>
@@ -76,7 +92,9 @@
                 <label for="txtGia" class=" form-control-label">Giá thành</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtGia" placeholder="Giá thành" class="form-control">
+                @Html.TextBoxFor(m => m.Giathanh, new {@type="number", @placeholder = "Giá  dịch vụ", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Giathanh, "", new { @class = "text-danger" })
+
 
             </div>
         </div>
@@ -122,7 +140,7 @@
 
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("ThemDichVu", "DichVu")'">
+            <button type="submit" class="btn btn-primary btn-sm">
                 <i class="fa fa-dot-circle-o"></i> Submit
             </button>
             <button type="reset" class="btn btn-danger btn-sm">
@@ -130,8 +148,8 @@
             </button>
         </div>
 
+        
+    }
 
-
-    </form>
 
 </div>

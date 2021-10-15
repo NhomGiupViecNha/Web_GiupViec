@@ -76,16 +76,17 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         {
             
             //if (c["txtTenDv"]==""||c["txtGia"]==""||c["txtDVT"]=="")
+         
             if(!ModelState.IsValid)
             {
                
                 SetAlert("Sửa dịch vụ không thành công. Vui lòng nhập đầy đủ thông tin yêu cầu", "error");
 
-                return ThongTinChiTietDV(c["madv"]);
+                return ThongTinChiTietDV(c["txtMadv"]);
             }
-            DichVu dichvu = db.DichVus.FirstOrDefault(a => a.MaDichVu == c["Madv"]);
+            DichVu dichvu = db.DichVus.FirstOrDefault(a => a.MaDichVu == c["txtMadv"]);
             dichvu.TenDichVu = c["Tendv"];
-            dichvu.MoTa = c["txtMoTa"];
+            dichvu.MoTa = c["Mota"];
             dichvu.KinhNghiemYeuCau = c["txtKNYC"];
             dichvu.DonViTinh = c["Donvitinh"];
             dichvu.GiaThanh = int.Parse(c["Giathanh"].ToString());
@@ -104,6 +105,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
         public ActionResult ThemDichVu()
         {
+           
 
             if (Session["UserAdmin"] == null)
             {
@@ -112,13 +114,22 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             }
             else
             {
-
                 ViewBag.NhanVien = Session["UserAdmin"];
+              
                 List<DichVu> dsdv = db.DichVus.ToList();
                 List<LoaiDV> ldv = db.LoaiDVs.ToList();
                 ViewBag.DSLoaiDV = ldv;
                 ViewData["dsdv"] = dsdv;
-            
+                string madv;
+                int flag = dsdv.Count + 1;
+                if (flag < 10)
+                {
+                    madv = "DV0" + flag;
+
+
+                }
+                else { madv = "DV" + flag; }
+                ViewBag.Madv = madv;
                 return View();
 
             }
@@ -131,33 +142,27 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         }
         [HttpPost]
 
-        public ActionResult ThemDichVu(FormCollection c)
+        public ActionResult ThemDichVu(FormCollection c, DichVuModels dv)
         {
             List<DichVu> dsdv = db.DichVus.ToList();
             DichVu dichvu = new DichVu();
-            string madv;
-            int flag = dsdv.Count + 1;
-            if (flag < 10)
-            {
-                madv = "DV0" + flag;
-
-
-            }
-            else { madv = "DV" + flag; }
-
+            List<LoaiDV> ldv = db.LoaiDVs.ToList();
+            ViewBag.DSLoaiDV = ldv;
+            ViewBag.NhanVien = Session["UserAdmin"];
+           
             if (!ModelState.IsValid)
             {
 
-                SetAlert("Sửa dịch vụ không thành công. Vui lòng nhập đầy đủ thông tin", "error");
-
-                return View();
+                SetAlert("Thêm dịch vụ không thành công. Vui lòng kiểm tra lại thông tin", "error");
+                dv.Madv = c["txtMadv"];
+                return View(dv);
             }
-            dichvu.MaDichVu = madv;
-            dichvu.TenDichVu = c["txtTenDV"];
-            dichvu.MoTa = c["txtMoTa"];
+            dichvu.MaDichVu = c["txtMadv"];
+            dichvu.TenDichVu = c["Tendv"];
+            dichvu.MoTa = c["Mota"];
             dichvu.KinhNghiemYeuCau = c["txtKNYC"];
-            dichvu.DonViTinh = c["txtDVT"];
-            dichvu.GiaThanh = int.Parse(c["txtGia"].ToString());
+            dichvu.DonViTinh = c["Donvitinh"];
+            dichvu.GiaThanh = int.Parse(c["Giathanh"].ToString());
             dichvu.HinhAnh = c["txtHinhAnh"];
             dichvu.LoaiDV = c["cbLoaiDV"];
             db.DichVus.InsertOnSubmit(dichvu);
