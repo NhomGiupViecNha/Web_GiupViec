@@ -42,7 +42,7 @@
         </button>
     </div>
     <div class="table-data__tool-right">
-        <button onclick="location.href='@Url.Action("DonDangKyCTV","CongTacVien")'" class="au-btn au-btn-icon  au-btn--green au-btn--small">
+        <button onclick="location.href='@Url.Action("DonDKCTV","CongTacVien")'" class="au-btn au-btn-icon  au-btn--green au-btn--small">
             <i class="zmdi zmdi-plus"></i>Đơn đăng ký CTV
         </button>
         <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
@@ -102,7 +102,8 @@
                                 <i class="zmdi zmdi-delete"></i>
                             </button>
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                @*<a href="@Url.Action("ThongTinChiTietDV", "DichVu", new { madv = dv.MaDichVu.Trim()})"> <i class="zmdi zmdi-edit"></i></a>*@
+                                @*<a href="@Url.Action("ThongTinChiTietDV", "DichVu", new { madv = dv.MaDichVu.Trim()})"> </a>*@
+                                <i class="zmdi zmdi-edit"></i>
                             </button>
                         </div>
                     </td>

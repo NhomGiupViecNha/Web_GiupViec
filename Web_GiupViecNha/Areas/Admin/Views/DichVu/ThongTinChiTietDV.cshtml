@@ -14,20 +14,20 @@
 
 <h2>Thông tin chi tiết dịch vụ</h2>
 
-    <div class="card-body card-block">
-        @using (Html.BeginForm())
-        {
-             @Html.AntiForgeryToken()
-             @Html.ValidationSummary(true);
-            
-         
+<div class="card-body card-block">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true);
+
+
         <div class="row form-group">
             <div class="col col-md-3">
                 <label for="txtMaDV" class=" form-control-label">Mã Dịch Vụ</label>
             </div>
             <div class="col-12 col-md-9">
-              
-             
+
+
                 <input type="text" name="txtMadv" placeholder="Mã dịch vụ" value="@dv.MaDichVu" readonly="" class="form-control">
 
 
@@ -39,7 +39,7 @@
                 <label for="txtTenDV" id="tendv" class=" form-control-label">Tên Dịch Vụ</label>
             </div>
             <div class="col-12 col-md-9">
-               
+
                 @Html.TextBoxFor(m => m.Tendv, new { @Value = dv.TenDichVu, @class = "au-input w-100", @type = "text", @placeholder = "Tên dịch vụ" })
                 @Html.ValidationMessageFor(m => m.Tendv, "", new { @class = "text-danger" })
             </div>
@@ -54,7 +54,10 @@
                 <label for="txtMoTa" class=" form-control-label">Mô Tả</label>
             </div>
             <div class="col-12 col-md-9">
-                @Html.TextAreaFor(m => m.Mota, new { @placeholder = "Mô tả", @class = "form-control" })
+               
+        
+
+                <textarea  name="Mota"  placeholder="Mô tả" class="form-control"> @dv.MoTa</textarea>
                 @Html.ValidationMessageFor(m => m.Mota, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -65,7 +68,7 @@
             <div class="col-12 col-md-9">
 
                 @Html.TextBoxFor(m => m.Donvitinh, new { @Value = dv.DonViTinh, @class = "au-input w-100", @type = "text", @placeholder = "Đơn vị tính" })
-                @Html.ValidationMessageFor(m => m.Madv, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(m => m.Donvitinh, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row form-group">
@@ -126,7 +129,7 @@
 
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm" >
+            <button type="submit" class="btn btn-primary btn-sm">
                 <i class="fa fa-dot-circle-o"></i> Submit
             </button>
             <button type="reset" class="btn btn-danger btn-sm">
@@ -134,10 +137,8 @@
             </button>
         </div>
 
-            
-        }
- 
+
+    }
+
 
 </div>
-    
-

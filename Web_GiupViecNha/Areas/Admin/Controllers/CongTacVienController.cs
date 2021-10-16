@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Web_GiupViecNha.Areas.Admin.Models;
 namespace Web_GiupViecNha.Areas.Admin.Controllers
 {
-    public class CongTacVienController : Controller
+    public class CongTacVienController : BaseController
     {
 
         DBGiupViecNhaDataContext db = new DBGiupViecNhaDataContext();
@@ -53,7 +53,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             }
             else
             {
-
+                ViewBag.NhanVien = Session["UserAdmin"];
               List<DonDangKyCTV> dsdk = db.DonDangKyCTVs.ToList();
             ViewBag.DSDonDK = dsdk;
             return View();
@@ -64,43 +64,46 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
         //
         // POST: /Admin/CongTacVien/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
+    
         //
         // GET: /Admin/CongTacVien/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult ThongTinChiTietDDK(string  maddk)
         {
-            return View();
+            if (Session["UserAdmin"] == null)
+            {
+                return Redirect("~/Admin/DangNhap");
+
+            }
+            else
+            {
+                ViewBag.NhanVien = Session["UserAdmin"];
+                DonDangKyCTV dk = db.DonDangKyCTVs.FirstOrDefault(a => a.MaDon == maddk);
+                ViewBag.DonDangKy = dk;
+                return View();
+
+            }
         }
 
         //
         // POST: /Admin/CongTacVien/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult ThongTinChiTietDDK(FormCollection collection, DonDKCTVModel dondk)
         {
-            try
+            if(!ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                SetAlert("Duyệt  đơn không thành công. Vui lòng nhập đầy đủ thông tin yêu cầu", "error");
 
-                return RedirectToAction("Index");
+
+                return ThongTinChiTietDDK(collection["txtMadon"]);
             }
-            catch
-            {
-                return View();
-            }
+
+            ViewBag.NhanVien = Session["UserAdmin"];
+            List<DonDangKyCTV> dsdk = db.DonDangKyCTVs.ToList();
+            ViewBag.DSDonDK = dsdk;
+            return View("DonDKCTV");
+              
+
+         
         }
 
         //

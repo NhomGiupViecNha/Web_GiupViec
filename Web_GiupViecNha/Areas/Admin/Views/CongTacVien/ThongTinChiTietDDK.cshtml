@@ -1,0 +1,147 @@
+﻿@using Web_GiupViecNha.Areas.Admin.Models;
+@{
+    ViewBag.Title = "Thông tin chi tiết";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
+}
+@model DonDKCTVModel
+
+<h2>Thông tin chi tiết đơn đăng ký</h2>
+
+
+@{
+    DonDKCTVModel ddk = new DonDKCTVModel(ViewBag.DonDangKy);
+    
+}
+
+
+<div class="card-body card-block">
+    @using (Html.BeginForm())
+    {
+       @Html.AntiForgeryToken();
+       @Html.ValidationSummary(true);
+          <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtMaDV" class=" form-control-label">Mã Dịch Vụ</label>
+            </div>
+            <div class="col-12 col-md-9">
+
+
+                <input type="text" name="txtMadon" placeholder="Mã dịch vụ" value="@ddk.Madon" readonly=""  class="form-control">
+
+
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtTenDV" id="tendv" class=" form-control-label">Họ tên</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtHoTen" placeholder="Mã dịch vụ" value="@ddk.Hoten" readonly="" class="form-control">
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtMoTa" class=" form-control-label">Ngày sinh</label>
+            </div>
+            <div class="col-12 col-md-9">
+
+
+                <input type="text" name="txtNgaySinh" value="@ddk.Ngaysinh" readonly="" class="form-control">
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtDVT" class=" form-control-label">Địa chỉ</label>
+            </div>
+            <div class="col-12 col-md-9">
+
+                <input type="text" name="txtDiaChi" value="@ddk.Diachi" readonly="" class="form-control">
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtGia" class=" form-control-label">SĐT</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtSDT" placeholder="Mã dịch vụ" value="@ddk.Sdt" readonly="" class="form-control">
+
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtKNYC" class=" form-control-label">Email</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtKNYC" value="@ddk.Email" readonly=""  placeholder="Email" class="form-control">
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtHinhAnh" class=" form-control-label">Trình Độ</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtTrinhDo" value="@ddk.Trinhdohv" readonly="" placeholder="Trình độ học vấn" class="form-control">
+
+            </div>
+        </div>
+        
+            <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtHinhAnh" class=" form-control-label">Kinh nghiệm</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtTrinhDo" value="@ddk.Kinhnghiem" readonly="" placeholder="Kinh nghiệm" class="form-control">
+
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="cbLoaiDV" class=" form-control-label">Kết quả kiểm tra</label>
+            </div>
+            <div class="col-12 col-md-9">
+         
+                @Html.TextBoxFor(m => m.Ketquakt, new { placeholder = "Điểm  kiểm tra", @type = "number", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Ketquakt, "", new { @class="text-danger"})
+            </div>
+        </div>
+
+
+        <div class="card-footer">
+            @if(ddk.Trangthaiduyet =="Đã đậu"|| ddk.Trangthaiduyet=="Đã rớt")
+            {
+                     <button type="submit" disabled="" class="btn btn-success btn-sm">
+                <i class="fa fa-dot-circle-o"></i> Duyệt
+            </button>
+                
+            }
+            else
+            {
+                     <button type="submit" class="btn btn-success btn-sm">
+                <i class="fa fa-dot-circle-o"></i> Duyệt
+            </button>
+            }
+       
+            <button type="reset" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Từ chối
+            </button>
+        </div>
+
+        
+    }
+ 
+ 
+
+</div>
+

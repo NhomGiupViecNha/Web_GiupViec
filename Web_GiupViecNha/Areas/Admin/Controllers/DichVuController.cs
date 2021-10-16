@@ -72,7 +72,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult ThongTinChiTietDV(FormCollection c, DichVuModels dvu)
+        public ActionResult ThongTinChiTietDV(FormCollection c, DichVuModels dv)
         {
             
             //if (c["txtTenDv"]==""||c["txtGia"]==""||c["txtDVT"]=="")

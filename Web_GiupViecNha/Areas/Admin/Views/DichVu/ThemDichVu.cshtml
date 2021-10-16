@@ -13,18 +13,18 @@
 
 @{
     string madv;
-    if(ViewBag.Madv!=null)
-    {  madv = ViewBag.Madv; }
+    if (ViewBag.Madv != null)
+    { madv = ViewBag.Madv; }
     else
     {
         madv = Model.Madv;
-        
+
     }
-    
+
 }
 <h2>Thêm Dịch Vụ</h2>
 <div class="card-body card-block">
-    @using(Html.BeginForm())
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken();
         <div class="row form-group">
@@ -35,14 +35,14 @@
         </div>
         <div class="row form-group">
             <div class="col col-md-3">
-                <label  class=" form-control-label">Mã Dịch Vụ</label>
+                <label class=" form-control-label">Mã Dịch Vụ</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtMadv" placeholder="Mã dịch vụ"value="@madv"  readonly="" class="form-control">
+                <input type="text" name="txtMadv" placeholder="Mã dịch vụ" value="@madv" readonly="" class="form-control">
 
-         
+
                 @*@Html.TextBoxFor(m => m.Madv, new {@Value=madv, @placeholder="Mã dịch vụ",@disabled="", @class="form-control" })
-                @Html.ValidationMessageFor(m => m.Madv, "", new { @class = "text-danger" })*@
+                    @Html.ValidationMessageFor(m => m.Madv, "", new { @class = "text-danger" })*@
             </div>
         </div>
         <div class="row form-group">
@@ -50,9 +50,9 @@
                 <label for="txtTenDV" class=" form-control-label">Tên Dịch Vụ</label>
             </div>
             <div class="col-12 col-md-9">
-               
+
                 @Html.TextBoxFor(m => m.Tendv, new { @placeholder = "Tên dịch vụ", @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Tendv,"", new {@class="text-danger" })
+                @Html.ValidationMessageFor(m => m.Tendv, "", new { @class = "text-danger" })
 
             </div>
         </div>
@@ -92,7 +92,7 @@
                 <label for="txtGia" class=" form-control-label">Giá thành</label>
             </div>
             <div class="col-12 col-md-9">
-                @Html.TextBoxFor(m => m.Giathanh, new {@type="number", @placeholder = "Giá  dịch vụ", @class = "form-control" })
+                @Html.TextBoxFor(m => m.Giathanh, new { @type = "number", @placeholder = "Giá  dịch vụ", @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Giathanh, "", new { @class = "text-danger" })
 
 
@@ -148,7 +148,7 @@
             </button>
         </div>
 
-        
+
     }
 
 

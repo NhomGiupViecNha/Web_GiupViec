@@ -5,8 +5,7 @@
 }
 @helper Truncate(string input, int length)
 {
-
-     if (input.Length < length|| input==null)
+    if (input.Length < length)
     {
         @input
 
@@ -92,13 +91,13 @@
                     <td class="desc">
                         <span>@dv.TenDichVu</span>
                     </td>
-                    <td>@Truncate(dv.MoTa,10)</td>
+                    <td>@Truncate(dv.MoTa, 10)</td>
                     <td>@dv.DonViTinh</td>
                     <td>
                         <span>@dv.GiaThanh</span>
                     </td>
                     <td>@dv.KinhNghiemYeuCau</td>
-                    <td>@Truncate(dv.HinhAnh,10)</td>
+                    <td>@Truncate(dv.HinhAnh, 10)</td>
                     <td>@dv.LoaiDV</td>
                     <td>
                         <div class="table-data-feature">
@@ -121,4 +120,3 @@
         </tbody>
     </table>
 </div>
-

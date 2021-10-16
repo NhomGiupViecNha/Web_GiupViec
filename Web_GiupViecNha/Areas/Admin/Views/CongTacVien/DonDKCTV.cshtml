@@ -4,6 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
     List<DonDangKyCTV> dsdk = ViewBag.DSDonDK;
 }
+
 @helper Truncate(string input, int length)
 {
     if (input.Length < length)
@@ -66,7 +67,7 @@
                 <th>SĐT</th>
                 <th>Email</th>
 
-                <th>Trình độ</th>
+                <th>Trình độ học vấn</th>
                 <th>Kinh nghiệm</th>
                 <th>Điểm kiểm tra</th>
                 <th>Trạng thái duyệt</th>
@@ -74,34 +75,34 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (CongTacVien ctv in ViewData["dsctv"] as List<CongTacVien>)
+            @foreach (DonDangKyCTV ddk in dsdk)
             {
                 <tr class="tr-shadow">
 
-                    <td>@ctv.MaCTV</td>
+                    <td>@ddk.MaDon</td>
                     <td class="desc">
-                        <span>@ctv.TenCTV</span>
+                        <span>@ddk.HoTen</span>
                     </td>
-                    <td>@Truncate(ctv.DiaChi, 10)</td>
-                    <td>@ctv.NgaySinh</td>
+                    <td>@Truncate(ddk.DiaChi, 10)</td>
+                    <td>@ddk.NgaySInh</td>
                     <td>
-                        <span>@ctv.SDT</span>
+                        <span>@ddk.SDT</span>
                     </td>
-                    <td>@ctv.Email</td>
+                    <td>@ddk.Email</td>
 
-                    <td>@ctv.TrinhDo</td>
-                    <td>@ctv.KinhNghiem</td>
-                    <td>@ctv.DiemDanhGia</td>
-                    <td>@ctv.MaDonDKCTV</td>
+                    <td>@ddk.TrinhDoHocVan</td>
+                    <td>@ddk.KinhNghiem</td>
+                    <td>@ddk.DiemKiemTra</td>
+                    <td>@ddk.TrangThaiDuyet </td>
                     <td>
                         <div class="table-data-feature">
 
 
-                            <button class="item" data-toggle="tooltip" onclick="location.href='@Url.Action("XoaCTV", "CongTacVien", new { mactv = ctv.MaCTV})'" data-placement="top" title="Delete">
+                            <button class="item" data-toggle="tooltip" onclick="location.href='@Url.Action("XoaCTV", "CongTacVien", new { })'" data-placement="top" title="Delete">
                                 <i class="zmdi zmdi-delete"></i>
                             </button>
-                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                @*<a href="@Url.Action("ThongTinChiTietDV", "DichVu", new { madv = dv.MaDichVu.Trim()})"> <i class="zmdi zmdi-edit"></i></a>*@
+                            <button class="item" data-toggle="tooltip" onclick="location.href='@Url.Action("ThongTinChiTietDDK", "CongTacVien", new { maddk = ddk.MaDon })'" data-placement="top" title="Edit">
+                                <i class="zmdi zmdi-edit"></i>
                             </button>
                         </div>
                     </td>

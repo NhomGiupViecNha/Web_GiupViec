@@ -174,6 +174,7 @@
       <DependentUpon>DBGiupViecNha.dbml</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\DichVuModels.cs" />
+    <Compile Include="Areas\Admin\Models\DonDKCTVModel.cs" />
     <Compile Include="Areas\Admin\Models\TaiKhoanModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -517,13 +518,6 @@
     <Content Include="Areas\Admin\AssetAdmin\vendor\slick\slick.scss" />
     <Content Include="Areas\Admin\Views\MainAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_MainLayOut.cshtml" />
-    <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\DichVu\ThongTinChiTietDV.cshtml" />
-    <Content Include="Areas\Admin\Views\DichVu\ThemDichVu.cshtml" />
-    <Content Include="Areas\Admin\Views\TaiKhoan\DangNhap.cshtml" />
-    <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\DichVu\ThongTinChiTietDV.cshtml" />
-    <Content Include="Areas\Admin\Views\DichVu\ThemDichVu.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\CongTacVien\Index.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHang\Index.cshtml" />
@@ -534,6 +528,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\Admin\Views\CongTacVien\DonDKCTV.cshtml" />
+    <Content Include="Areas\Admin\Views\CongTacVien\ThongTinChiTietDDK.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\ThongTinChiTietDV.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\ThemDichVu.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
