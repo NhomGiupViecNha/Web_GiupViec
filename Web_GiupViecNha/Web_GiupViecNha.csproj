@@ -168,14 +168,73 @@
     <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
-    <Compile Include="Areas\Admin\Models\DBGiupViecNha.designer.cs">
+    <Compile Include="Areas\Admin\Models\BangLuong.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\CapBacKH.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\ChiTietThongKe.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\CongTacVien.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\CongTacVienModel.cs" />
+    <Compile Include="Areas\Admin\Models\CT_LuongCTV.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\DBGiupViecNha.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBGiupViecNha.dbml</DependentUpon>
+      <DependentUpon>DBGiupViecNha.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\DichVuModels.cs" />
-    <Compile Include="Areas\Admin\Models\DonDKCTVModel.cs" />
-    <Compile Include="Areas\Admin\Models\TaiKhoanModel.cs" />
+    <Compile Include="Areas\Admin\Models\DBGiupViecNha.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\DBGiupViecNha.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBGiupViecNha.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\DichVu.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\DonDangKyCTV.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\DonDatDV.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\HoaDonDV.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\KhachHang.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\KhachHang_UuDai.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\LichLamViec.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\LoaiDV.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\NhanVien.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\PhieuUuDai.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\ThongKe.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\YeuCauDoiCTV.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -392,6 +451,16 @@
     <Content Include="Areas\Admin\AssetAdmin\vendor\vector-map\jqvmap.min.css" />
     <Content Include="Areas\Admin\AssetAdmin\vendor\wow\animate.css" />
     <Content Include="Areas\Admin\AssetAdmin\vendor\wow\wow.min.js" />
+    <Content Include="Areas\Admin\Models\DBGiupViecNha.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBGiupViecNha.edmx</DependentUpon>
+      <LastGenOutput>DBGiupViecNha.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Admin\Models\DBGiupViecNha.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBGiupViecNha.edmx</DependentUpon>
+      <LastGenOutput>DBGiupViecNha.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HinhAnh\chondv.PNG" />
@@ -522,16 +591,18 @@
     <Content Include="Areas\Admin\Views\CongTacVien\Index.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHang\Index.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHang\ThongTinKH.cshtml" />
-    <Content Include="Areas\Admin\Models\DBGiupViecNha.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DBGiupViecNha.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Areas\Admin\Views\CongTacVien\DonDKCTV.cshtml" />
     <Content Include="Areas\Admin\Views\CongTacVien\ThongTinChiTietDDK.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\ThongTinChiTietDV.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\ThemDichVu.cshtml" />
+    <EntityDeploy Include="Areas\Admin\Models\DBGiupViecNha.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBGiupViecNha.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Areas\Admin\Models\DBGiupViecNha.edmx.diagram">
+      <DependentUpon>DBGiupViecNha.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -587,11 +658,6 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Areas\Admin\Models\DBGiupViecNha.dbml.layout">
-      <DependentUpon>DBGiupViecNha.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

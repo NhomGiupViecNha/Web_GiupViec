@@ -9,7 +9,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 {
     public class KhachHangController : BaseController
     {
-        DBGiupViecNhaDataContext db = new DBGiupViecNhaDataContext();
+        GiupViecNhaDBEntities1 db = new GiupViecNhaDBEntities1();
         //
         // GET: /Admin/DichVu/
 
@@ -23,7 +23,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             else
             {
                 ViewBag.NhanVien = Session["UserAdmin"];
-                List<KhachHang> dskh = db.KhachHangs.ToList();
+                List<KhachHang> dskh = db.KhachHang.ToList();
                 ViewData["dskh"] = dskh;
                 return View();
             }
@@ -41,9 +41,8 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             }
             else
             {
-                List<KhachHang> lstkh = db.KhachHangs.ToList();
-                DSCTVYeuThich dsctv = db.DSCTVYeuThiches.FirstOrDefault(a => a.MaCTV == makh);
-                ViewData["ctvyeuthich"] = dsctv;
+          
+          //      ViewData["ctvyeuthich"] = dsctv;
                 ViewBag.NhanVien = Session["UserAdmin"];
 
                 return View();
@@ -58,7 +57,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         public ActionResult ThongTinKH(FormCollection c, string makh)
         {
 
-            KhachHang kh = db.KhachHangs.FirstOrDefault(a => a.MaKH == makh);
+            KhachHang kh = db.KhachHang.FirstOrDefault(a => a.MaKH == makh);
             kh.TenKH = c["txtTenKH"];
             kh.Email = c["txtEmail"];
             kh.DiaChi = c["txtDC"];
@@ -66,7 +65,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             kh.SoDiemThuong = int.Parse(c["txtDT"].ToString());
             kh.CapBacKH.TenCapBac = c["txtCBKH"];
             UpdateModel(kh);
-            db.SubmitChanges();
+            db.SaveChanges();
             return RedirectToAction("Index");
 
         }
@@ -80,9 +79,9 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             }
             else
             {
-                KhachHang kh = db.KhachHangs.FirstOrDefault(a => a.MaKH == makh);
-                db.KhachHangs.DeleteOnSubmit(kh);
-                db.SubmitChanges();
+                KhachHang kh = db.KhachHang.FirstOrDefault(a => a.MaKH == makh);
+             //   db.KhachHang.(kh);
+                db.SaveChanges();
             }
             return RedirectToAction("Index");
         }

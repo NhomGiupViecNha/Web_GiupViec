@@ -9,7 +9,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
     public class CongTacVienController : BaseController
     {
 
-        DBGiupViecNhaDataContext db = new DBGiupViecNhaDataContext();
+        GiupViecNhaDBEntities1 db = new GiupViecNhaDBEntities1();
         //
         // GET: /Admin/CongTacVien/
         public ActionResult Index()
@@ -23,7 +23,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             {
 
                 ViewBag.NhanVien = Session["UserAdmin"];
-                List<CongTacVien> dsctv = db.CongTacViens.ToList();
+                List<CongTacVien> dsctv = db.CongTacVien.ToList();
 
 
                 ViewData["dsctv"] = dsctv;
@@ -54,7 +54,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             else
             {
                 ViewBag.NhanVien = Session["UserAdmin"];
-              List<DonDangKyCTV> dsdk = db.DonDangKyCTVs.ToList();
+              List<DonDangKyCTV> dsdk = db.DonDangKyCTV.ToList();
             ViewBag.DSDonDK = dsdk;
             return View();
 
@@ -77,9 +77,9 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             else
             {
                 ViewBag.NhanVien = Session["UserAdmin"];
-                DonDangKyCTV dk = db.DonDangKyCTVs.FirstOrDefault(a => a.MaDon == maddk);
-                ViewBag.DonDangKy = dk;
-                return View();
+                DonDangKyCTV dk = db.DonDangKyCTV.FirstOrDefault(a => a.MaDon == maddk);
+             
+                return View(dk);
 
             }
         }
@@ -87,7 +87,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         //
         // POST: /Admin/CongTacVien/Edit/5
         [HttpPost]
-        public ActionResult ThongTinChiTietDDK(FormCollection collection, DonDKCTVModel dondk)
+        public ActionResult ThongTinChiTietDDK(FormCollection collection, DonDangKyCTV dondk)
         {
             if(!ModelState.IsValid)
             {
@@ -98,7 +98,43 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             }
 
             ViewBag.NhanVien = Session["UserAdmin"];
-            List<DonDangKyCTV> dsdk = db.DonDangKyCTVs.ToList();
+            List<DonDangKyCTV> dsdk = db.DonDangKyCTV.ToList();
+            string madon = collection["txtMadon"];
+            DonDangKyCTV ddk = db.DonDangKyCTV.FirstOrDefault(m => m.MaDon ==madon );
+            ddk.DiemKiemTra = double.Parse(collection["DiemKiemTra"]);
+
+        
+
+            if (Request.Form["Accept"] != null)
+            {
+               
+
+
+                CongTacVien ctv = new CongTacVien();
+                ctv.MaCTV = sinhMaCTVTuDong();
+                ctv.TenCTV = ddk.HoTen;
+                ctv.NgaySinh = (DateTime)ddk.NgaySInh;
+                ctv.SDT = ddk.SDT;
+                ctv.TrinhDo = ddk.TrinhDoHocVan;
+                ctv.KinhNghiem = ddk.KinhNghiem;
+                ctv.Email = ddk.Email;
+                ctv.DiaChi = ddk.DiaChi;
+                ctv.MatKhau = maHoaMK("1");
+                ctv.MaDonDKCTV = ddk.MaDon;
+                ddk.TrangThaiDuyet = "Đã đậu";
+                db.CongTacVien.Add(ctv);
+                SetAlert("Duyệt cộng tác viên thành công", "success");
+            }
+            else if (Request.Form["Deny"] != null)
+            {
+                ddk.TrangThaiDuyet = "Đã rớt";
+                SetAlert("Duyệt cộng tác viên thành công", "success");
+            }
+
+
+            UpdateModel(ddk);
+         
+            db.SaveChanges();
             ViewBag.DSDonDK = dsdk;
             return View("DonDKCTV");
               
@@ -129,5 +165,31 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
                 return View();
             }
         }
+
+        public string sinhMaCTVTuDong()
+        {
+             string mactv;
+                int flag=db.CongTacVien.Count() +1;
+                if (flag > 9)
+                {
+                    mactv = "CTV" ;
+
+                }
+                else mactv = "CTV0";
+                string flag2 = mactv+flag;
+              if(db.CongTacVien.Where(m=>m.MaCTV.Trim()==flag2).Count()==0)
+                {
+
+                    mactv += flag;
+
+                }
+              else { 
+                  flag ++;
+                  mactv += flag;
+              }
+                return mactv;
+
+        }
+    
     }
 }

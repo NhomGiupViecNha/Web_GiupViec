@@ -3,15 +3,12 @@
     ViewBag.Title = "Thông tin chi tiết";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
 }
-@model DonDKCTVModel
+@model DonDangKyCTV
 
 <h2>Thông tin chi tiết đơn đăng ký</h2>
 
 
-@{
-    DonDKCTVModel ddk = new DonDKCTVModel(ViewBag.DonDangKy);
-    
-}
+
 
 
 <div class="card-body card-block">
@@ -26,7 +23,7 @@
             <div class="col-12 col-md-9">
 
 
-                <input type="text" name="txtMadon" placeholder="Mã dịch vụ" value="@ddk.Madon" readonly=""  class="form-control">
+                <input type="text" name="txtMadon" placeholder="Mã dịch vụ" value="@Model.MaDon" readonly=""  class="form-control">
 
 
 
@@ -37,7 +34,7 @@
                 <label for="txtTenDV" id="tendv" class=" form-control-label">Họ tên</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtHoTen" placeholder="Mã dịch vụ" value="@ddk.Hoten" readonly="" class="form-control">
+                <input type="text" name="txtHoTen" placeholder="Mã dịch vụ" value="@Model.HoTen" readonly="" class="form-control">
 
             </div>
         </div>
@@ -53,7 +50,7 @@
             <div class="col-12 col-md-9">
 
 
-                <input type="text" name="txtNgaySinh" value="@ddk.Ngaysinh" readonly="" class="form-control">
+                <input type="text" name="txtNgaySinh" value="@Model.NgaySInh" readonly="" class="form-control">
 
             </div>
         </div>
@@ -63,7 +60,7 @@
             </div>
             <div class="col-12 col-md-9">
 
-                <input type="text" name="txtDiaChi" value="@ddk.Diachi" readonly="" class="form-control">
+                <input type="text" name="txtDiaChi" value="@Model.DiaChi" readonly="" class="form-control">
 
             </div>
         </div>
@@ -72,7 +69,7 @@
                 <label for="txtGia" class=" form-control-label">SĐT</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtSDT" placeholder="Mã dịch vụ" value="@ddk.Sdt" readonly="" class="form-control">
+                <input type="text" name="txtSDT" placeholder="Mã dịch vụ" value="@Model.SDT" readonly="" class="form-control">
 
 
             </div>
@@ -82,7 +79,7 @@
                 <label for="txtKNYC" class=" form-control-label">Email</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtKNYC" value="@ddk.Email" readonly=""  placeholder="Email" class="form-control">
+                <input type="text" name="txtKNYC" value="@Model.Email" readonly=""  placeholder="Email" class="form-control">
 
             </div>
         </div>
@@ -91,7 +88,7 @@
                 <label for="txtHinhAnh" class=" form-control-label">Trình Độ</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtTrinhDo" value="@ddk.Trinhdohv" readonly="" placeholder="Trình độ học vấn" class="form-control">
+                <input type="text" name="txtTrinhDo" value="@Model.TrinhDoHocVan" readonly="" placeholder="Trình độ học vấn" class="form-control">
 
             </div>
         </div>
@@ -101,7 +98,7 @@
                 <label for="txtHinhAnh" class=" form-control-label">Kinh nghiệm</label>
             </div>
             <div class="col-12 col-md-9">
-                <input type="text" name="txtTrinhDo" value="@ddk.Kinhnghiem" readonly="" placeholder="Kinh nghiệm" class="form-control">
+                <input type="text" name="txtTrinhDo" value="@Model.KinhNghiem" readonly="" placeholder="Kinh nghiệm" class="form-control">
 
             </div>
         </div>
@@ -112,28 +109,28 @@
             </div>
             <div class="col-12 col-md-9">
          
-                @Html.TextBoxFor(m => m.Ketquakt, new { placeholder = "Điểm  kiểm tra", @type = "number", @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Ketquakt, "", new { @class="text-danger"})
+                @Html.TextBoxFor(m => m.DiemKiemTra, new { placeholder = "Điểm  kiểm tra", @type = "number", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.DiemKiemTra, "", new { @class = "text-danger" })
             </div>
         </div>
 
 
         <div class="card-footer">
-            @if(ddk.Trangthaiduyet =="Đã đậu"|| ddk.Trangthaiduyet=="Đã rớt")
+            @if (Model.TrangThaiDuyet == "Đã đậu" || Model.TrangThaiDuyet == "Đã rớt")
             {
-                     <button type="submit" disabled="" class="btn btn-success btn-sm">
+                     <button type="submit" name="Accept" disabled="" class="btn btn-success btn-sm">
                 <i class="fa fa-dot-circle-o"></i> Duyệt
             </button>
                 
             }
             else
             {
-                     <button type="submit" class="btn btn-success btn-sm">
+                     <button type="submit" name="Accept" class="btn btn-success btn-sm">
                 <i class="fa fa-dot-circle-o"></i> Duyệt
             </button>
             }
        
-            <button type="reset" class="btn btn-danger btn-sm">
+            <button type="reset" name="Deny" class="btn btn-danger btn-sm">
                 <i class="fa fa-ban"></i> Từ chối
             </button>
         </div>

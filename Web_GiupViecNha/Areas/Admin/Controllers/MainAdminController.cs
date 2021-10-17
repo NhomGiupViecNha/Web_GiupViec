@@ -8,7 +8,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 {
     public class MainAdminController : BaseController
     {
-        DBGiupViecNhaDataContext db = new DBGiupViecNhaDataContext();
+        GiupViecNhaDBEntities1 db = new GiupViecNhaDBEntities1();
         //
         // GET: /Admin/MainAdmin/
         public ActionResult Index()

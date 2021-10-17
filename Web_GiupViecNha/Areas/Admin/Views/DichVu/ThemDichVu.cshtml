@@ -1,5 +1,5 @@
 ﻿@using Web_GiupViecNha.Areas.Admin.Models;
-@model DichVuModels
+@model DichVu
 @{
     ViewBag.Title = "Thêm dịch vụ";
 
@@ -17,7 +17,7 @@
     { madv = ViewBag.Madv; }
     else
     {
-        madv = Model.Madv;
+        madv = Model.MaDichVu;
 
     }
 
@@ -51,8 +51,8 @@
             </div>
             <div class="col-12 col-md-9">
 
-                @Html.TextBoxFor(m => m.Tendv, new { @placeholder = "Tên dịch vụ", @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Tendv, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.TenDichVu, new { @placeholder = "Tên dịch vụ", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.TenDichVu, "", new { @class = "text-danger" })
 
             </div>
         </div>
@@ -66,8 +66,8 @@
                 <label for="txtMoTa" class=" form-control-label">Mô Tả</label>
             </div>
             <div class="col-12 col-md-9">
-                @Html.TextAreaFor(m => m.Mota, new { @placeholder = "Mô tả", @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Mota, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(m => m.MoTa, new { @placeholder = "Mô tả", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.MoTa, "", new { @class = "text-danger" })
 
 
 
@@ -81,8 +81,8 @@
                 <label for="txtDVT" class=" form-control-label">Đơn vị tính</label>
             </div>
             <div class="col-12 col-md-9">
-                @Html.TextBoxFor(m => m.Donvitinh, new { @placeholder = "Đơn vị  tính", @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Donvitinh, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.DonViTinh, new { @placeholder = "Đơn vị  tính", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.DonViTinh, "", new { @class = "text-danger" })
 
 
             </div>
@@ -92,8 +92,8 @@
                 <label for="txtGia" class=" form-control-label">Giá thành</label>
             </div>
             <div class="col-12 col-md-9">
-                @Html.TextBoxFor(m => m.Giathanh, new { @type = "number", @placeholder = "Giá  dịch vụ", @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Giathanh, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.GiaThanh, new { @type = "number", @placeholder = "Giá  dịch vụ", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.GiaThanh, "", new { @class = "text-danger" })
 
 
             </div>

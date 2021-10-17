@@ -1,5 +1,5 @@
 ﻿@using Web_GiupViecNha.Areas.Admin.Models
-@model TaiKhoanModel
+@model NhanVien
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,14 +66,14 @@
                                    
                                     <div class="col-md-12">
 
-                                        @Html.TextBoxFor(m => m.Matkhau, new { @class = "au-input w-100", @name = "matkhau", @type = "password", @placeholder = "Mật Khẩu" })
+                                        @Html.TextBoxFor(m => m.MatKhau, new { @class = "au-input w-100", @name = "matkhau", @type = "password", @placeholder = "Mật Khẩu" })
 
 
 
 
                                     </div>
 
-                                        @Html.ValidationMessageFor(m => m.Matkhau, "", new { @class="text-danger"})
+                                        @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class="text-danger"})
                                     </div>
                                 <div class="login-checkbox">
                                     <label>

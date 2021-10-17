@@ -215,6 +215,5 @@ D:\baitap\KhoaLuanTotNghiep\Web_GiupViecNha\Web_GiupViec\Web_GiupViecNha\bin\Mic
 D:\baitap\KhoaLuanTotNghiep\Web_GiupViecNha\Web_GiupViec\Web_GiupViecNha\bin\Microsoft.Owin.Security.Google.xml
 D:\baitap\KhoaLuanTotNghiep\Web_GiupViecNha\Web_GiupViec\Web_GiupViecNha\bin\Microsoft.Owin.Security.Twitter.xml
 D:\baitap\KhoaLuanTotNghiep\Web_GiupViecNha\Web_GiupViec\Web_GiupViecNha\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\baitap\KhoaLuanTotNghiep\Web_GiupViecNha\Web_GiupViec\Web_GiupViecNha\obj\Debug\Web_GiupViecNha.csprojResolveAssemblyReference.cache
 D:\baitap\KhoaLuanTotNghiep\Web_GiupViecNha\Web_GiupViec\Web_GiupViecNha\obj\Debug\Web_GiupViecNha.dll
 D:\baitap\KhoaLuanTotNghiep\Web_GiupViecNha\Web_GiupViec\Web_GiupViecNha\obj\Debug\Web_GiupViecNha.pdb

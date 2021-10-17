@@ -10,7 +10,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 {
     public class TaiKhoanController : Controller
     {
-        DBGiupViecNhaDataContext db = new DBGiupViecNhaDataContext();
+        GiupViecNhaDBEntities1 db = new GiupViecNhaDBEntities1();
         //
         // GET: /Admin/TaiKhoan/
     
@@ -22,15 +22,15 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult DangNhap(FormCollection c, TaiKhoanModel tk)
+        public ActionResult DangNhap(FormCollection c, NhanVien tk)
         {
             if(!ModelState.IsValid)
             {
                 return View(tk);
 
             }
-           
-            NhanVien nv = db.NhanViens.FirstOrDefault(a => a.Email.Trim() == c["email"]);
+           string email =c["email"];
+            NhanVien nv = db.NhanVien.FirstOrDefault(a => a.Email.Trim() == email);
             if(nv!=null)
             {
                 if (nv.MatKhau.Trim() == maHoaMK(c["matkhau"]))

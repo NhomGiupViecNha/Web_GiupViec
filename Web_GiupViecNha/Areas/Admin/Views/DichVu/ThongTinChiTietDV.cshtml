@@ -1,5 +1,5 @@
 ﻿@using Web_GiupViecNha.Areas.Admin.Models;
-@model DichVuModels
+@model DichVu
 @{
     ViewBag.Title = "ThongTinChiTietDV";
 
@@ -40,8 +40,8 @@
             </div>
             <div class="col-12 col-md-9">
 
-                @Html.TextBoxFor(m => m.Tendv, new { @Value = dv.TenDichVu, @class = "au-input w-100", @type = "text", @placeholder = "Tên dịch vụ" })
-                @Html.ValidationMessageFor(m => m.Tendv, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.TenDichVu, new { @Value = dv.TenDichVu, @class = "au-input w-100", @type = "text", @placeholder = "Tên dịch vụ" })
+                @Html.ValidationMessageFor(m => m.TenDichVu, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -58,7 +58,7 @@
         
 
                 <textarea  name="Mota"  placeholder="Mô tả" class="form-control"> @dv.MoTa</textarea>
-                @Html.ValidationMessageFor(m => m.Mota, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(m => m.MoTa, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row form-group">
@@ -67,8 +67,8 @@
             </div>
             <div class="col-12 col-md-9">
 
-                @Html.TextBoxFor(m => m.Donvitinh, new { @Value = dv.DonViTinh, @class = "au-input w-100", @type = "text", @placeholder = "Đơn vị tính" })
-                @Html.ValidationMessageFor(m => m.Donvitinh, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.DonViTinh, new { @Value = dv.DonViTinh, @class = "au-input w-100", @type = "text", @placeholder = "Đơn vị tính" })
+                @Html.ValidationMessageFor(m => m.DonViTinh, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row form-group">
@@ -77,8 +77,8 @@
             </div>
             <div class="col-12 col-md-9">
 
-                @Html.TextBoxFor(m => m.Giathanh, new { @Value = dv.GiaThanh, @class = "au-input w-100", @type = "number", @placeholder = "Giá thành" })
-                @Html.ValidationMessageFor(m => m.Giathanh, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.GiaThanh, new { @Value = dv.GiaThanh, @class = "au-input w-100", @type = "number", @placeholder = "Giá thành" })
+                @Html.ValidationMessageFor(m => m.GiaThanh, "", new { @class = "text-danger" })
 
             </div>
         </div>

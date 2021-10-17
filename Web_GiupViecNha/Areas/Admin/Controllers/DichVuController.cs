@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,8 +9,8 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 {
     public class DichVuController : BaseController
     {
-     
-        DBGiupViecNhaDataContext db = new DBGiupViecNhaDataContext();
+
+        GiupViecNhaDBEntities1 db = new GiupViecNhaDBEntities1();
         //
         // GET: /Admin/DichVu/
 
@@ -24,7 +25,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             {
 
                 ViewBag.NhanVien = Session["UserAdmin"];
-                 List<DichVu> dsdv = db.DichVus.ToList();
+                 List<DichVu> dsdv = db.DichVu.ToList();
                  ViewData["dsdv"] = dsdv;
                  return View();
             
@@ -49,11 +50,11 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             {
 
                 ViewBag.NhanVien = Session["UserAdmin"];
-                List<DichVu> dsdv = db.DichVus.ToList();
-                List<LoaiDV> ldv = db.LoaiDVs.ToList();
+                List<DichVu> dsdv = db.DichVu.ToList();
+                List<LoaiDV> ldv = db.LoaiDV.ToList();
                 ViewBag.DSLoaiDV = ldv;
                 ViewData["dsdv"] = dsdv;
-                DichVu dv = db.DichVus.FirstOrDefault(a => a.MaDichVu == dichvu);
+                DichVu dv = db.DichVu.FirstOrDefault(a => a.MaDichVu == dichvu);
                 
              
                 ViewData["dichvu"] = dv;
@@ -72,7 +73,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult ThongTinChiTietDV(FormCollection c, DichVuModels dv)
+        public ActionResult ThongTinChiTietDV(FormCollection c, DichVu dv)
         {
             
             //if (c["txtTenDv"]==""||c["txtGia"]==""||c["txtDVT"]=="")
@@ -84,7 +85,8 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
                 return ThongTinChiTietDV(c["txtMadv"]);
             }
-            DichVu dichvu = db.DichVus.FirstOrDefault(a => a.MaDichVu == c["txtMadv"]);
+            string madv=  c["txtMadv"];
+            DichVu dichvu = db.DichVu.FirstOrDefault(a => a.MaDichVu ==madv);
             dichvu.TenDichVu = c["Tendv"];
             dichvu.MoTa = c["Mota"];
             dichvu.KinhNghiemYeuCau = c["txtKNYC"];
@@ -94,7 +96,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             dichvu.LoaiDV = c["cbLoaiDV"];
            
             UpdateModel(dichvu);
-            db.SubmitChanges();
+            db.SaveChanges();
             SetAlert("Sửa dịch vụ thành công", "success");
 
             return RedirectToAction("Index");
@@ -116,20 +118,12 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             {
                 ViewBag.NhanVien = Session["UserAdmin"];
               
-                List<DichVu> dsdv = db.DichVus.ToList();
-                List<LoaiDV> ldv = db.LoaiDVs.ToList();
+                List<DichVu> dsdv = db.DichVu.ToList();
+                List<LoaiDV> ldv = db.LoaiDV.ToList();
                 ViewBag.DSLoaiDV = ldv;
                 ViewData["dsdv"] = dsdv;
-                string madv;
-                int flag = dsdv.Count + 1;
-                if (flag < 10)
-                {
-                    madv = "DV0" + flag;
-
-
-                }
-                else { madv = "DV" + flag; }
-                ViewBag.Madv = madv;
+         
+                ViewBag.Madv = sinhMaDVTuDong();
                 return View();
 
             }
@@ -142,11 +136,11 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         }
         [HttpPost]
 
-        public ActionResult ThemDichVu(FormCollection c, DichVuModels dv)
+        public ActionResult ThemDichVu(FormCollection c, DichVu dv)
         {
-            List<DichVu> dsdv = db.DichVus.ToList();
+            List<DichVu> dsdv = db.DichVu.ToList();
             DichVu dichvu = new DichVu();
-            List<LoaiDV> ldv = db.LoaiDVs.ToList();
+            List<LoaiDV> ldv = db.LoaiDV.ToList();
             ViewBag.DSLoaiDV = ldv;
             ViewBag.NhanVien = Session["UserAdmin"];
            
@@ -154,36 +148,66 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             {
 
                 SetAlert("Thêm dịch vụ không thành công. Vui lòng kiểm tra lại thông tin", "error");
-                dv.Madv = c["txtMadv"];
+                dv.MaDichVu = c["txtMadv"];
                 return View(dv);
             }
             dichvu.MaDichVu = c["txtMadv"];
-            dichvu.TenDichVu = c["Tendv"];
+            dichvu.TenDichVu = c["TenDichVu"];
             dichvu.MoTa = c["Mota"];
             dichvu.KinhNghiemYeuCau = c["txtKNYC"];
-            dichvu.DonViTinh = c["Donvitinh"];
-            dichvu.GiaThanh = int.Parse(c["Giathanh"].ToString());
+            dichvu.DonViTinh = c["DonViTinh"];
+            dichvu.GiaThanh = int.Parse(c["GiaThanh"].ToString());
             dichvu.HinhAnh = c["txtHinhAnh"];
             dichvu.LoaiDV = c["cbLoaiDV"];
-            db.DichVus.InsertOnSubmit(dichvu);
-            db.SubmitChanges();
-            SetAlert("Thêm dịch vụ thành công", "success");
-
+            db.DichVu.Add(dichvu);
+            db.SaveChanges();
+           SetAlert("Thêm dịch vụ thành công", "success");
             return RedirectToAction("Index");
-         
 
         }
 
         public ActionResult XoaDV(string madv)
         {
-             db.DichVus.DeleteOnSubmit( db.DichVus.SingleOrDefault(a => a.MaDichVu == madv));
-             db.SubmitChanges();
-             SetAlert("Xóa dịch vụ thành công", "success");
-             return RedirectToAction("Index");
+            try {
+                db.DichVu.Remove(db.DichVu.SingleOrDefault(a => a.MaDichVu == madv));
+                db.SaveChanges();
+                SetAlert("Xóa dịch vụ thành công", "success");
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                SetAlert("Xóa dịch vụ không thành công thành công. Dịch vụ đang được dùng", "error");
+                return RedirectToAction("Index");
+            }
+ 
         }
+          public string sinhMaDVTuDong()
+        {
+             string madv;
+                int flag=db.DichVu.Count() +1;
+                if (flag > 9)
+                {
+                    madv = "DV";
 
+                }
+                else madv = "DV0";
+              string flag2 = madv + flag;
+                if (db.DichVu.Where(m => m.MaDichVu.Trim() == flag2).Count() == 0)
+                {
+
+                    madv += flag;
+
+                }
+              else { 
+                  flag ++;
+                  madv += flag;
+              }
+                return madv;
+
+        }
      
 	}
-
+    
+      
   
 }
