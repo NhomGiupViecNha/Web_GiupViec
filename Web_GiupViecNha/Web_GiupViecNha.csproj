@@ -466,6 +466,7 @@
     <Content Include="Content\HinhAnh\chondv.PNG" />
     <Content Include="Content\HinhAnh\chontg_dd.PNG" />
     <Content Include="Content\HinhAnh\danhgia.PNG" />
+    <Content Include="Content\HinhAnh\GHempty.png" />
     <Content Include="Content\HinhAnh\giupviectheogio.jpg" />
     <Content Include="Content\HinhAnh\ico_logged_in.png" />
     <Content Include="Content\HinhAnh\ico_not_login.png" />
@@ -603,6 +604,7 @@
     <Content Include="Areas\Admin\Models\DBGiupViecNha.edmx.diagram">
       <DependentUpon>DBGiupViecNha.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\TaiKhoan\ThongTinCaNhan.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

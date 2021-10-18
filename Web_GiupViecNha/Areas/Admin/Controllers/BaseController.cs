@@ -14,7 +14,8 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         public BaseController()
         {
 
-       
+           
+      
 
         }
 

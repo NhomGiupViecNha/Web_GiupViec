@@ -17,9 +17,9 @@ namespace Web_GiupViecNha.Areas.Admin.Models
     {
         public string MaNV { get; set; }
         public string TenNV { get; set; }
-         [Required(ErrorMessage = ("*Không được bỏ trống email"))]
+        [Required(ErrorMessage = ("*Không được bỏ trống email"))]
         public string Email { get; set; }
-         [Required(ErrorMessage = ("*Không được bỏ trống mật khẩu"))]
+        [Required(ErrorMessage = ("*Không được bỏ trống mật khẩu"))]
         public string MatKhau { get; set; }
         public string ChucVu { get; set; }
     }

@@ -20,20 +20,22 @@ namespace Web_GiupViecNha.Areas.Admin.Models
             this.DonDatDV = new HashSet<DonDatDV>();
             this.PhieuUuDai = new HashSet<PhieuUuDai>();
         }
-    
+
+
         public string MaDichVu { get; set; }
-         [Required(ErrorMessage = "*Bạn chưa nhập tên dịch vụ")]
+        [Required(ErrorMessage = "*Bạn chưa nhập tên dịch vụ")]
         public string TenDichVu { get; set; }
-         [Required(ErrorMessage = "*Bạn chưa nhập mô tả dịch vụ")]
+        [Required(ErrorMessage = "*Bạn chưa nhập mô tả dịch vụ")]
         public string MoTa { get; set; }
-         [Required(ErrorMessage = "*Bạn chưa nhập đơn vị tính")]
+        [Required(ErrorMessage = "*Bạn chưa nhập đơn vị tính")]
         public string DonViTinh { get; set; }
-         [Required(ErrorMessage = "*Bạn chưa nhập giá dịch vụ")]
+        [Required(ErrorMessage = "*Bạn chưa nhập giá dịch vụ")]
         public Nullable<int> GiaThanh { get; set; }
         public string KinhNghiemYeuCau { get; set; }
+     
         public string HinhAnh { get; set; }
         public string LoaiDV { get; set; }
-    
+
         public virtual LoaiDV LoaiDV1 { get; set; }
         public virtual ICollection<DonDatDV> DonDatDV { get; set; }
         public virtual ICollection<PhieuUuDai> PhieuUuDai { get; set; }
