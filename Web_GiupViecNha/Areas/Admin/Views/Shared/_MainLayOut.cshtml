@@ -3,6 +3,7 @@
 
 @{
     NhanVien nv = ViewBag.NhanVien;
+    List<PhanQuyenND> dspq = ViewBag.PhanQuyen;
     
 }
 <!DOCTYPE html>
@@ -130,9 +131,13 @@
                         </li>
 
 
-
+                        @foreach(PhanQuyenND pq in dspq)
+                        {
+                            
+                            
+                        }
                         <li>
-                            <a href="/Admin/DichVu/Index">
+                            <a id="QLDV" href="/Admin/DichVu/Index">
                                 <i class="fas  fa-list"></i>Dịch Vụ
                             </a>
                         </li>
@@ -141,23 +146,23 @@
                                 <i class="fas fa-user"></i>Cộng Tác Viên
                             </a>
                         </li>
-                        <li>
-                            <a href="@Url.Action("Index","KhachHang")">
+                        <li >
+                            <a id="QLKH" href="@Url.Action("Index","KhachHang")">
                                 <i class="fas fa-users"></i>Khách Hàng
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a id="QLDD" href="">
                                 <i class="fas  fa-list-alt"></i>Đơn Đặt Dịch Vụ
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a id="QLUD" href="">
                                 <i class="fas  fa-gift"></i>Ưu Đãi
                             </a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a id="QLPQ" class="js-arrow" href="#">
                                 <i class="fas fa-copy"></i>Phân quyền
                             </a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">

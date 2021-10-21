@@ -22,8 +22,9 @@
 
             </select>
             <div class="dropDownSelect2"></div>
-        </div>
 
+
+        </div>
 
     </div>
 
@@ -56,9 +57,10 @@
 
             $(document).ready(function () {
          
-
+          
                 $("#property").change(function () {
 
+              
                     var machucvu = $(this).val();
                     $.ajax({
                         url: "loadDSManHinhTheoChucVu",
@@ -72,24 +74,24 @@
                         
                             var data = rsp.data;
                             var html = '';
-                            var flag;
+                            var checkstate;
                          ;
                             $.each(data, function (key, item) {
                            
-                                console.log(item);
+                                    
 
                                 if (item.CoQuyen) {
                                         
-                                    flag = ' <label class="au-checkbox"> <input type="checkbox" checked />     <span class="au-checkmark">' + '</span> </label>';
-
+                                    checkstate = "checked";
                                 }
                                 else {
-                                    flag = ' <label class="au-checkbox"> <input type="checkbox  " />     <span class="au-checkmark">' + '</span> </label>';
+                                    checkstate = "";
                                 }
                                 html += '<tr>';
                                 html += '<td>' + item.MaChucNang + '</td>';
                                
-                                html += ' <td> '+flag+'</td>';
+                                html += ' <td> ' + ' <label class=" au-checkbox"> <input data-macv="' + machucvu + '" data-macn="' + item.MaChucNang + '"  onclick="ktCheckbox(this);" type="checkbox" ' + checkstate + ' />     <span class="  au-checkmark">' + '</span> </label>';
+                                +'</td>';
 
                                 html += '</tr>';
                             })
@@ -111,13 +113,56 @@
                 })
 
 
+      
             }
 
-         
+        
 
 
         );
+            function ktCheckbox(checkbox) {
 
-      
+              
+                var macn = $(checkbox).data('macn');
+                var macv = $(checkbox).data('macv');
+                var coquyen = checkbox.checked;
+             
+
+                    $.ajax({
+
+                        url: "CapNhatChucNangVaiTro",
+                        type: "POST",
+                        dataType: "json",
+                        data :{
+                            macn: macn,
+                            macv: macv,
+                            coquyen: coquyen
+
+                        },
+
+                        success: function (result) {
+
+                            if (result) {
+                                Swal.fire({
+
+                                    icon: 'success',
+                                    title: 'Đã cập nhật chức năng',
+                                    showConfirmButton: true,
+                                    timer: 1500
+                                })
+
+                            }
+                      
+
+                        }
+
+
+                    })
+
+
+                }
+
+
+            
 
         </script>

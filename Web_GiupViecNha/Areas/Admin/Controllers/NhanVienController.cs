@@ -80,6 +80,27 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        public ActionResult CapNhatChucNangVaiTro(string macv,string macn,bool coquyen)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            ViewBag.NhanVien = Session["UserAdmin"];
+            List<ChucVu> dscv = db.ChucVu.ToList();
+            ViewBag.DSChucVu = dscv;
+            if (!String.IsNullOrEmpty(macv) && !String.IsNullOrEmpty(macn))
+            {
+                PhanQuyenND pq = db.PhanQuyenND.Where(m => m.MaVaiTro == macv).FirstOrDefault(m => m.MaChucNang == macn);
+                pq.CoQuyen = coquyen;
+                UpdateModel(pq);
+                db.SaveChanges();
+                bool kq = true;
+
+                return Json(kq, JsonRequestBehavior.AllowGet);
+            }
+            return View();
+        }
+
         [HttpGet]
         public JsonResult loadDSManHinhTheoChucVu(string machucvu)
         {
@@ -100,7 +121,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         }
 
 
-
+        
       
 
 	}
