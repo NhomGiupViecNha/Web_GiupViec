@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GiupViecNhaDBModelStoreContainer" CdmEntityContainer="GiupViecNhaDBEntities1">
+  <EntityContainerMapping StorageEntityContainer="GiupViecNhaDBModelStoreContainer" CdmEntityContainer="GiupViecNhaDBEntities">
     <EntitySetMapping Name="BangLuong">
       <EntityTypeMapping TypeName="GiupViecNhaDBModel.BangLuong">
         <MappingFragment StoreEntitySet="BangLuong">
@@ -56,6 +56,22 @@
           <ScalarProperty Name="MaThongKe" ColumnName="MaThongKe" />
           <ScalarProperty Name="MaDonDat" ColumnName="MaDonDat" />
           <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChucNang">
+      <EntityTypeMapping TypeName="GiupViecNhaDBModel.ChucNang">
+        <MappingFragment StoreEntitySet="ChucNang">
+          <ScalarProperty Name="MaChucNang" ColumnName="MaChucNang" />
+          <ScalarProperty Name="TenChucNang" ColumnName="TenChucNang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChucVu">
+      <EntityTypeMapping TypeName="GiupViecNhaDBModel.ChucVu">
+        <MappingFragment StoreEntitySet="ChucVu">
+          <ScalarProperty Name="MaVaiTro" ColumnName="MaVaiTro" />
+          <ScalarProperty Name="TenVaiTro" ColumnName="TenVaiTro" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -168,9 +184,20 @@
         <MappingFragment StoreEntitySet="NhanVien">
           <ScalarProperty Name="MaNV" ColumnName="MaNV" />
           <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="TenDN" ColumnName="TenDN" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhanQuyenND">
+      <EntityTypeMapping TypeName="GiupViecNhaDBModel.PhanQuyenND">
+        <MappingFragment StoreEntitySet="PhanQuyenND">
+          <ScalarProperty Name="MaVaiTro" ColumnName="MaVaiTro" />
+          <ScalarProperty Name="MaChucNang" ColumnName="MaChucNang" />
+          <ScalarProperty Name="CoQuyen" ColumnName="CoQuyen" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -207,6 +234,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="ChucVu_NguoiDung" TypeName="GiupViecNhaDBModel.ChucVu_NguoiDung" StoreEntitySet="ChucVu_NguoiDung">
+      <EndProperty Name="NhanVien">
+        <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+      </EndProperty>
+      <EndProperty Name="ChucVu">
+        <ScalarProperty Name="MaVaiTro" ColumnName="VaiTro" />
+      </EndProperty>
+    </AssociationSetMapping>
     <AssociationSetMapping Name="DSCTVYeuThich" TypeName="GiupViecNhaDBModel.DSCTVYeuThich" StoreEntitySet="DSCTVYeuThich">
       <EndProperty Name="CongTacVien">
         <ScalarProperty Name="MaCTV" ColumnName="MaCTV" />

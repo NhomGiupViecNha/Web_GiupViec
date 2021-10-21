@@ -8,23 +8,17 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 {
     public class MainAdminController : BaseController
     {
-        GiupViecNhaDBEntities1 db = new GiupViecNhaDBEntities1();
+        GiupViecNhaDBEntities db = new GiupViecNhaDBEntities();
         //
         // GET: /Admin/MainAdmin/
         public ActionResult Index()
         {
-            if (Session["UserAdmin"] == null)
-            {
-                return Redirect("~/Admin/DangNhap");
-
-            }
-            else
-            {
+          
 
                 ViewBag.NhanVien = Session["UserAdmin"];
 
                 return View();
-            }
+            
          
             
 

@@ -1,4 +1,5 @@
 ﻿@using Web_GiupViecNha.Areas.Admin.Models;
+@model DichVu
 @{
     ViewBag.Title = "Quản lý dịch vụ";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
@@ -15,7 +16,22 @@
         @input.Substring(0, length) <text>...</text>
     }
 }
+@{
 
+    List<LoaiDV> dsldv = ViewBag.DSLoaiDV as List<LoaiDV>;
+}
+
+@{
+    string madv;
+    if (ViewBag.Madv != null)
+    { madv = ViewBag.Madv; }
+    else
+    {
+        madv = Model.MaDichVu;
+
+    }
+
+}
 
 
 <h3 class="title-5 m-b-35">Danh sách dịch vụ</h3>
@@ -40,19 +56,22 @@
         <button class="au-btn-filter">
             <i class="zmdi zmdi-filter-list"></i>filters
         </button>
+   
+        </div>
+
+    <div class="table-data__tool-left">
+        <form class="form-header" action="" method="POST">
+            <input class="au-input au-input--xl" type="text" name="search" placeholder="Tên dịch vụ" />
+            <button class="au-btn--submit" type="submit">
+                <i class="zmdi zmdi-search"></i>
+            </button>
+        </form>
     </div>
     <div class="table-data__tool-right">
-        <button onclick="location.href='@Url.Action("ThemDichVu","DichVu")'" class="au-btn au-btn-icon  au-btn--green au-btn--small">
+      
+        <button type="button" class="au-btn au-btn-icon  au-btn--green au-btn--small" data-toggle="modal" data-target="#largeModal">
             <i class="zmdi zmdi-plus"></i>Thêm Dịch Vụ
         </button>
-        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-            <select class="js-select2" name="type">
-                <option selected="selected">Export</option>
-                <option value="">Option 1</option>
-                <option value="">Option 2</option>
-            </select>
-            <div class="dropDownSelect2"></div>
-        </div>
     </div>
 </div>
 <div class="table-responsive table-responsive-data2">
@@ -119,4 +138,147 @@
 
         </tbody>
     </table>
+
+</div>
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="largeModalLabel">Thêm dịch vụ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+         
+
+<div class="card-body card-block">
+    @using (Html.BeginForm("Index", "DichVu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken();
+   
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label class=" form-control-label">Mã Dịch Vụ</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtMadv" placeholder="Mã dịch vụ" value="@madv" readonly="" class="form-control">
+
+
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtTenDV" class=" form-control-label">Tên Dịch Vụ</label>
+            </div>
+            <div class="col-12 col-md-9">
+
+                @Html.TextBoxFor(m => m.TenDichVu, new { @placeholder = "Tên dịch vụ", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.TenDichVu, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtMoTa" class=" form-control-label">Mô Tả</label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.TextAreaFor(m => m.MoTa, new { @placeholder = "Mô tả", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.MoTa, "", new { @class = "text-danger" })
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtDVT" class=" form-control-label">Đơn vị tính</label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.TextBoxFor(m => m.DonViTinh, new { @placeholder = "Đơn vị  tính", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.DonViTinh, "", new { @class = "text-danger" })
+
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtGia" class=" form-control-label">Giá thành</label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.TextBoxFor(m => m.GiaThanh, new { @type = "number", @placeholder = "Giá  dịch vụ", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.GiaThanh, "", new { @class = "text-danger" })
+
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtKNYC" class=" form-control-label">Kinh nghiệm yêu cầu</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" name="txtKNYC" placeholder="Kinh nghiệm yêu cầu" class="form-control">
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="file-input" class=" form-control-label">Hình ảnh</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="file" id="fileUpload" name="fileUpload" class="form-control-file">
+
+
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="cbLoaiDV" class=" form-control-label">Loại dịch vụ</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <select name="cbLoaiDV" id="select" class="form-control">
+
+                    @for (int i = 0; i < dsldv.Count; i++)
+                    {
+
+
+                        <option value="@dsldv[i].MaLoaiDV">@dsldv[i].TenLoaiDV</option>
+
+                    }
+
+
+
+                </select>
+            </div>
+        </div>
+
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-dot-circle-o"></i> Submit
+            </button>
+            <button type="reset" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Reset
+            </button>
+        </div>
+
+
+    }
+
+
+</div>
+            </div>
+       
+        </div>
+    </div>
 </div>

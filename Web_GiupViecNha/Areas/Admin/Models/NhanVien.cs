@@ -15,12 +15,21 @@ namespace Web_GiupViecNha.Areas.Admin.Models
     
     public partial class NhanVien
     {
+        public NhanVien()
+        {
+            this.ChucVu = new HashSet<ChucVu>();
+        }
+    
         public string MaNV { get; set; }
         public string TenNV { get; set; }
-        [Required(ErrorMessage = ("*Không được bỏ trống email"))]
+        public Nullable<System.DateTime> NgaySinh { get; set; }
         public string Email { get; set; }
-        [Required(ErrorMessage = ("*Không được bỏ trống mật khẩu"))]
+        public string DiaChi { get; set; }
+         [Required(ErrorMessage = "*Bạn chưa nhập mật khẩu")]
+        public string TenDN { get; set; }
+         [Required(ErrorMessage = "*Bạn chưa nhập tên đăng nhập")]
         public string MatKhau { get; set; }
-        public string ChucVu { get; set; }
+    
+        public virtual ICollection<ChucVu> ChucVu { get; set; }
     }
 }

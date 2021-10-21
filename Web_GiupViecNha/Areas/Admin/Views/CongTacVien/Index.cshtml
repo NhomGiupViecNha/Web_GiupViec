@@ -97,7 +97,7 @@
                         <div class="table-data-feature">
 
 
-                            <button class="item" data-toggle="tooltip" onclick="location.href='@Url.Action("XoaCTV", "CongTacVien", new { mactv = ctv.MaCTV})'" data-placement="top" title="Delete">
+                            <button class="item" data-toggle="tooltip" onclick="location.href='@Url.Action("Delete", "CongTacVien", new { id = ctv.MaCTV.Trim() })'" data-placement="top" title="Delete">
                                 <i class="zmdi zmdi-delete"></i>
                             </button>
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">

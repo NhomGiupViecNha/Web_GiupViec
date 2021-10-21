@@ -9,7 +9,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
     public class CongTacVienController : BaseController
     {
 
-        GiupViecNhaDBEntities1 db = new GiupViecNhaDBEntities1();
+        GiupViecNhaDBEntities db = new GiupViecNhaDBEntities();
         //
         // GET: /Admin/CongTacVien/
         public ActionResult Index()
@@ -37,11 +37,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
         //
         // GET: /Admin/CongTacVien/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+    
         //
         // GET: /Admin/CongTacVien/Create
         public ActionResult DonDKCTV()
@@ -142,54 +138,77 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
          
         }
 
-        //
-        // GET: /Admin/CongTacVien/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            if (Session["UserAdmin"] == null)
+            {
+                return Redirect("~/Admin/DangNhap");
+
+            }
+            else
+            {
+           
+                try
+                {
+                    db.CongTacVien.Remove(db.CongTacVien.SingleOrDefault(m => m.MaCTV == id));
+                    db.SaveChanges();
+                    SetAlert("Xóa cộng tác viên thành công", "success");
+
+                }
+
+                catch
+                {
+                    SetAlert("Xóa cộng tác không viên thành công. Cộng tác viên có liên quan đến các bảng khác", "error");
+
+
+                }
+                return RedirectToAction("Index");
+             
+
+            }
+         
+          
         }
 
         //
         // POST: /Admin/CongTacVien/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         public string sinhMaCTVTuDong()
         {
-             string mactv;
+             string mactv="";
                 int flag=db.CongTacVien.Count() +1;
-                if (flag > 9)
+           
+            
+                for (int i = 1; i <= db.CongTacVien.Count();i++ )
                 {
-                    mactv = "CTV" ;
+                    if (flag > 9)
+                    {
+                        mactv = "CTV";
+
+                    }
+                    else mactv = "CTV0";
+                    string flag2 = mactv + flag;
+                    if (db.CongTacVien.Where(m => m.MaCTV.Trim() == flag2).Count() == 0)
+                    {
+
+                        mactv += flag;
+
+                    }
+                    else
+                    {
+                        flag++;
+                        mactv += flag;
+                    }
 
                 }
-                else mactv = "CTV0";
-                string flag2 = mactv+flag;
-              if(db.CongTacVien.Where(m=>m.MaCTV.Trim()==flag2).Count()==0)
-                {
-
-                    mactv += flag;
-
-                }
-              else { 
-                  flag ++;
-                  mactv += flag;
-              }
+                
                 return mactv;
 
         }
+
+        
+    
     
     }
 }

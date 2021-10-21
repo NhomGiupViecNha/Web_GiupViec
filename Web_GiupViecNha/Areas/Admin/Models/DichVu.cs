@@ -32,10 +32,9 @@ namespace Web_GiupViecNha.Areas.Admin.Models
         [Required(ErrorMessage = "*Bạn chưa nhập giá dịch vụ")]
         public Nullable<int> GiaThanh { get; set; }
         public string KinhNghiemYeuCau { get; set; }
-     
         public string HinhAnh { get; set; }
         public string LoaiDV { get; set; }
-
+    
         public virtual LoaiDV LoaiDV1 { get; set; }
         public virtual ICollection<DonDatDV> DonDatDV { get; set; }
         public virtual ICollection<PhieuUuDai> PhieuUuDai { get; set; }

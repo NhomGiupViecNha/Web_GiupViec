@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Web_GiupViecNha.Areas.Admin.Controllers
 {
@@ -17,6 +18,17 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
            
       
 
+        }
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+
+            if (Session["UserAdmin"] == null && Session["SESSION_GROUP"] == null)
+            {
+                filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "TaiKhoan", action = "DangNhap", Area = "Admin" }));
+            }
+            base.OnActionExecuting(filterContext);
         }
 
         

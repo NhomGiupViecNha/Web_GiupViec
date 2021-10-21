@@ -9,24 +9,19 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 {
     public class KhachHangController : BaseController
     {
-        GiupViecNhaDBEntities1 db = new GiupViecNhaDBEntities1();
+        GiupViecNhaDBEntities db = new GiupViecNhaDBEntities();
         //
         // GET: /Admin/DichVu/
 
         public ActionResult Index()
         {
-            if (Session["UserAdmin"] == null)
-            {
-                return RedirectToAction("DangNhap", "TaiKhoan");
-
-            }
-            else
-            {
+         
+           
                 ViewBag.NhanVien = Session["UserAdmin"];
                 List<KhachHang> dskh = db.KhachHang.ToList();
                 ViewData["dskh"] = dskh;
                 return View();
-            }
+            
 
 
         }
@@ -34,19 +29,12 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult ThongTinKH(string makh)
         {
-            if (Session["UserAdmin"] == null)
-            {
-                return RedirectToAction("DangNhap", "TaiKhoan");
-
-            }
-            else
-            {
-          
+         
           //      ViewData["ctvyeuthich"] = dsctv;
                 ViewBag.NhanVien = Session["UserAdmin"];
 
-                return View();
-            }
+               return View();
+            
 
 
 
@@ -72,17 +60,11 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
         public ActionResult XoaKH(string makh)
         {
-            if (Session["UserAdmin"] == null)
-            {
-                return RedirectToAction("DangNhap", "TaiKhoan");
-
-            }
-            else
-            {
+         
                 KhachHang kh = db.KhachHang.FirstOrDefault(a => a.MaKH == makh);
              //   db.KhachHang.(kh);
                 db.SaveChanges();
-            }
+          
             return RedirectToAction("Index");
         }
 	}

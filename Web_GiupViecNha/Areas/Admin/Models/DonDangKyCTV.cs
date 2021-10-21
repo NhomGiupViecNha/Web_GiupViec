@@ -19,8 +19,7 @@ namespace Web_GiupViecNha.Areas.Admin.Models
         {
             this.CongTacVien = new HashSet<CongTacVien>();
         }
-
-
+    
         public string MaDon { get; set; }
         public string HoTen { get; set; }
         public Nullable<System.DateTime> NgaySInh { get; set; }
@@ -29,10 +28,11 @@ namespace Web_GiupViecNha.Areas.Admin.Models
         public string Email { get; set; }
         public string TrinhDoHocVan { get; set; }
         public string KinhNghiem { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập kết quả ctv ")]
+
+         [Required(ErrorMessage = "*Vui lòng nhập điểm ctv trước khi duyệt")]
         public Nullable<double> DiemKiemTra { get; set; }
         public string TrangThaiDuyet { get; set; }
-
+    
         public virtual ICollection<CongTacVien> CongTacVien { get; set; }
     }
 }

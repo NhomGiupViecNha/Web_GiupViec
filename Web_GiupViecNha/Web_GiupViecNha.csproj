@@ -167,6 +167,7 @@
     <Compile Include="Areas\Admin\Controllers\DichVuController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Models\BangLuong.cs">
       <DependentUpon>DBGiupViecNha.tt</DependentUpon>
@@ -177,10 +178,15 @@
     <Compile Include="Areas\Admin\Models\ChiTietThongKe.cs">
       <DependentUpon>DBGiupViecNha.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\ChucNang.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\ChucVu.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Admin\Models\CongTacVien.cs">
       <DependentUpon>DBGiupViecNha.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\CongTacVienModel.cs" />
     <Compile Include="Areas\Admin\Models\CT_LuongCTV.cs">
       <DependentUpon>DBGiupViecNha.tt</DependentUpon>
     </Compile>
@@ -224,6 +230,9 @@
       <DependentUpon>DBGiupViecNha.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\NhanVien.cs">
+      <DependentUpon>DBGiupViecNha.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\PhanQuyenND.cs">
       <DependentUpon>DBGiupViecNha.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\PhieuUuDai.cs">
@@ -273,9 +282,6 @@
     <Content Include="Areas\Admin\AssetAdmin\images\icon\avatar-01.jpg" />
     <Content Include="Areas\Admin\AssetAdmin\images\icon\avatar-02.jpg" />
     <Content Include="Areas\Admin\AssetAdmin\images\icon\avatar-03.jpg" />
-    <Content Include="Areas\Admin\AssetAdmin\images\icon\avatar-04.jpg" />
-    <Content Include="Areas\Admin\AssetAdmin\images\icon\avatar-05.jpg" />
-    <Content Include="Areas\Admin\AssetAdmin\images\icon\avatar-06.jpg" />
     <Content Include="Areas\Admin\AssetAdmin\images\icon\avatar-big-01.jpg" />
     <Content Include="Areas\Admin\AssetAdmin\images\icon\logo-blue.png" />
     <Content Include="Areas\Admin\AssetAdmin\images\icon\logo-mini.png" />
@@ -283,6 +289,8 @@
     <Content Include="Areas\Admin\AssetAdmin\images\icon\logo.png" />
     <Content Include="Areas\Admin\AssetAdmin\images\icon\Untitled-1.jpg" />
     <Content Include="Areas\Admin\AssetAdmin\js\bootstrap-datetimepicker.js" />
+    <Content Include="Areas\Admin\AssetAdmin\js\mustache.min.js" />
+    <Content Include="Areas\Admin\AssetAdmin\js\NhanViencontroller.js" />
     <Content Include="Areas\Admin\AssetAdmin\js\main.js" />
     <Content Include="Areas\Admin\AssetAdmin\js\moment.js" />
     <Content Include="Areas\Admin\AssetAdmin\media\9606031aabebde32fa96edeff071a132.jpg" />
@@ -597,6 +605,8 @@
     <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\ThongTinChiTietDV.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\ThemDichVu.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\ThongTinCaNhan.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\ThemNguoiDungNhomNguoiDung.cshtml" />
     <EntityDeploy Include="Areas\Admin\Models\DBGiupViecNha.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBGiupViecNha.Designer.cs</LastGenOutput>
@@ -604,7 +614,7 @@
     <Content Include="Areas\Admin\Models\DBGiupViecNha.edmx.diagram">
       <DependentUpon>DBGiupViecNha.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\TaiKhoan\ThongTinCaNhan.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\CapNhatChucNangVaiTro.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

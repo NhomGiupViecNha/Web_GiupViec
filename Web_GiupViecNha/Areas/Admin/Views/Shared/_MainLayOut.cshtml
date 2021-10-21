@@ -1,6 +1,6 @@
 ﻿@using Web_GiupViecNha.Areas.Admin.Models;
 
-@Layout = null;
+
 @{
     NhanVien nv = ViewBag.NhanVien;
     
@@ -16,6 +16,7 @@
     <meta name="keywords" content="au theme template">
     <!-- Title Page-->
     <title>@ViewBag.Title</title>
+
     <!-- Fontfaces CSS-->
     <link href="~/Areas/Admin/AssetAdmin/css/font-face.css" rel="stylesheet" media="all">
     <link href="~/Areas/Admin/AssetAdmin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -33,6 +34,8 @@
     <link href="~/Areas/Admin/AssetAdmin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
     <!-- Main CSS-->
     <link href="~/Areas/Admin/AssetAdmin/css/theme.css" rel="stylesheet" media="all">
+  
+
 </head>
 <body class="animsition">
     <div class="page-wrapper">
@@ -89,17 +92,17 @@
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages
+                                <i class="fas fa-copy"></i>Phân quyền
                             </a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="login.html">Login</a>
+                                    <a href="@Url.Action("ThemNguoiDungNhomNguoiDung","NhanVien")">Phân quyền người dùng</a>
                                 </li>
                                 <li>
-                                    <a href="register.html">Register</a>
+                                    <a href="@Url.Action("CapNhatChucNangVaiTro","NhanVien")">Phân quyền nhóm người dùng</a>
                                 </li>
                                 <li>
-                                    <a href="forget-pass.html">Forget Password</a>
+                                    <a href="forget-pass.html">Quản lý chức năng</a>
                                 </li>
                             </ul>
                         </li>
@@ -144,26 +147,28 @@
                             </a>
                         </li>
                         <li>
-                            <a href="calendar.html">
+                            <a href="">
                                 <i class="fas  fa-list-alt"></i>Đơn Đặt Dịch Vụ
                             </a>
                         </li>
                         <li>
-                            <a href="map.html">
+                            <a href="">
                                 <i class="fas  fa-gift"></i>Ưu Đãi
                             </a>
                         </li>
                         <li class="has-sub">
-
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>Phân quyền
+                            </a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="login.html">Login</a>
+                                    <a href="@Url.Action("ThemNguoiDungNhomNguoiDung","NhanVien")">Phân quyền người dùng</a>
                                 </li>
                                 <li>
-                                    <a href="register.html">Register</a>
+                                    <a href="@Url.Action("CapNhatChucNangVaiTro","NhanVien")">Phân quyền nhóm người dùng</a>
                                 </li>
                                 <li>
-                                    <a href="forget-pass.html">Forget Password</a>
+                                    <a href="#">Quản lý chức năng</a>
                                 </li>
                             </ul>
                         </li>
@@ -180,12 +185,9 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
-                            </form>
+                            <div class="form-header">
+                              
+                            </div>
                             <div class="header-button">
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
@@ -197,7 +199,7 @@
                                             </div>
                                             <div class="mess__item">
                                                 <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
+                                                   
                                                 </div>
                                                 <div class="content">
                                                     <h6>Michelle Moreno</h6>
@@ -207,7 +209,7 @@
                                             </div>
                                             <div class="mess__item">
                                                 <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
+                                                    
                                                 </div>
                                                 <div class="content">
                                                     <h6>Diane Myers</h6>
@@ -229,7 +231,7 @@
                                             </div>
                                             <div class="email__item">
                                                 <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
+                                           
                                                 </div>
                                                 <div class="content">
                                                     <p>Meeting about new dashboard...</p>
@@ -238,7 +240,7 @@
                                             </div>
                                             <div class="email__item">
                                                 <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
+                                                  
                                                 </div>
                                                 <div class="content">
                                                     <p>Meeting about new dashboard...</p>
@@ -247,7 +249,7 @@
                                             </div>
                                             <div class="email__item">
                                                 <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
+                                                 
                                                 </div>
                                                 <div class="content">
                                                     <p>Meeting about new dashboard...</p>
@@ -325,23 +327,19 @@
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                     <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account
+                                                        <i class="zmdi zmdi-account"></i>Thông tin tài khoản
                                                     </a>
                                                 </div>
+                                              
                                                 <div class="account-dropdown__item">
                                                     <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting
-                                                    </a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing
+                                                        <i class="zmdi zmdi-key"></i>Đổi mật khẩu
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
                                                 <a href="@Url.Action("DangXuat","TaiKhoan")">
-                                                    <i class="zmdi zmdi-power"></i>Logout
+                                                    <i class="zmdi zmdi-power"></i>Đăng xuất
 
                                                 </a>
                                             </div>
@@ -375,7 +373,9 @@
         </div>
     </div>
     <!-- Jquery JS-->
-    <script src="~/Areas/Admin/AssetAdmin/vendor/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/Areas/Admin/AssetAdmin/js/NhanViencontroller.js"></script>
+
     <!-- Bootstrap JS-->
     <script src="~/Areas/Admin/AssetAdmin/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="~/Areas/Admin/AssetAdmin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
@@ -396,6 +396,9 @@
     </script>
     <!-- Main JS-->
     <script src="~/Areas/Admin/AssetAdmin/js/main.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     
+   
 </body>
 </html>
 <!-- end document-->

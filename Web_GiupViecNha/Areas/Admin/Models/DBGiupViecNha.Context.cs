@@ -13,10 +13,10 @@ namespace Web_GiupViecNha.Areas.Admin.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GiupViecNhaDBEntities1 : DbContext
+    public partial class GiupViecNhaDBEntities : DbContext
     {
-        public GiupViecNhaDBEntities1()
-            : base("name=GiupViecNhaDBEntities1")
+        public GiupViecNhaDBEntities()
+            : base("name=GiupViecNhaDBEntities")
         {
         }
     
@@ -30,6 +30,8 @@ namespace Web_GiupViecNha.Areas.Admin.Models
         public virtual DbSet<CongTacVien> CongTacVien { get; set; }
         public virtual DbSet<CT_LuongCTV> CT_LuongCTV { get; set; }
         public virtual DbSet<ChiTietThongKe> ChiTietThongKe { get; set; }
+        public virtual DbSet<ChucNang> ChucNang { get; set; }
+        public virtual DbSet<ChucVu> ChucVu { get; set; }
         public virtual DbSet<DichVu> DichVu { get; set; }
         public virtual DbSet<DonDangKyCTV> DonDangKyCTV { get; set; }
         public virtual DbSet<DonDatDV> DonDatDV { get; set; }
@@ -39,6 +41,7 @@ namespace Web_GiupViecNha.Areas.Admin.Models
         public virtual DbSet<LichLamViec> LichLamViec { get; set; }
         public virtual DbSet<LoaiDV> LoaiDV { get; set; }
         public virtual DbSet<NhanVien> NhanVien { get; set; }
+        public virtual DbSet<PhanQuyenND> PhanQuyenND { get; set; }
         public virtual DbSet<PhieuUuDai> PhieuUuDai { get; set; }
         public virtual DbSet<ThongKe> ThongKe { get; set; }
         public virtual DbSet<YeuCauDoiCTV> YeuCauDoiCTV { get; set; }

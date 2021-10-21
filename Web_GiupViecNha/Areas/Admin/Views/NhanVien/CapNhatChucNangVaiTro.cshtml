@@ -1,0 +1,123 @@
+﻿@using Web_GiupViecNha.Areas.Admin.Models;
+
+@{
+    ViewBag.Title = "Phân quyền vai trò";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
+
+    List<ChucVu> dscv = ViewBag.DSChucVu;
+}
+
+<h3 class="title-5 m-b-35">data table</h3>
+<div class="table-data__tool">
+    <div class="table-data__tool-left">
+        <div style="width:200px" class="rs-select2--light rs-select2--md">
+            <select class="js-select2" id="property">
+                <option selected="selected">Chọn chức vụ</option>
+                @foreach (ChucVu cv in dscv)
+                {
+
+                    <option value="@cv.MaVaiTro">@cv.TenVaiTro</option>
+                }
+
+
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+            
+                <th>Mã chức năng</th>
+                <th>Có quyền</th>
+              
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tblData">
+            <tr class="tr-shadow">
+         
+            <tr class="spacer"></tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+         
+
+                $("#property").change(function () {
+
+                    var machucvu = $(this).val();
+                    $.ajax({
+                        url: "loadDSManHinhTheoChucVu",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            machucvu: machucvu
+
+                        },
+                        success: function (rsp) {
+                        
+                            var data = rsp.data;
+                            var html = '';
+                            var flag;
+                         ;
+                            $.each(data, function (key, item) {
+                           
+                                console.log(item);
+
+                                if (item.CoQuyen) {
+                                        
+                                    flag = ' <label class="au-checkbox"> <input type="checkbox" checked />     <span class="au-checkmark">' + '</span> </label>';
+
+                                }
+                                else {
+                                    flag = ' <label class="au-checkbox"> <input type="checkbox  " />     <span class="au-checkmark">' + '</span> </label>';
+                                }
+                                html += '<tr>';
+                                html += '<td>' + item.MaChucNang + '</td>';
+                               
+                                html += ' <td> '+flag+'</td>';
+
+                                html += '</tr>';
+                            })
+
+                            $("#tblData").html(html);
+                        },
+
+                        error: function () {
+
+                            alert("Chưa nhận data")
+
+                        }
+
+                    })
+
+
+
+
+                })
+
+
+            }
+
+         
+
+
+        );
+
+      
+
+        </script>
