@@ -102,5 +102,19 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public ActionResult loadPhanQuyen(string manv,string machucnang)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+
+         IQueryable<ChucVu> nv = db.ChucVu.Where(a => a.NhanVien.All(b => b.MaNV.Contains(manv)));
+        
+          //  var cv = nv.ChucVu.FirstOrDefault();
+     PhanQuyenND pq = db.PhanQuyenND.Where(m => m.MaVaiTro == nv.FirstOrDefault().MaVaiTro).FirstOrDefault(m=>m.MaChucNang==machucnang);
+          
+            return Json(new { data = pq.CoQuyen }, JsonRequestBehavior.AllowGet);
+
+        }
 	}
 }

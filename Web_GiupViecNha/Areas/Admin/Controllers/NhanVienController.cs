@@ -108,12 +108,12 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             db.Configuration.ProxyCreationEnabled = false;
             if (!String.IsNullOrEmpty(machucvu))
             {
-             
-             List<PhanQuyenND> pq = db.PhanQuyenND.Where(m => m.MaVaiTro == machucvu).ToList();
+                List<PhanQuyenND> pq = db.PhanQuyenND.Where(m => m.MaVaiTro == machucvu).ToList();
+          
+          
                 return Json(new {
 
-                   data=pq
-
+                  data =pq
                 }, JsonRequestBehavior.AllowGet);
             }
             return Json(null, JsonRequestBehavior.AllowGet);

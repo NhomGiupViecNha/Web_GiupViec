@@ -38,34 +38,28 @@
 <div class="table-data__tool">
     <div class="table-data__tool-left">
         <div class="rs-select2--light rs-select2--md">
-            <select class="js-select2" name="property">
-                <option selected="selected">All Properties</option>
-                <option value="">Option 1</option>
-                <option value="">Option 2</option>
+            <select id="locTheoLoai"  class="js-select2" name="property">
+                <option value="" selected="selected">Tất cả</option>
+                @foreach(LoaiDV ldv in dsldv)
+                {
+                       <option value="@ldv.MaLoaiDV">@ldv.TenLoaiDV</option>
+                    
+                }
+             
             </select>
             <div class="dropDownSelect2"></div>
         </div>
-        <div class="rs-select2--light rs-select2--sm">
-            <select class="js-select2" name="time">
-                <option selected="selected">Today</option>
-                <option value="">3 Days</option>
-                <option value="">1 Week</option>
-            </select>
-            <div class="dropDownSelect2"></div>
-        </div>
-        <button class="au-btn-filter">
-            <i class="zmdi zmdi-filter-list"></i>filters
-        </button>
+ 
    
         </div>
 
     <div class="table-data__tool-left">
-        <form class="form-header" action="" method="POST">
-            <input class="au-input au-input--xl" type="text" name="search" placeholder="Tên dịch vụ" />
-            <button class="au-btn--submit" type="submit">
+      
+            <input class="au-input au-input--xl" type="text" id="txtSearch" placeholder="Tên dịch vụ" />
+            <button class="btn btn-primary"  id="btnSearch">
                 <i class="zmdi zmdi-search"></i>
             </button>
-        </form>
+     
     </div>
     <div class="table-data__tool-right">
       
@@ -90,7 +84,7 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tblDSDichVu">
             @foreach (DichVu dv in ViewData["dsdv"] as List<DichVu>)
             {
            
@@ -106,17 +100,17 @@
                         <span>@dv.GiaThanh</span>
                     </td>
                     <td>@dv.KinhNghiemYeuCau</td>
-                  <td><img width="60px" src="@Url.Content("~/Content/HinhAnh/"+dv.HinhAnh)" /></td>  
+                  <td>
+                      <img width="60px" src="/Content/HinhAnh/@dv.HinhAnh" /></td>  
                     <td>@dv.LoaiDV</td>
                     <td>
                         <div class="table-data-feature">
 
 
-                            <button class="item" data-toggle="tooltip" onclick="location.href='@Url.Action("XoaDV", "DichVu", new { madv = dv.MaDichVu })'" data-placement="top" title="Delete">
-                                <i class="zmdi zmdi-delete"></i>
-                            </button>
-                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                <a href="@Url.Action("ThongTinChiTietDV", "DichVu", new { dichvu = dv.MaDichVu})"> <i class="zmdi zmdi-edit"></i></a>
+                            <button class="item btnXoaDV" data-toggle="tooltip" data-madv="@dv.MaDichVu" @*onclick="location.href='@Url.Action("XoaDV", "DichVu", new { madv = dv.MaDichVu })'"*@ data-placement="top" title="Delete">  <i class="zmdi zmdi-delete"></i>  </button>
+                            <button class="item btnXemChiTietDV" data-toggle="tooltip"  data-madv="@dv.MaDichVu"  @*onclick="location.href='@Url.Action("ThongTinChiTietDV", "DichVu", new { dichvu = dv.MaDichVu })'"*@ data-placement="top" title="Edit">
+                                <i class="zmdi zmdi-edit">
+                                </i>
                             </button>
                         </div>
                     </td>

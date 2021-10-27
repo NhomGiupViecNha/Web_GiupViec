@@ -56,7 +56,7 @@
                               
                       
                                      <div class="col-md-12">
-                                         @Html.TextBoxFor(m => m.TenDN, new { @class = "au-input w-100",@type = "text", @placeholder = "Tên đăng nhập" })
+                                         @Html.TextBoxFor(m => m.TenDN, new { @class = "au-input w-100",@type = "text",@id="txtTenDN", @placeholder = "Tên đăng nhập" })
                                         
                                      </div>
                                      @Html.ValidationMessageFor(m => m.TenDN, "", new { @class = "text-danger" })
@@ -84,7 +84,7 @@
                                         <a href="#">Forgotten Password?</a>
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" id="btnDangNhap" type="submit">sign in</button>
                                 if (TempData["AlertMessage"] != null)
                                 {
                                     <div id="Alertbox" class="alert @TempData["AlertType"] hide">

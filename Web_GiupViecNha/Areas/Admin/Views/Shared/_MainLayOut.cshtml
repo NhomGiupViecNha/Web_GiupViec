@@ -61,38 +61,38 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="/Admin/MainAdmin">
+                            <a  class="js-arrow" href="/Admin/MainAdmin">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
 
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","DichVu")">
+                            <a class="ChucNang" id="QLDV" href="@Url.Action("Index","DichVu")">
                                 <i class="fas fa-chart-bar"></i>Dịch Vụ
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","CongTacVien")">
+                            <a class="ChucNang" id="QLCTV" href="@Url.Action("Index","CongTacVien")">
                                 <i class="fas fa-table"></i>Cộng Tác Viên
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","KhachHang")">
+                            <a class="ChucNang" id="QLKH" href="@Url.Action("Index","KhachHang")">
                                 <i class="far fa-check-square"></i>Khách Hàng
                             </a>
                         </li>
                         <li>
-                            <a href="calendar.html">
+                            <a class="ChucNang" id="QLDD" href="calendar.html">
                                 <i class="fas fa-calendar-alt"></i>Đơn Đặt Dịch Vụ
                             </a>
                         </li>
                         <li>
-                            <a href="map.html">
+                            <a class="ChucNang" id="QLUD" href="map.html">
                                 <i class="fas fa-map-marker-alt"></i>Ưu Đãi
                             </a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class=" ChucNang js-arrow" id="QLPQ" href="#">
                                 <i class="fas fa-copy"></i>Phân quyền
                             </a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
@@ -125,44 +125,39 @@
                     <ul class="list-unstyled navbar__list">
                         <li>
 
-                            <a class="js-arrow" href="/Admin/MainAdmin">
+                            <a class="js-arrow"  href="/Admin/MainAdmin">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
                         </li>
 
 
-                        @foreach(PhanQuyenND pq in dspq)
-                        {
-                            
-                            
-                        }
                         <li>
-                            <a id="QLDV" href="/Admin/DichVu/Index">
+                            <a class="ChucNang" data-id="QLDV" href="/Admin/DichVu/Index">
                                 <i class="fas  fa-list"></i>Dịch Vụ
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","CongTacVien")">
+                            <a class="ChucNang" data-id="QLCTV" href="@Url.Action("Index","CongTacVien")">
                                 <i class="fas fa-user"></i>Cộng Tác Viên
                             </a>
                         </li>
                         <li >
-                            <a id="QLKH" href="@Url.Action("Index","KhachHang")">
+                            <a data-id="QLKH" class="ChucNang" href="@Url.Action("Index","KhachHang")">
                                 <i class="fas fa-users"></i>Khách Hàng
                             </a>
                         </li>
                         <li>
-                            <a id="QLDD" href="">
+                            <a data-id="QLDD" class="ChucNang" href="">
                                 <i class="fas  fa-list-alt"></i>Đơn Đặt Dịch Vụ
                             </a>
                         </li>
                         <li>
-                            <a id="QLUD" href="">
+                            <a data-id="QLUD" class="ChucNang" href="">
                                 <i class="fas  fa-gift"></i>Ưu Đãi
                             </a>
                         </li>
                         <li class="has-sub">
-                            <a id="QLPQ" class="js-arrow" href="#">
+                            <a data-id="QLPQ" class="js-arrow ChucNang" href="#">
                                 <i class="fas fa-copy"></i>Phân quyền
                             </a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
@@ -324,7 +319,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">@nv.TenNV</a>
+                                                        <a data-manv="@nv.MaNV" id="aMaNV" href="#">@nv.TenNV</a>
                                                     </h5>
                                                     <span class="email">@nv.Email</span>
                                                 </div>
@@ -380,7 +375,7 @@
     <!-- Jquery JS-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="~/Areas/Admin/AssetAdmin/js/NhanViencontroller.js"></script>
-
+    <script src="~/Areas/Admin/AssetAdmin/js/dichvucontroller.js"></script>
     <!-- Bootstrap JS-->
     <script src="~/Areas/Admin/AssetAdmin/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="~/Areas/Admin/AssetAdmin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
@@ -402,8 +397,10 @@
     <!-- Main JS-->
     <script src="~/Areas/Admin/AssetAdmin/js/main.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-     
+   
+
    
 </body>
 </html>
+
 <!-- end document-->

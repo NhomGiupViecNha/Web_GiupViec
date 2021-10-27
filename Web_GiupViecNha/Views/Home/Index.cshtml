@@ -44,7 +44,7 @@
 
     <div class="carousel slide" data-ride="carousel" id="postsCarousel">
         <div class="container">
-            <div class="row " >
+            <div class="row ">
                 <ol class="carousel-indicators">
                     <li data-target="#postsCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#postsCarousel" data-slide-to="1"></li>
@@ -52,7 +52,7 @@
                 </ol>
                 <div class="col-md-1 d-flex justify-content-center">
 
-                    <a style="width:30px;" class="carousel-control-prev btn btn-warning"  href="#postsCarousel" role="button" data-slide="prev">
+                    <a style="width:30px;" class="carousel-control-prev btn btn-warning" href="#postsCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -61,52 +61,48 @@
                 <div class="col-md-10">
 
 
-                <div class="carousel-inner">
-     
+                    <div class="carousel-inner">
 
-                    <div class="carousel-item active ">
-                        @for (int i = 1; i <= 4; i++)
-                        {
 
-                            <div class="col-md-3" style="float:left">
-                                <div class="card mb-2" style="width: 200px;">
-                                    <img style="width:200px;height:200px" class="card-img-top" src="https://www.btaskee.com/wp-content/uploads/2020/10/cong-tac-vien-.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h3 style="margin:8px 0px 16px" class="card-title">Giúp việc nhà theo giờ</h3>
-                                        <p class="card-text">Là dịch vụ đầu tiên bTaskee triển khai. Giờ đây công việc dọn dẹp không còn là nỗi bận tâm, bạn sẽ có nhiều thời gian nghỉ ngơi và tận hưởng cuộc sống.</p>
-                                        <a href="#">Tìm hiểu thêm</a>
+                        <div class="carousel-item active ">
+                            @for (int i = 1; i <= 4; i++)
+                            {
+
+                                <div class="col-md-3" style="float:left">
+                                    <div class="card mb-2" style="width: 200px;">
+                                        <img style="width:200px;height:200px" class="card-img-top" src="https://www.btaskee.com/wp-content/uploads/2020/10/cong-tac-vien-.jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h3 style="margin:8px 0px 16px" class="card-title">Giúp việc nhà theo giờ</h3>
+                                            <p class="card-text">Là dịch vụ đầu tiên bTaskee triển khai. Giờ đây công việc dọn dẹp không còn là nỗi bận tâm, bạn sẽ có nhiều thời gian nghỉ ngơi và tận hưởng cuộc sống.</p>
+                                            <a href="#">Tìm hiểu thêm</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        }
+                            }
+                        </div>
+                        <div class="carousel-item ">
+                            @for (int i = 1; i <= 4; i++)
+                            {
+
+
+                                <div class="col-md-3" style="float:left">
+                                    <div class="card mb-2" style="width: 200px;">
+                                        <img style="width:200px;height:200px" class="card-img-top" src="https://www.btaskee.com/wp-content/uploads/2020/10/cong-tac-vien-.jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h3 style="margin:8px 0px 16px" class="card-title">Giúp việc nhà theo giờ</h3>
+                                            <p class="card-text">Là dịch vụ đầu tiên bTaskee triển khai. Giờ đây công việc dọn dẹp không còn là nỗi bận tâm, bạn sẽ có nhiều thời gian nghỉ ngơi và tận hưởng cuộc sống.</p>
+                                            <a href="#">Tìm hiểu thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
                     </div>
-                    <div class="carousel-item ">
-                        @for (int i = 1; i <= 4; i++)
-                        {
 
-
-                            <div class="col-md-3" style="float:left">
-                                <div class="card mb-2" style="width: 200px;">
-                                    <img style="width:200px;height:200px" class="card-img-top" src="https://www.btaskee.com/wp-content/uploads/2020/10/cong-tac-vien-.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h3 style="margin:8px 0px 16px" class="card-title">Giúp việc nhà theo giờ</h3>
-                                        <p class="card-text">Là dịch vụ đầu tiên bTaskee triển khai. Giờ đây công việc dọn dẹp không còn là nỗi bận tâm, bạn sẽ có nhiều thời gian nghỉ ngơi và tận hưởng cuộc sống.</p>
-                                        <a href="#">Tìm hiểu thêm</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        }
-
-                    </div>          
-            
-              
-                  
-            
-    
-                </div>
-            </div>
+                    </div>
 
                 <div class="col-md-1">
 
@@ -115,7 +111,17 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+                </div>
+
             </div>
+    
+        </div>
+
+    </div>
+
+
+  
+
             <div class="row mt-5 mb-5">
 
                 <h2 class="mb-5" style="font:32px;font-weight:700"> An tâm với lựa chọn của bạn</h2>
@@ -272,4 +278,3 @@
             </div>
         </div>
     </div>
-</div>

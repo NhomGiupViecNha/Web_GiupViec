@@ -289,6 +289,7 @@
     <Content Include="Areas\Admin\AssetAdmin\images\icon\logo.png" />
     <Content Include="Areas\Admin\AssetAdmin\images\icon\Untitled-1.jpg" />
     <Content Include="Areas\Admin\AssetAdmin\js\bootstrap-datetimepicker.js" />
+    <Content Include="Areas\Admin\AssetAdmin\js\dichvucontroller.js" />
     <Content Include="Areas\Admin\AssetAdmin\js\mustache.min.js" />
     <Content Include="Areas\Admin\AssetAdmin\js\NhanViencontroller.js" />
     <Content Include="Areas\Admin\AssetAdmin\js\main.js" />

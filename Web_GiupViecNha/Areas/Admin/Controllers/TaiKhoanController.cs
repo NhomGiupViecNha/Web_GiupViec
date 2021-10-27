@@ -36,7 +36,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
                 if (nv.MatKhau.Trim() == maHoaMK(c["matkhau"]))
                 {
                     Session["UserAdmin"] = nv;
-                    ViewBag.PhanQuyen = loadPhanQuyen(nv.MaNV);
+           
                     return RedirectToAction("Index","MainAdmin");
                   
                 }
@@ -91,15 +91,6 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         }
 
 
-        public List<PhanQuyenND> loadPhanQuyen(string manv)
-        {
-            NhanVien nv = db.NhanVien.FirstOrDefault(m=>m.MaNV==manv);
-            ChucVu cv= nv.ChucVu.FirstOrDefault();
-            List<PhanQuyenND> pq = db.PhanQuyenND.Where(m => m.MaVaiTro == cv.MaVaiTro).ToList();
-
-            return pq;
-
-        }
        
 
 	}

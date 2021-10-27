@@ -100,7 +100,6 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
                 return View();
 
             
-        
            
            
        
@@ -152,24 +151,60 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
 
         }
-    
 
-      
+        public ActionResult xemChiTietDV(string dichvu)
+        {
+
+            return Json(new {
+            newURL= "/DichVu/ThongTinChiTietDV",
+            }, JsonRequestBehavior.AllowGet);
+        }
+    
+        
         public ActionResult XoaDV(string madv)
         {
+            bool kq;
             try {
                 db.DichVu.Remove(db.DichVu.SingleOrDefault(a => a.MaDichVu == madv));
                 db.SaveChanges();
-                SetAlert("Xóa dịch vụ thành công", "success");
-                return RedirectToAction("Index");
+                kq = true;
+            
             }
             catch
             {
+                kq = false;
                 SetAlert("Xóa dịch vụ không thành công thành công. Dịch vụ đang được dùng", "error");
-                return RedirectToAction("Index");
+                
             }
+            return Json(kq, JsonRequestBehavior.AllowGet);
  
         }
+        public ActionResult locDuLieu(string search)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+             List<DichVu> dsdvtimkiem = new List<DichVu>();
+            if(search!=null)
+            {
+            dsdvtimkiem = db.DichVu.Where(m=>m.LoaiDV==search).ToList();
+                if(dsdvtimkiem.Count==0||dsdvtimkiem==null)
+                {
+                    dsdvtimkiem = db.DichVu.Where(m=>m.TenDichVu.Contains(search)).ToList();
+
+                }
+               
+            
+
+            }
+            else
+            {
+                dsdvtimkiem = db.DichVu.ToList();
+
+            }
+            return Json(dsdvtimkiem, JsonRequestBehavior.AllowGet);
+         
+
+        }
+
           public string sinhMaDVTuDong()
         {
              string madv="";
