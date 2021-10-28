@@ -25,11 +25,10 @@ namespace Web_GiupViecNha.Areas.Admin.Models
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string Email { get; set; }
         public string DiaChi { get; set; }
-         [Required(ErrorMessage = "*Bạn chưa nhập mật khẩu")]
+        [Required(ErrorMessage = "*Bạn chưa nhập mật khẩu")]
         public string TenDN { get; set; }
-         [Required(ErrorMessage = "*Bạn chưa nhập tên đăng nhập")]
+        [Required(ErrorMessage = "*Bạn chưa nhập tên đăng nhập")]
         public string MatKhau { get; set; }
-    
         public virtual ICollection<ChucVu> ChucVu { get; set; }
     }
 }

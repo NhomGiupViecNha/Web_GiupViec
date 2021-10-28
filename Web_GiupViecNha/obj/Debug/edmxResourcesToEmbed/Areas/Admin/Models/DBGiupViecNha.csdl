@@ -72,7 +72,7 @@
     <Key>
       <PropertyRef Name="MaChucNang" />
     </Key>
-    <Property Name="MaChucNang" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaChucNang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TenChucNang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="PhanQuyenND" Relationship="Self.FK_PhanQuyenND_ChucNang" FromRole="ChucNang" ToRole="PhanQuyenND" />
   </EntityType>
@@ -80,7 +80,7 @@
     <Key>
       <PropertyRef Name="MaVaiTro" />
     </Key>
-    <Property Name="MaVaiTro" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaVaiTro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TenVaiTro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="PhanQuyenND" Relationship="Self.FK_PhanQuyenND_VaiTro" FromRole="ChucVu" ToRole="PhanQuyenND" />
     <NavigationProperty Name="NhanVien" Relationship="Self.ChucVu_NguoiDung" FromRole="ChucVu" ToRole="NhanVien" />
@@ -163,7 +163,7 @@
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="MatKhau" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SoDiemThuong" Type="Int32" />
     <Property Name="MaCapBacKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="CapBacKH" Relationship="Self.FK_KhachHang_CapBacKH" FromRole="KhachHang" ToRole="CapBacKH" />
@@ -221,8 +221,8 @@
       <PropertyRef Name="MaVaiTro" />
       <PropertyRef Name="MaChucNang" />
     </Key>
-    <Property Name="MaVaiTro" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="MaChucNang" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaVaiTro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaChucNang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CoQuyen" Type="Boolean" />
     <NavigationProperty Name="ChucNang" Relationship="Self.FK_PhanQuyenND_ChucNang" FromRole="PhanQuyenND" ToRole="ChucNang" />
     <NavigationProperty Name="ChucVu" Relationship="Self.FK_PhanQuyenND_VaiTro" FromRole="PhanQuyenND" ToRole="ChucVu" />

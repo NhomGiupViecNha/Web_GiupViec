@@ -59,14 +59,14 @@
     <Key>
       <PropertyRef Name="MaChucNang" />
     </Key>
-    <Property Name="MaChucNang" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MaChucNang" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="TenChucNang" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ChucVu">
     <Key>
       <PropertyRef Name="MaVaiTro" />
     </Key>
-    <Property Name="MaVaiTro" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MaVaiTro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="TenVaiTro" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ChucVu_NguoiDung">
@@ -75,7 +75,7 @@
       <PropertyRef Name="VaiTro" />
     </Key>
     <Property Name="MaNV" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="VaiTro" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="VaiTro" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="DichVu">
     <Key>
@@ -151,7 +151,7 @@
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="SDT" Type="char" MaxLength="10" />
     <Property Name="DiaChi" Type="nvarchar(max)" />
-    <Property Name="MatKhau" Type="nchar" MaxLength="16" />
+    <Property Name="MatKhau" Type="nvarchar(max)" />
     <Property Name="SoDiemThuong" Type="int" />
     <Property Name="MaCapBacKH" Type="nchar" MaxLength="10" />
   </EntityType>
@@ -200,8 +200,8 @@
       <PropertyRef Name="MaVaiTro" />
       <PropertyRef Name="MaChucNang" />
     </Key>
-    <Property Name="MaVaiTro" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="MaChucNang" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MaVaiTro" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaChucNang" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CoQuyen" Type="bit" />
   </EntityType>
   <EntityType Name="PhieuUuDai">
