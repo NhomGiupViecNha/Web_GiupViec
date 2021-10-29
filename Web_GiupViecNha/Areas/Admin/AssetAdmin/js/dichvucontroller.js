@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
     $('#locTheoLoai').change(LocDuLieu)
-    $('.btnXemChiTietDV').click(xemchitiet)
+  
     $('.btnXoaDV').click(xoaDV)
     $('#btnSearch').click(LocDuLieu)
 
@@ -146,7 +146,7 @@ function xoaDV(button) {
     }
     Swal.fire({
         title: 'Lưu ý',
-        text: "Bạn có muốn xóa dịch vụ ?"+madv,
+        text: "Bạn có muốn xóa dịch vụ "+madv+"?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

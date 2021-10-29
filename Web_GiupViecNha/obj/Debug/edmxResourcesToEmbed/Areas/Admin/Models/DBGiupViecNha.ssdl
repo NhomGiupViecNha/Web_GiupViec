@@ -34,6 +34,8 @@
     <Property Name="KinhNghiem" Type="nvarchar" MaxLength="50" />
     <Property Name="DiemDanhGia" Type="float" />
     <Property Name="MaDonDKCTV" Type="nchar" MaxLength="10" />
+    <Property Name="AnhCTV" Type="varchar(max)" />
+    <Property Name="NgayVaoLam" Type="date" />
   </EntityType>
   <EntityType Name="CT_LuongCTV">
     <Key>
@@ -100,6 +102,7 @@
     <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
     <Property Name="SDT" Type="char" MaxLength="10" />
     <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="AnhCTV" Type="varchar" MaxLength="50" />
     <Property Name="TrinhDoHocVan" Type="nvarchar" MaxLength="50" />
     <Property Name="KinhNghiem" Type="nvarchar" MaxLength="50" />
     <Property Name="DiemKiemTra" Type="float" />

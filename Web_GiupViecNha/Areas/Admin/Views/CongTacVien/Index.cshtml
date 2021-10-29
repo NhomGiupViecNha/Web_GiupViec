@@ -22,36 +22,29 @@
     <div class="table-data__tool-left">
         <div class="rs-select2--light rs-select2--md">
             <select class="js-select2" name="property">
-                <option selected="selected">All Properties</option>
+                <option selected="selected">Tất cả</option>
                 <option value="">Option 1</option>
                 <option value="">Option 2</option>
             </select>
             <div class="dropDownSelect2"></div>
         </div>
-        <div class="rs-select2--light rs-select2--sm">
-            <select class="js-select2" name="time">
-                <option selected="selected">Today</option>
-                <option value="">3 Days</option>
-                <option value="">1 Week</option>
-            </select>
-            <div class="dropDownSelect2"></div>
-        </div>
-        <button class="au-btn-filter">
-            <i class="zmdi zmdi-filter-list"></i>filters
+ 
+    
+    </div>
+    <div class="table-data__tool-left">
+
+        <input class="au-input au-input--xl" type="text" id="txtSearch" placeholder="Tên cộng tác viên" />
+        <button class="btn btn-primary" id="btnSearch">
+            <i class="zmdi zmdi-search"></i>
         </button>
+
     </div>
     <div class="table-data__tool-right">
         <button onclick="location.href='@Url.Action("DonDKCTV","CongTacVien")'" class="au-btn au-btn-icon  au-btn--green au-btn--small">
             <i class="zmdi zmdi-plus"></i>Đơn đăng ký CTV
         </button>
-        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-            <select class="js-select2" name="type">
-                <option selected="selected">Export</option>
-                <option value="">Option 1</option>
-                <option value="">Option 2</option>
-            </select>
-            <div class="dropDownSelect2"></div>
-        </div>
+
+     
     </div>
 </div>
 <div class="table-responsive table-responsive-data2">
@@ -61,11 +54,8 @@
               
                 <th>Mã CTV</th>
                 <th>Tên CTV</th>
-                <th>Địa chỉ</th>
-                <th>Ngày Sinh</th>
-                <th>SĐT</th>
                 <th>Email</th>
-               
+                <th>Ngày vào làm</th>
                 <th>Trình độ</th>
                 <th>Kinh nghiệm</th>
                 <th>Điểm đánh giá</th>
@@ -82,13 +72,9 @@
                     <td class="desc">
                         <span>@ctv.TenCTV</span>
                     </td>
-                    <td>@Truncate(ctv.DiaChi, 10)</td>
-                    <td>@ctv.NgaySinh</td>
-                    <td>
-                        <span>@ctv.SDT</span>
-                    </td>
+              
                     <td>@ctv.Email</td>
-                
+                    <td>@ctv.NgayVaoLam</td>
                     <td>@ctv.TrinhDo</td>
                     <td>@ctv.KinhNghiem</td>
                     <td>@ctv.DiemDanhGia</td>

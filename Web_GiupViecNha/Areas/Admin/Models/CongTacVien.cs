@@ -34,6 +34,8 @@ namespace Web_GiupViecNha.Areas.Admin.Models
         public string KinhNghiem { get; set; }
         public Nullable<double> DiemDanhGia { get; set; }
         public string MaDonDKCTV { get; set; }
+        public string AnhCTV { get; set; }
+        public Nullable<System.DateTime> NgayVaoLam { get; set; }
     
         public virtual DonDangKyCTV DonDangKyCTV { get; set; }
         public virtual ICollection<CT_LuongCTV> CT_LuongCTV { get; set; }

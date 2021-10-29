@@ -25,6 +25,8 @@
     <EntitySetMapping Name="CongTacVien">
       <EntityTypeMapping TypeName="GiupViecNhaDBModel.CongTacVien">
         <MappingFragment StoreEntitySet="CongTacVien">
+          <ScalarProperty Name="NgayVaoLam" ColumnName="NgayVaoLam" />
+          <ScalarProperty Name="AnhCTV" ColumnName="AnhCTV" />
           <ScalarProperty Name="MaCTV" ColumnName="MaCTV" />
           <ScalarProperty Name="TenCTV" ColumnName="TenCTV" />
           <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
@@ -92,6 +94,7 @@
     <EntitySetMapping Name="DonDangKyCTV">
       <EntityTypeMapping TypeName="GiupViecNhaDBModel.DonDangKyCTV">
         <MappingFragment StoreEntitySet="DonDangKyCTV">
+          <ScalarProperty Name="AnhCTV" ColumnName="AnhCTV" />
           <ScalarProperty Name="MaDon" ColumnName="MaDon" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="NgaySInh" ColumnName="NgaySInh" />

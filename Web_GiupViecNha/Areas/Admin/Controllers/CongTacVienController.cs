@@ -14,13 +14,8 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         // GET: /Admin/CongTacVien/
         public ActionResult Index()
         {
-            if (Session["UserAdmin"] == null)
-            {
-                return Redirect("~/Admin/DangNhap");
-
-            }
-            else
-            {
+         
+           
 
                 ViewBag.NhanVien = Session["UserAdmin"];
                 List<CongTacVien> dsctv = db.CongTacVien.ToList();
@@ -32,7 +27,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
                 return View();
 
-            }
+            
         }
 
         //
@@ -65,19 +60,15 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
         // GET: /Admin/CongTacVien/Edit/5
         public ActionResult ThongTinChiTietDDK(string  maddk)
         {
-            if (Session["UserAdmin"] == null)
-            {
-                return Redirect("~/Admin/DangNhap");
+        
 
-            }
-            else
-            {
+           
                 ViewBag.NhanVien = Session["UserAdmin"];
                 DonDangKyCTV dk = db.DonDangKyCTV.FirstOrDefault(a => a.MaDon == maddk);
              
                 return View(dk);
 
-            }
+        
         }
 
         //
@@ -115,6 +106,8 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
                 ctv.KinhNghiem = ddk.KinhNghiem;
                 ctv.Email = ddk.Email;
                 ctv.DiaChi = ddk.DiaChi;
+                ctv.AnhCTV = ddk.AnhCTV;
+                ctv.NgayVaoLam = DateTime.Now;
                 ctv.MatKhau = maHoaMK("1");
                 ctv.MaDonDKCTV = ddk.MaDon;
                 ddk.TrangThaiDuyet = "Đã đậu";
@@ -136,6 +129,12 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
               
 
          
+        }
+
+        public ActionResult XemChiTietCTV(string id)
+        {
+
+            return View();
         }
 
         public ActionResult Delete(string id)

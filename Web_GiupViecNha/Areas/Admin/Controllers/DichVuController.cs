@@ -28,7 +28,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
                  ViewBag.DSLoaiDV = ldv;
               
 
-                 ViewBag.Madv = sinhMaDVTuDong();
+               
                  return View();
             
             
@@ -69,14 +69,15 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
 
 
-            dichvu.MaDichVu = c["txtMadv"];
+        
             dichvu.TenDichVu = c["TenDichVu"];
             dichvu.MoTa = c["Mota"];
             dichvu.KinhNghiemYeuCau = c["txtKNYC"];
-            dichvu.DonViTinh = c["DonViTinh"];
+            dichvu.DonViTinh = c["cbDonViTinh"];
             dichvu.GiaThanh = int.Parse(c["GiaThanh"].ToString());
             dichvu.HinhAnh = fileName;
             dichvu.LoaiDV = c["cbLoaiDV"];
+            dichvu.MaDichVu = sinhMaDVTuDong(c["cbLoaiDV"]);
             db.DichVu.Add(dichvu);
             db.SaveChanges();
             SetAlert("Thêm dịch vụ thành công", "success");
@@ -138,7 +139,7 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
             dichvu.TenDichVu = c["Tendv"];
             dichvu.MoTa = c["Mota"];
             dichvu.KinhNghiemYeuCau = c["txtKNYC"];
-            dichvu.DonViTinh = c["Donvitinh"];
+            dichvu.DonViTinh = c["DonViTinh"];
             dichvu.GiaThanh = int.Parse(c["Giathanh"].ToString());
           
             dichvu.LoaiDV = c["cbLoaiDV"];
@@ -205,19 +206,19 @@ namespace Web_GiupViecNha.Areas.Admin.Controllers
 
         }
 
-          public string sinhMaDVTuDong()
+          public string sinhMaDVTuDong(string maloaidv)
         {
              string madv="";
                 int flag=db.DichVu.Count() +1;
 
-                for (int i = 1; i <= db.DichVu.Count(); i++)
+                for (int i = 0; i <= db.DichVu.Count(); i++)
                 {
                     if (flag > 9)
                     {
-                        madv = "DV";
+                        madv = maloaidv.Trim()+"-DV";
 
                     }
-                    else madv = "DV0";
+                    else madv = maloaidv.Trim() + "-DV0";
                     string flag2 = madv + flag;
                     if (db.DichVu.Where(m => m.MaDichVu.Trim() == flag2).Count() == 0)
                     {

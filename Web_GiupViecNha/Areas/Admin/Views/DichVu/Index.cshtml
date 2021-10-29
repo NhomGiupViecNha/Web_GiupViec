@@ -21,17 +21,7 @@
     List<LoaiDV> dsldv = ViewBag.DSLoaiDV as List<LoaiDV>;
 }
 
-@{
-    string madv;
-    if (ViewBag.Madv != null)
-    { madv = ViewBag.Madv; }
-    else
-    {
-        madv = Model.MaDichVu;
 
-    }
-
-}
 
 
 <h3 class="title-5 m-b-35">Danh sách dịch vụ</h3>
@@ -108,7 +98,7 @@
 
 
                             <button class="item btnXoaDV" data-toggle="tooltip" data-madv="@dv.MaDichVu" @*onclick="location.href='@Url.Action("XoaDV", "DichVu", new { madv = dv.MaDichVu })'"*@ data-placement="top" title="Delete">  <i class="zmdi zmdi-delete"></i>  </button>
-                            <button class="item btnXemChiTietDV" data-toggle="tooltip"  data-madv="@dv.MaDichVu"  @*onclick="location.href='@Url.Action("ThongTinChiTietDV", "DichVu", new { dichvu = dv.MaDichVu })'"*@ data-placement="top" title="Edit">
+                            <button class="item btnXemChiTietDV" data-toggle="tooltip"  data-madv="@dv.MaDichVu"  onclick="location.href='@Url.Action("ThongTinChiTietDV", "DichVu", new { dichvu = dv.MaDichVu })'" data-placement="top" title="Edit">
                                 <i class="zmdi zmdi-edit">
                                 </i>
                             </button>
@@ -141,17 +131,7 @@
     {
         @Html.AntiForgeryToken();
    
-        <div class="row form-group">
-            <div class="col col-md-3">
-                <label class=" form-control-label">Mã Dịch Vụ</label>
-            </div>
-            <div class="col-12 col-md-9">
-                <input type="text" name="txtMadv" placeholder="Mã dịch vụ" value="@madv" readonly="" class="form-control">
-
-
-
-            </div>
-        </div>
+   
         <div class="row form-group">
             <div class="col col-md-3">
                 <label for="txtTenDV" class=" form-control-label">Tên Dịch Vụ</label>
@@ -188,7 +168,14 @@
                 <label for="txtDVT" class=" form-control-label">Đơn vị tính</label>
             </div>
             <div class="col-12 col-md-9">
-                @Html.TextBoxFor(m => m.DonViTinh, new { @placeholder = "Đơn vị  tính", @class = "form-control" })
+
+                <select name="cbDonViTinh"  class="form-control">
+                    <option value="Ngày" selected>Giờ</option>
+                        <option value="Ngày" selected>Ngày</option>
+                    <option value="Ngày">Tuần</option>
+                    <option value="Ngày">Tháng</option>
+                </select>
+          
                 @Html.ValidationMessageFor(m => m.DonViTinh, "", new { @class = "text-danger" })
 
 

@@ -83,9 +83,18 @@
 
             </div>
         </div>
+        
+              <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="txtHinhAnh" class=" form-control-label">Hình ảnh</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <img width="120px" src="@Url.Content("~/Content/HinhAnh/"+@Model.AnhCTV)" />
+            </div>
+        </div>
         <div class="row form-group">
             <div class="col col-md-3">
-                <label for="txtHinhAnh" class=" form-control-label">Trình Độ</label>
+                <label for="txtTrinhDo" class=" form-control-label">Trình Độ</label>
             </div>
             <div class="col-12 col-md-9">
                 <input type="text" name="txtTrinhDo" value="@Model.TrinhDoHocVan" readonly="" placeholder="Trình độ học vấn" class="form-control">

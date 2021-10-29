@@ -39,6 +39,8 @@
           <Property Name="KinhNghiem" Type="nvarchar" MaxLength="50" />
           <Property Name="DiemDanhGia" Type="float" />
           <Property Name="MaDonDKCTV" Type="nchar" MaxLength="10" />
+          <Property Name="AnhCTV" Type="varchar(max)" />
+          <Property Name="NgayVaoLam" Type="date" />
         </EntityType>
         <EntityType Name="CT_LuongCTV">
           <Key>
@@ -105,6 +107,7 @@
           <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
           <Property Name="SDT" Type="char" MaxLength="10" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="AnhCTV" Type="varchar" MaxLength="50" />
           <Property Name="TrinhDoHocVan" Type="nvarchar" MaxLength="50" />
           <Property Name="KinhNghiem" Type="nvarchar" MaxLength="50" />
           <Property Name="DiemKiemTra" Type="float" />
@@ -710,6 +713,8 @@
           <NavigationProperty Name="LichLamViec" Relationship="Self.FK_LichLamViec_CongTacVien" FromRole="CongTacVien" ToRole="LichLamViec" />
           <NavigationProperty Name="YeuCauDoiCTV" Relationship="Self.FK_YeuCauDoiCTV_CongTacVien" FromRole="CongTacVien" ToRole="YeuCauDoiCTV" />
           <NavigationProperty Name="KhachHang" Relationship="Self.DSCTVYeuThich" FromRole="CongTacVien" ToRole="KhachHang" />
+          <Property Name="AnhCTV" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NgayVaoLam" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="CT_LuongCTV">
           <Key>
@@ -783,6 +788,7 @@
           <Property Name="DiemKiemTra" Type="Double" />
           <Property Name="TrangThaiDuyet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CongTacVien" Relationship="Self.FK_CongTacVien_DonDangKyCTV" FromRole="DonDangKyCTV" ToRole="CongTacVien" />
+          <Property Name="AnhCTV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="DonDatDV">
           <Key>
@@ -1335,6 +1341,8 @@
           <EntitySetMapping Name="CongTacVien">
             <EntityTypeMapping TypeName="GiupViecNhaDBModel.CongTacVien">
               <MappingFragment StoreEntitySet="CongTacVien">
+                <ScalarProperty Name="NgayVaoLam" ColumnName="NgayVaoLam" />
+                <ScalarProperty Name="AnhCTV" ColumnName="AnhCTV" />
                 <ScalarProperty Name="MaCTV" ColumnName="MaCTV" />
                 <ScalarProperty Name="TenCTV" ColumnName="TenCTV" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
@@ -1402,6 +1410,7 @@
           <EntitySetMapping Name="DonDangKyCTV">
             <EntityTypeMapping TypeName="GiupViecNhaDBModel.DonDangKyCTV">
               <MappingFragment StoreEntitySet="DonDangKyCTV">
+                <ScalarProperty Name="AnhCTV" ColumnName="AnhCTV" />
                 <ScalarProperty Name="MaDon" ColumnName="MaDon" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="NgaySInh" ColumnName="NgaySInh" />

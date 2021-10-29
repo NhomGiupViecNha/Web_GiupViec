@@ -43,6 +43,8 @@
     <NavigationProperty Name="LichLamViec" Relationship="Self.FK_LichLamViec_CongTacVien" FromRole="CongTacVien" ToRole="LichLamViec" />
     <NavigationProperty Name="YeuCauDoiCTV" Relationship="Self.FK_YeuCauDoiCTV_CongTacVien" FromRole="CongTacVien" ToRole="YeuCauDoiCTV" />
     <NavigationProperty Name="KhachHang" Relationship="Self.DSCTVYeuThich" FromRole="CongTacVien" ToRole="KhachHang" />
+    <Property Name="AnhCTV" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NgayVaoLam" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="CT_LuongCTV">
     <Key>
@@ -116,6 +118,7 @@
     <Property Name="DiemKiemTra" Type="Double" />
     <Property Name="TrangThaiDuyet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CongTacVien" Relationship="Self.FK_CongTacVien_DonDangKyCTV" FromRole="DonDangKyCTV" ToRole="CongTacVien" />
+    <Property Name="AnhCTV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="DonDatDV">
     <Key>

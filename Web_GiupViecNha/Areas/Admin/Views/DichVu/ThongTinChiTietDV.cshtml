@@ -5,6 +5,7 @@
     ViewBag.Title = "Thông tin chi tiết dịch vụ";
 
     Layout = "~/Areas/Admin/Views/Shared/_MainLayOut.cshtml";
+    string[] dvt = { "Giờ", "Ngày", "Tuần", "Tháng" };
 }
 
 @{
@@ -67,8 +68,23 @@
                 <label for="txtDVT" class=" form-control-label">Đơn vị tính</label>
             </div>
             <div class="col-12 col-md-9">
+                <select name="DonViTinh" id="select" class="form-control">
+                
+                    @for (int i = 0; i < dvt.Length; i++)
+                    {
+                     
+                        if ( dv.DonViTinh.Contains(dvt[i]))
+                        {
+                            <option value="@dv.DonViTinh" selected>@dv.DonViTinh</option>
+                            continue;
+                            }
+                        <option value="@dvt[i]">@dvt[i]</option>
 
-                @Html.TextBoxFor(m => m.DonViTinh, new { @Value = dv.DonViTinh, @class = "au-input w-100", @type = "text", @placeholder = "Đơn vị tính" })
+                    }
+
+
+
+                </select>
                 @Html.ValidationMessageFor(m => m.DonViTinh, "", new { @class = "text-danger" })
             </div>
         </div>

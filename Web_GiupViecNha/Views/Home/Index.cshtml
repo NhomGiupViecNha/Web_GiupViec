@@ -42,239 +42,79 @@
         </div>
     </div>
 
-    <div class="carousel slide" data-ride="carousel" id="postsCarousel">
-        <div class="container">
-            <div class="row ">
-                <ol class="carousel-indicators">
-                    <li data-target="#postsCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#postsCarousel" data-slide-to="1"></li>
-
-                </ol>
-                <div class="col-md-1 d-flex justify-content-center">
-
-                    <a style="width:30px;" class="carousel-control-prev btn btn-warning" href="#postsCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </div>
-
-                <div class="col-md-10">
-
-
-                    <div class="carousel-inner">
-
-
-                        <div class="carousel-item active ">
-                            @for (int i = 1; i <= 4; i++)
-                            {
-
-                                <div class="col-md-3" style="float:left">
-                                    <div class="card mb-2" style="width: 200px;">
-                                        <img style="width:200px;height:200px" class="card-img-top" src="https://www.btaskee.com/wp-content/uploads/2020/10/cong-tac-vien-.jpg" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h3 style="margin:8px 0px 16px" class="card-title">Giúp việc nhà theo giờ</h3>
-                                            <p class="card-text">Là dịch vụ đầu tiên bTaskee triển khai. Giờ đây công việc dọn dẹp không còn là nỗi bận tâm, bạn sẽ có nhiều thời gian nghỉ ngơi và tận hưởng cuộc sống.</p>
-                                            <a href="#">Tìm hiểu thêm</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            }
-                        </div>
-                        <div class="carousel-item ">
-                            @for (int i = 1; i <= 4; i++)
-                            {
-
-
-                                <div class="col-md-3" style="float:left">
-                                    <div class="card mb-2" style="width: 200px;">
-                                        <img style="width:200px;height:200px" class="card-img-top" src="https://www.btaskee.com/wp-content/uploads/2020/10/cong-tac-vien-.jpg" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h3 style="margin:8px 0px 16px" class="card-title">Giúp việc nhà theo giờ</h3>
-                                            <p class="card-text">Là dịch vụ đầu tiên bTaskee triển khai. Giờ đây công việc dọn dẹp không còn là nỗi bận tâm, bạn sẽ có nhiều thời gian nghỉ ngơi và tận hưởng cuộc sống.</p>
-                                            <a href="#">Tìm hiểu thêm</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            }
-
+    <div class="right-image-post">
+        <div class="row" style="font-size:25px">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-8" style="border-bottom:solid 2px;margin-top:20px" >
+                    <div class="left-text">
+                        <h1 style="color:rgb(255 50 35);">@item.TenDichVu</h1>
+                        <p style="color:black">
+                            @item.MoTa
+                        </p>
+                        <div class="white-button">
+                            <a href="@Url.Action("XemChiTiet", "Home",new { madv = item.MaDichVu})">Thông tin chi tiết</a>
                         </div>
                     </div>
-
-                    </div>
-
-                <div class="col-md-1">
-
-                    <a style="width:30px; color:#FF8228" class="carousel-control-next btn btn-warning" href="#postsCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
-                </div>
-
-            </div>
-    
+    <div class="col-md-4" style="border-bottom:solid 2px">
+        <div class="right-image">
+            <img src="~/Content/HinhAnh/@item.HinhAnh" />
         </div>
-
     </div>
-
-
-  
-
-            <div class="row mt-5 mb-5">
-
-                <h2 class="mb-5" style="font:32px;font-weight:700"> An tâm với lựa chọn của bạn</h2>
-                <img class="w-100 mb-5" src="https://www.btaskee.com/wp-content/uploads/2020/11/home-page-an-tam-voi-lua-chon-cua-ban.png">
-                <div class="col-md-3">
-                    <div class="card border-0 mb-2">
-                        <img style="width: 73.2px; height: 73.2px" class="card-img-top" src="https://www.btaskee.com/wp-content/uploads/2020/10/badge-time-clock.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h3 style="margin:8px 0px 16px" class="card-title">Đặt lịch nhanh chóng</h3>
-                            <p class="card-text">Thao tác 60 giây trên ứng dụng, có ngay người nhận việc sau 60 phút</p>
-                            
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card border-0 mb-2">
-                        <img style="width: 73.2px; height: 73.2px" class="card-img-top" src="https://www.btaskee.com/wp-content/uploads/2020/10/badge-pay.png" alt="Card image cap">
-                        <div class="card-body ">
-                            <h3 style="margin:8px 0px 16px" class="card-title">Giá cả rõ ràng</h3>
-                            <p class="card-text">Giá dịch vụ được hiển thị rõ ràng trên ứng dụng. Bạn không phải trả thêm bất kỳ khoản chi phí nào.</p>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-3">
-
-                    <div class="card border-0 mb-2">
-                        <img style="width:73.2px;height:73.2px" class="card-img-top" src="https://www.btaskee.com/wp-content/uploads/2020/10/badge-service.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h3 style="margin:8px 0px 16px" class="card-title">Đa dạng dịch vụ</h3>
-                            <p class="card-text">Với 9 dịch vụ tiện ích, bTaskee sẵn sàng hỗ trợ mọi nhu cầu việc nhà của bạn</p>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card border-0 mb-2" >
-                        <img style="width: 73.2px; height: 73.2px" class="card-img-top" src="https://www.btaskee.com/wp-content/uploads/2020/10/badge-insurrance.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h3 style="margin:8px 0px 16px" class="card-title">An toàn tối đa</h3>
-                            <p class="card-text">Người làm uy tín, luôn có hồ sơ lý lịch rõ ràng và được Công ty giám sát trong suốt quá trình làm việc.</p>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <h2 style="font-weight:700">Quy trình sử dụng dịch vụ</h2>
-
-            <div class="container">
-          
-
-                    <div class="row mt-5">
-                        <div class="col-md-6">
-                            <img style="width:435px;height:200px" src="~/Content/HinhAnh/chondv.png" />
-                        </div>
-                        <div class="col-md-4">
-                            <h3 style="font-size:20px;font-weight:700">Chọn dịch vụ</h3>
-                            <p style="font-size:16px">Chúng tôi có tới 9 dịch vụ tiện ích sẵn sàng hỗ trợ bạn.</p>
-                        </div>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-md-6">
-                            <img style="width:435px;height:200px" src="~/Content/HinhAnh/chontg_dd.png" />
-                        </div>
-                        <div class="col-md-4">
-                            <h3 style="font-size:20px;font-weight:700">Chọn thời gian và địa điểm</h3>
-                            <p style="font-size:16px">Xác định ngày, giờ và địa điểm để đặt dịch vụ bTaskee trong vòng chưa đầy 60 giây. Bạn có thể tùy chọn số lần sử dụng theo nhu cầu.</p>
-                        </div>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-md-6">
-                            <img style="width:435px;height:200px" src="~/Content/HinhAnh/tienhanhcv.png" />
-                        </div>
-                        <div class="col-md-4">
-                            <h3 style="font-size:20px;font-weight:700">Tiến hành công việc</h3>
-                            <p style="font-size:16px">Người giúp việc gia đình/đối tác sẽ xác nhận đến nhà bạn như đã hẹn và thực hiện nhiệm vụ. Chất lượng, sự chuyên nghiệp luôn được đảm bảo 100%.</p>
-                        </div>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-md-6">
-                            <img style="width:435px;height:200px" src="~/Content/HinhAnh/danhgia.png" />
-                        </div>
-                        <div class="col-md-4">
-                            <h3 style="font-size:20px;font-weight:700">Đánh giá và xếp hạng</h3>
-                            <p style="font-size:16px">Bạn có thể đánh giá chất lượng dịch vụ thông qua ứng dụng bTaskee.</p>
-                        </div>
-                    </div>
-
-
-                </div>
-
-           
-
+            }
         </div>
-
-
-
-      
-
     </div>
+    </div>
+<div class="container">
     <div class="row">
-        <div class="container">
-            <h1>Các câu hỏi thường gặp</h1>
 
-            <div id="accordion">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn w-100 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                1. Ứng dụng bTaskee đang được triển khai ở đâu?
-                            </button>
-                        </h5>
-                    </div>
+        <h1>Các câu hỏi thường gặp</h1>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body">
-                            Ứng dụng hiện đang được triển khai tại TP Hồ Chí Minh, Hà Nội, Hải Phòng, Đà Nẵng, Nha Trang, Đà Lạt, Bình Dương, Biên Hòa và Cần Thơ. Trong tương lai, bTaskee sẽ mở rộng và phát triển đến những thành phố khác trong thời gian sớm nhất.
-                        </div>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn w-100 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            1. Ứng dụng bTaskee đang được triển khai ở đâu?
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        Ứng dụng hiện đang được triển khai tại TP Hồ Chí Minh, Hà Nội, Hải Phòng, Đà Nẵng, Nha Trang, Đà Lạt, Bình Dương, Biên Hòa và Cần Thơ. Trong tương lai, bTaskee sẽ mở rộng và phát triển đến những thành phố khác trong thời gian sớm nhất.
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h5 class="mb-0">
-                            <button class="btn collapsed w-100" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                2. Mình muốn sử dụng thử dịch vụ của bTaskee nhưng phân vân về chất lượng dịch vụ có tốt hay không?
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                        <div class="card-body">
-                            CTV giúp việc nhà thuộc bTaskee có kinh nghiệm dọn dẹp nhà ít nhất 01 năm và có đầy đủ giấy tờ, hồ sơ. Lao động sẽ được phỏng vấn, kiểm tra kiến thức và thử việc trước khi trở thành cộng tác viên chính thức. Bạn hãy yên tâm về chất lượng dịch vụ.
-                        </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn collapsed w-100" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            2. Mình muốn sử dụng thử dịch vụ của bTaskee nhưng phân vân về chất lượng dịch vụ có tốt hay không?
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        CTV giúp việc nhà thuộc bTaskee có kinh nghiệm dọn dẹp nhà ít nhất 01 năm và có đầy đủ giấy tờ, hồ sơ. Lao động sẽ được phỏng vấn, kiểm tra kiến thức và thử việc trước khi trở thành cộng tác viên chính thức. Bạn hãy yên tâm về chất lượng dịch vụ.
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                            <button class="btn collapsed w-100" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                3. Khi đăng công việc lên ứng dụng thì phải mất bao lâu mới có người nhận việc?
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                        <div class="card-body">
-                            Các chị CTV giúp việc của bTaskee sẽ chủ động nhận việc trong vòng một tiếng kể từ khi bạn đăng việc hoàn tất. Đối với các ngày Lễ hoặc Giờ cao điểm, vì nhu cầu dọn dẹp sẽ tăng, bạn nên đăng việc trước một ngày để đảm bảo luôn có người dọn dẹp.
-                        </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn collapsed w-100" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            3. Khi đăng công việc lên ứng dụng thì phải mất bao lâu mới có người nhận việc?
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                        Các chị CTV giúp việc của bTaskee sẽ chủ động nhận việc trong vòng một tiếng kể từ khi bạn đăng việc hoàn tất. Đối với các ngày Lễ hoặc Giờ cao điểm, vì nhu cầu dọn dẹp sẽ tăng, bạn nên đăng việc trước một ngày để đảm bảo luôn có người dọn dẹp.
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
