@@ -84,7 +84,7 @@
                 </ul>
             </div>
             <div class="col-xl-3 text-sm-right text-left order-sm-2 order-3 order-xl-3 col-sm-6 mb-4 mb-xl-0">
-                <a href="#" class="btn btn-primary">Đặt lịch ngay</a>
+                <a href="@Url.Action("Index", "DonDatDV", new { madv = Model.MaDichVu })" class="btn btn-primary">Đặt lịch ngay</a>
             </div>
             <!-- border -->
             <div class="col-12 mt-4 order-4">
@@ -125,16 +125,16 @@
                     }
                            <div class="col-lg-4 col-sm-6 mb-5">
                 <div class="card p-0 border-primary rounded-0 hover-shadow">
-                    <img class="card-img-top rounded-0" src="/Content/HinhAnh/@dv.HinhAnh" alt="course thumb">
+                    <img class="card-img-top rounded-0 responsive" style="height:300px" src="/Content/HinhAnh/@dv.HinhAnh" alt="course thumb">
                     <div class="card-body">
                    
-                        <a href="course-single.html">
+                        <a href="@Url.Action("XemChiTiet", "Home", new { madv = dv.MaDichVu })">
                             <h4 class="card-title">@dv.TenDichVu</h4>
                         </a>
                         <p class="card-text mb-4">
-                           @Truncate(dv.MoTa,100)
+                           @Truncate(dv.MoTa,120)
                         </p>
-                        <a href="@Url.Action("XemChiTiet", "Home", new { madv = dv.MaDichVu })" class="btn btn-primary btn-sm">Apply now</a>
+                        <a href="@Url.Action("XemChiTiet", "Home", new { madv = dv.MaDichVu })" class="btn btn-primary btn-sm">Xem ngay</a>
                     </div>
                 </div>
             </div>

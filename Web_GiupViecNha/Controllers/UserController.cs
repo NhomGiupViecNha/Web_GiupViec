@@ -78,7 +78,13 @@ namespace Web_GiupViecNha.Controllers
                 if (ac.MatKhau.Trim() == maHoaMK(fc["matkhau"]))
                 {
                     Session["TaikhoanKH"] = ac;
-                    return RedirectToAction("Index", "Home");
+                    if(Session["ReturnURL"]==null)
+                    {
+                        return RedirectToAction("Index","Home");
+
+                    }
+                 
+                    return Redirect(Session["ReturnURL"].ToString());
 
                 }
 

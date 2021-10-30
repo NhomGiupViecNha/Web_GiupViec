@@ -15,6 +15,7 @@ namespace Web_GiupViecNha.Controllers
 
             if (Session["TaiKhoanKH"] == null)
             {
+                Session["ReturnURL"] = Request.UrlReferrer;
                 filterContext.Result = new RedirectToRouteResult(new
                     RouteValueDictionary(new { controller = "User", action = "DangNhap"}));
             }
@@ -22,9 +23,6 @@ namespace Web_GiupViecNha.Controllers
         }
         //
         // GET: /Base/
-        public ActionResult Index()
-        {
-            return View();
-        }
+     
 	}
 }

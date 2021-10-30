@@ -25,6 +25,7 @@ namespace Web_GiupViecNha.Controllers
             }
             List<DichVu> dsdv = db.DichVu.ToList();
             ViewBag.dsdv = dsdv;
+          
             DichVu dv = db.DichVu.FirstOrDefault(m => m.MaDichVu == madv);
 
             return View(dv);

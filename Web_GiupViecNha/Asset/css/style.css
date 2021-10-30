@@ -16,6 +16,13 @@ VERSION:	Versoin Number
   font-style: normal;
 }
 
+.responsive {
+
+      width: 100%;
+      
+  max-width: 415px;
+ height: auto;
+}
 body {
   line-height: 1.2;
   font-family: "Times New Roman", sans-serif;

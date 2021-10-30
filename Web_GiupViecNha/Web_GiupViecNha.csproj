@@ -247,6 +247,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CongTacVienController.cs" />
+    <Compile Include="Controllers\DonDatDVController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -802,6 +803,8 @@
     <Content Include="Views\CongTacVien\Index.cshtml" />
     <Content Include="Views\User\DangKi.cshtml" />
     <Content Include="Views\Home\XemChiTiet.cshtml" />
+    <Content Include="Views\DonDatDV\DonDatDV.cshtml" />
+    <Content Include="Views\DonDatDV\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

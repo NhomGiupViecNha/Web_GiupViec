@@ -1,4 +1,4 @@
-﻿
+﻿@using Web_GiupViecNha.Areas.Admin.Models;
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -9,7 +9,11 @@
     <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <!-- Fontfaces CSS-->
+    <link href="~/Areas/Admin/AssetAdmin/css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/Areas/Admin/AssetAdmin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/Areas/Admin/AssetAdmin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/Areas/Admin/AssetAdmin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <!-- ** Plugins Needed for the Project ** -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="~/Asset/plugins/bootstrap/bootstrap.min.css">
@@ -23,10 +27,17 @@
     <link rel="stylesheet" href="~/Asset/plugins/aos/aos.css">
     <!-- venobox popup -->
     <link rel="stylesheet" href="~/Asset/plugins/venobox/venobox.css">
-
+    <!-- Vendor CSS-->
+    <link href="~/Areas/Admin/AssetAdmin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="~/Areas/Admin/AssetAdmin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/Areas/Admin/AssetAdmin/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/Areas/Admin/AssetAdmin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/Areas/Admin/AssetAdmin/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/Areas/Admin/AssetAdmin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/Areas/Admin/AssetAdmin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
     <!-- Main Stylesheet -->
     <link href="~/Asset/css/style.css" rel="stylesheet">
-
+    <link href="~/Areas/Admin/AssetAdmin/css/theme.css" rel="stylesheet" media="all">
     <!--Favicon-->
     <link rel="shortcut icon" href="~/Asset/images/favicon.png" type="image/x-icon">
     <link rel="icon" href="~/Asset/images/favicon.png" type="image/x-icon">
@@ -63,52 +74,116 @@
                                     Dịch vụ
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="teacher.html">Teacher</a>
-                                    <a class="dropdown-item" href="teacher-single.html">Teacher Single</a>
-                                    <a class="dropdown-item" href="notice.html">Notice</a>
-                                    <a class="dropdown-item" href="notice-single.html">Notice Details</a>
-                                    <a class="dropdown-item" href="research.html">Research</a>
-                                    <a class="dropdown-item" href="scholarship.html">Scholarship</a>
-                                    <a class="dropdown-item" href="course-single.html">Course Details</a>
-                                    <a class="dropdown-item" href="event-single.html">Event Details</a>
-                                    <a class="dropdown-item" href="blog-single.html">Blog Details</a>
+                                    <a class="dropdown-item" href="#">Dau dọn</a>
+                          
                                 </div>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="#">Đổi thưởng</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#">Thanh toán</a>
+                                <a class="nav-link" href="#">bPay</a>
                             </li>
                     
                             <li class="nav-item ">
-                                <a class="nav-link" href="contact.html">Trở thành đối tác</a>
+                                <a class="nav-link" href="#">Trở thành đối tác</a>
                             </li>
 
                             <li class="nav-item">
                           
-                                        @if (Session["Taikhoan"] != null)
-                                        {
-                                            <div class="action">
-                                                <div class="profile" onclick="menuToggle();">
-                                                    <a href="#"><img src="ico_logged_in.png" alt=""></a>
-                                                </div>
-                                                <div class="menu">
-                                                    <ul>
-                                                        <li><a href="">Thông tin cá nhân</a></li>
-                                                        <li><a href="">Ví</a></li>
-                                                        <li><a href="">Đổi thưởng</a></li>
-                                                        <li><a href="@Url.Action("DangXuat","User")">Đăng xuất</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div> }
-                                        else
-                                        { <a href="@Url.Action("DangNhap", "User")"><img style="width:50px;height:50px" src="~/Content/HinhAnh/ico_not_login.png" /></a>}
                                  
-
                             </li>
                         </ul>
                     </div>
+                    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content rounded-0 border-0 p-4">
+                                <div class="modal-header border-0">
+                                    <h3>Login</h3>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="#" class="row">
+                                        <div class="col-12">
+                                            <input type="text" class="form-control mb-3" id="loginPhone" name="loginPhone" placeholder="Phone">
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control mb-3" id="loginName" name="loginName" placeholder="Name">
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="password" class="form-control mb-3" id="loginPassword" name="loginPassword" placeholder="Password">
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary">LOGIN</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @if (Session["TaikhoanKH"] != null)
+                    {
+
+
+                        KhachHang kh = (KhachHang)Session["TaiKhoanKH"];
+                        <div class="account-wrap">
+                            <div class="account-item clearfix js-item-menu">
+
+                                <div class="content">
+                                    <a class="js-acc-btn nav-link" href="#">Chào: @kh.TenKH</a>
+                                </div>
+                                <div class="account-dropdown js-dropdown">
+                                    <div class="info clearfix">
+
+                                        <div class="content">
+                                            <h5 class="name">
+                                                <a data-manv="@kh.MaKH" id="aMaNV" href="#">@kh.TenKH</a>
+                                            </h5>
+                                            <span class="email">@kh.Email</span>
+                                        </div>
+                                    </div>
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-account"></i>Thông tin tài khoản
+                                            </a>
+
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-money-box"></i>Ví
+                                            </a>
+
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="fa fa-gift"></i>Đổi thưởng
+                                            </a>
+
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-key"></i>Đổi mật khẩu
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="account-dropdown__footer">
+                                        <a href="/User/DangXuat">
+                                            <i class="zmdi zmdi-power"></i>Đăng xuất
+
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    { <a class="nav-link" href="@Url.Action("DangNhap", "User")"><img style="width:50px;height:50px" src="~/Content/HinhAnh/ico_not_login.png" /></a>}
+
+
                 </nav>
             </div>
    
@@ -119,22 +194,7 @@
     <!-- /blog -->
     <!-- footer -->
     <footer>
-        <!-- newsletter -->
-        <div class="newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9 ml-auto bg-primary py-5 newsletter-block">
-                        <h3 class="text-white">Subscribe Now</h3>
-                        <form action="#">
-                            <div class="input-wrapper">
-                                <input type="email" class="form-control border-0" id="newsletter" name="newsletter" placeholder="Enter Your Email...">
-                                <button type="submit" value="send" class="btn btn-primary">Join</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+   
         <!-- footer content -->
         <div class="footer bg-footer section border-bottom">
             <div class="container">
@@ -238,5 +298,29 @@
     <!-- Main Script -->
     <script src="~/Asset/js/script.js"></script>
 
+    <script src="~/Areas/Admin/AssetAdmin/js/NhanViencontroller.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="~/Areas/Admin/AssetAdmin/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/Areas/Admin/AssetAdmin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="~/Areas/Admin/AssetAdmin/vendor/slick/slick.min.js">
+    </script>
+    <script src="~/Areas/Admin/AssetAdmin/vendor/wow/wow.min.js"></script>
+    <script src="~/Areas/Admin/AssetAdmin/vendor/animsition/animsition.min.js"></script>
+    <script src="~/Areas/Admin/AssetAdmin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="~/Areas/Admin/AssetAdmin/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/Areas/Admin/AssetAdmin/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="~/Areas/Admin/AssetAdmin/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/Areas/Admin/AssetAdmin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/Areas/Admin/AssetAdmin/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/Areas/Admin/AssetAdmin/vendor/select2/select2.min.js">
+    </script>
+    <!-- Main JS-->
+    <script src="~/Areas/Admin/AssetAdmin/js/main.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>
+
