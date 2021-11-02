@@ -117,7 +117,6 @@
           <ScalarProperty Name="DiaChiThucHien" ColumnName="DiaChiThucHien" />
           <ScalarProperty Name="ThoiGianThucHien" ColumnName="ThoiGianThucHien" />
           <ScalarProperty Name="MoTaCongViec" ColumnName="MoTaCongViec" />
-          <ScalarProperty Name="KinhNghiemYeuCau" ColumnName="KinhNghiemYeuCau" />
           <ScalarProperty Name="TinhTrangDonDat" ColumnName="TinhTrangDonDat" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="MaCTVNhanViec" ColumnName="MaCTVNhanViec" />
@@ -142,6 +141,7 @@
     <EntitySetMapping Name="KhachHang">
       <EntityTypeMapping TypeName="GiupViecNhaDBModel.KhachHang">
         <MappingFragment StoreEntitySet="KhachHang">
+          <ScalarProperty Name="SoDuTaiKhoan" ColumnName="SoDuTaiKhoan" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="TenKH" ColumnName="TenKH" />
           <ScalarProperty Name="Email" ColumnName="Email" />

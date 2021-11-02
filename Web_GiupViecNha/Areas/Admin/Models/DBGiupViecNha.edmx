@@ -123,7 +123,6 @@
           <Property Name="DiaChiThucHien" Type="nvarchar" MaxLength="50" />
           <Property Name="ThoiGianThucHien" Type="date" />
           <Property Name="MoTaCongViec" Type="nvarchar(max)" />
-          <Property Name="KinhNghiemYeuCau" Type="nvarchar" MaxLength="50" />
           <Property Name="TinhTrangDonDat" Type="nvarchar" MaxLength="50" />
           <Property Name="MaKH" Type="nchar" MaxLength="10" />
           <Property Name="MaCTVNhanViec" Type="nchar" MaxLength="10" />
@@ -162,6 +161,7 @@
           <Property Name="MatKhau" Type="nvarchar(max)" />
           <Property Name="SoDiemThuong" Type="int" />
           <Property Name="MaCapBacKH" Type="nchar" MaxLength="10" />
+          <Property Name="SoDuTaiKhoan" Type="int" />
         </EntityType>
         <EntityType Name="KhachHang_UuDai">
           <Key>
@@ -800,7 +800,6 @@
           <Property Name="DiaChiThucHien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGianThucHien" Type="DateTime" Precision="0" />
           <Property Name="MoTaCongViec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="KinhNghiemYeuCau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TinhTrangDonDat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="MaCTVNhanViec" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
@@ -842,6 +841,7 @@
           <NavigationProperty Name="CapBacKH" Relationship="Self.FK_KhachHang_CapBacKH" FromRole="KhachHang" ToRole="CapBacKH" />
           <NavigationProperty Name="KhachHang_UuDai" Relationship="Self.FK_KhachHang_UuDai_KhachHang" FromRole="KhachHang" ToRole="KhachHang_UuDai" />
           <NavigationProperty Name="CongTacVien" Relationship="Self.DSCTVYeuThich" FromRole="KhachHang" ToRole="CongTacVien" />
+          <Property Name="SoDuTaiKhoan" Type="Int32" />
         </EntityType>
         <EntityType Name="KhachHang_UuDai">
           <Key>
@@ -1433,7 +1433,6 @@
                 <ScalarProperty Name="DiaChiThucHien" ColumnName="DiaChiThucHien" />
                 <ScalarProperty Name="ThoiGianThucHien" ColumnName="ThoiGianThucHien" />
                 <ScalarProperty Name="MoTaCongViec" ColumnName="MoTaCongViec" />
-                <ScalarProperty Name="KinhNghiemYeuCau" ColumnName="KinhNghiemYeuCau" />
                 <ScalarProperty Name="TinhTrangDonDat" ColumnName="TinhTrangDonDat" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="MaCTVNhanViec" ColumnName="MaCTVNhanViec" />
@@ -1458,6 +1457,7 @@
           <EntitySetMapping Name="KhachHang">
             <EntityTypeMapping TypeName="GiupViecNhaDBModel.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="SoDuTaiKhoan" ColumnName="SoDuTaiKhoan" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

@@ -46,6 +46,7 @@ namespace Web_GiupViecNha.Controllers
                     khachhang.MatKhau = maHoaMK(c["matkhau"]);
                     khachhang.SoDiemThuong = 0;
                     khachhang.MaCapBacKH = "CB01";
+                    khachhang.SoDuTaiKhoan = 0;
                     data.KhachHang.Add(khachhang);
                     data.SaveChanges();
                     return RedirectToAction("DangNhap");

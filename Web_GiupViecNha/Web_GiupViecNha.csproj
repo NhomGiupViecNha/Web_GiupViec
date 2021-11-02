@@ -519,6 +519,7 @@
     <Content Include="Asset\images\teachers\teacher-1.jpg" />
     <Content Include="Asset\images\teachers\teacher-2.jpg" />
     <Content Include="Asset\images\teachers\teacher-3.jpg" />
+    <Content Include="Asset\js\DatDV.js" />
     <Content Include="Asset\js\script.js" />
     <Content Include="Asset\plugins\animate\animate.css" />
     <Content Include="Asset\plugins\aos\aos.css" />

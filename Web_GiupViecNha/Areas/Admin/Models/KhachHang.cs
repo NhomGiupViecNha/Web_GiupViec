@@ -28,6 +28,7 @@ namespace Web_GiupViecNha.Areas.Admin.Models
         public string MatKhau { get; set; }
         public Nullable<int> SoDiemThuong { get; set; }
         public string MaCapBacKH { get; set; }
+        public Nullable<int> SoDuTaiKhoan { get; set; }
     
         public virtual CapBacKH CapBacKH { get; set; }
         public virtual ICollection<KhachHang_UuDai> KhachHang_UuDai { get; set; }

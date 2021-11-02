@@ -1,8 +1,227 @@
-﻿
+﻿@using Web_GiupViecNha.Areas.Admin.Models;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Đặt lịch dịch vụ";
     Layout = "~/Views/Shared/_HomeLayOut.cshtml";
+    DichVu dv = ViewBag.dv;
+    KhachHang kh = ViewBag.kh;
+    string madd =ViewBag.madd;
 }
+<section class="page-title-section overlay" data-background="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="list-inline custom-breadcrumb">
+                    <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="/Home/Index">Home</a></li>
+                    <li class="list-inline-item text-white h3 font-secondary nasted">Đặt lịch dịch vụ</li>
+                </ul>
+                <p class="text-lighten"></p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>Đặt lịch dịch vụ</h2>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
 
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Thông tin khách hàng</strong>
+
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                <input type="text" value="@kh.MaKH" hidden id="txtMaKH" placeholder="Nhập Tên khách hàng" class="form-control">
+                                <label for="company" class=" form-control-label">Tên khách hàng</label>
+                                <input type="text"  value="@kh.TenKH" placeholder="Nhập Tên khách hàng" class="form-control">
+                            
+                            </div>
+                            <div class="form-group">
+                                <label for="vat" class=" form-control-label">Email</label>
+                                <input type="text" id="vat" value="@kh.Email"  placeholder="Nhập Email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="street" class=" form-control-label">SĐT</label>
+                                <input type="tel" id="street" value="@kh.SDT" placeholder="Nhập số điện thoại" class="form-control">
+                            </div>
+                     
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Thông tin dịch vụ</strong>
+
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                             
+                                <label for="company" class=" form-control-label">Mã dịch vụ</label>
+                                <input type="text"  id="txtMaDV" readonly="" value="@dv.MaDichVu" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="company" class=" form-control-label">Tên dịch vụ</label>
+                                <input type="text"  readonly="" value="@dv.TenDichVu" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="vat" class=" form-control-label">Giá thành</label>
+                                <input type="text" readonly="" id="txtGiaThanhDV" value="@dv.GiaThanh" class="form-control">
+                            </div>
+                          
+                       
+                         
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+    <div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div id="thongTinDonDat" class="card">
+                    <div class="card-header">
+                        <strong>Thông tin đơn đặt</strong>
+
+                    </div>
+                    <div class="card-body card-block">
+                        <form class="myForm">
+                            <div class="row form-group">
+
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="" id="txtMaDonDat" value="@madd" hidden class="form-control">
+                                        <label class=" form-control-label">Số thời gian thuê dịch vụ</label>
+                                        <input type="number" placeholder="" value="1" id="txttgThue" required class="form-control">
+
+
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class=" form-control-label">Đơn vị</label>
+                                        <input value="@dv.DonViTinh" readonly="" class="form-control">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="company" class=" form-control-label">Địa chỉ thực hiện</label>
+                                <input type="text" id="txtDiaChi" required value="@kh.DiaChi" placeholder="Nhập địa chỉ thực hiện" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="street" class=" form-control-label">Thời gian thực hiện dịch vụ</label>
+                                <input type="datetime-local" id="txtThoiGianThucHien" required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="street" class=" form-control-label">Ghi chú công việc</label>
+                                <textarea id="txtGhiChu" placeholder="Nhập ghi chú công việc nếu có" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Tùy chọn cộng tác viên:</label>
+                                <select data-madv="@dv.MaDichVu" class=" cbChonCTV form-control">
+                                    <option selected value="hethongchon">Hệ thống tự chọn cộng tác viên</option>
+                                    <option value="tuchon">Tự chọn cộng tác viên</option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="dsCTV">
+
+                            </div>
+                        </form>
+                </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Thông tin thanh toán</strong>
+
+                    </div>
+                    <div class="card-body card-block">
+                     
+                            <div class="form-group">
+                                <label class=" form-control-label">Hình thức thanh toán</label>
+                                <select class="cbThanhToan form-control">
+                                    <option value="tructiep">Thanh toán trực tiếp</option>
+                                    <option value="online" selected>Thanh toán online</option>
+                                </select>
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class=" form-control-label">Phí dịch vụ</label>
+                                <input type="number" id="txtGiaDV" value="@dv.GiaThanh" readonly="" class="form-control">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="company" class=" form-control-label">Phí chọn cộng tác viên</label>
+                                <input type="text" id="txtPhiChonCTV" value="0" readonly="" class="form-control">
+                            </div>
+
+                        <div class="row form-group">
+
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="company" class=" form-control-label">Tổng tiền</label>
+                                    <input type="text" id="txtTongTien" readonly="" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label class=" form-control-label">Mã khuyến mãi</label>
+                                    <input placeholder="Nhập mã khuyến mãi" id="txtMaKM"  class="form-control">
+                                    <button id="btnApDungMaKM" class="btn btn-success">Áp dụng</button>
+                                </div>
+                            </div>
+
+                        </div>
+                  
+
+                            <button type="submit" class=" payment-button btn btn-lg btn-info btn-block">
+                                <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                <span>Xác nhận đặt lịch</span>
+
+
+                            </button>
+
+                     
+                    </div>
+                </div>
+
+            </div>
+      
+        </div>
+
+
+
+
+
+
+    </div>
+
+</div>
+
+    </div>

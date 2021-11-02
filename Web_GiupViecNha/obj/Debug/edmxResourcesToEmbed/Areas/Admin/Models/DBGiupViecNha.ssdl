@@ -118,7 +118,6 @@
     <Property Name="DiaChiThucHien" Type="nvarchar" MaxLength="50" />
     <Property Name="ThoiGianThucHien" Type="date" />
     <Property Name="MoTaCongViec" Type="nvarchar(max)" />
-    <Property Name="KinhNghiemYeuCau" Type="nvarchar" MaxLength="50" />
     <Property Name="TinhTrangDonDat" Type="nvarchar" MaxLength="50" />
     <Property Name="MaKH" Type="nchar" MaxLength="10" />
     <Property Name="MaCTVNhanViec" Type="nchar" MaxLength="10" />
@@ -157,6 +156,7 @@
     <Property Name="MatKhau" Type="nvarchar(max)" />
     <Property Name="SoDiemThuong" Type="int" />
     <Property Name="MaCapBacKH" Type="nchar" MaxLength="10" />
+    <Property Name="SoDuTaiKhoan" Type="int" />
   </EntityType>
   <EntityType Name="KhachHang_UuDai">
     <Key>
